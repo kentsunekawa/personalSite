@@ -1,0 +1,52 @@
+// import from libraries
+import { css, RuleSet } from "styled-components"
+
+export const BREAK_POINTS = {
+  sp: 375,
+  spMax: 767,
+  tbMin: 768,
+  tbMax: 959,
+  pcMin: 960,
+  pcMidium: 1440,
+} as const
+
+type Mq = "spMax_lt" | "tbMin_gt" | "tbMax_lt" | "pcMin_gt"
+
+const queries = {
+  // ~ 767
+  spMax_lt: `(max-width: ${BREAK_POINTS.spMax}px)`,
+  // 768 ~
+  tbMin_gt: `(min-width: ${BREAK_POINTS.tbMin}px)`,
+  // ~ 959
+  tbMax_lt: `(max-width: ${BREAK_POINTS.tbMax}px)`,
+  // 960 ~
+  pcMin_gt: `(min-width: ${BREAK_POINTS.pcMin}px)`,
+}
+
+export const mq = (query: Mq, style: RuleSet<object>) => css`
+  @media ${queries[query]} {
+    ${style}
+  }
+`
+
+export const hoverAction = () => css`
+  transition: opacity 0.06s linear;
+  &:hover {
+    opacity: 0.7;
+  }
+`
+
+export const adjustWidth = (num: number, gap: number) => {
+  const width = `${100 / num}%`
+  const distance = `${(gap * (num - 1)) / num}px`
+
+  return css`
+    width: ${`calc(${width} - ${distance})`};
+  `
+}
+
+export const fonts = () => ({
+  en: css`
+    font-family: "Roboto", sans-serif !important;
+  `,
+})
