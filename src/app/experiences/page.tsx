@@ -1,3 +1,9 @@
-export default function Page() {
-  return <div>This is experiences page.</div>
+import { NextPage } from "next"
+
+import { PageBase } from "@/components/globals/PageBase"
+
+const Page: NextPage = () => {
+  return <PageBase>This is experiences page.</PageBase>
 }
+
+export default Page

@@ -1,6 +1,6 @@
 import { useMemo } from "react"
 
-import { theme, Theme } from "styles/theme"
+import { theme, Theme } from "@/styles/theme"
 
 export type StyleBaseData = {
   theme: Theme

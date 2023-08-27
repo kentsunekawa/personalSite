@@ -1,16 +1,11 @@
-import { ThemeProvider, createGlobalStyle } from "styled-components"
-import { theme } from "@/styles/theme"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
-import "./globals.css"
-import { globalStyle } from "@/styles/globalStyle"
+import "@/styles/globals.css"
+import { GlobalStyle } from "@/components/globals/GlobalStyles"
+import { ThemeProvider } from "@/components/providers/ThemeProvider"
 
 const inter = Inter({ subsets: ["latin"] })
-
-const GlobalStyle = createGlobalStyle`
-  ${globalStyle}
-`
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,11 +18,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <body className={inter.className}>{children}</body>
-      </ThemeProvider>
+    <html lang="ja">
+      <GlobalStyle />
+      <body className={inter.className}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   )
 }

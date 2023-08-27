@@ -4,12 +4,6 @@ import { githubMarkdown } from "./githubMarkdown"
 
 export const globalStyle = css`
   ${destyle}
-  html,
-  body {
-    /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
-    font-size: 14px;
-  }
   p,
   h1,
   h2,
@@ -22,7 +16,6 @@ export const globalStyle = css`
   li,
   button,
   a {
-    color: #444;
     word-break: break-all;
   }
   img {

@@ -1,3 +1,4 @@
+"use client"
 // import from libraries
 import { css } from "styled-components"
 
@@ -6,8 +7,6 @@ import { StyleBaseData } from "@/hooks"
 
 export const createStyles = ({ theme }: StyleBaseData) => {
   return {
-    container: css`
-      font-size: 200px;
-    `,
+    container: css``,
   }
 }
