@@ -1,5 +1,5 @@
 export const appInfo = {
-  siteName: "Beyond Screens Development",
+  siteName: "Ken Tsunekawa",
   catchCopy: "Improve UX to make everyday better.",
-  copyright: "2023 Beyond Screens Development",
+  copyright: "2023 Ken Tsunekawa.",
 }
