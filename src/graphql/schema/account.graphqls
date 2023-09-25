@@ -1,0 +1,9 @@
+type Query {
+  accounts: [Account!]!
+}
+
+type Account {
+  id: ID!
+  name: String!
+  url: String!
+}
