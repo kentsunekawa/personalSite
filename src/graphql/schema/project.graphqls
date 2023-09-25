@@ -1,0 +1,10 @@
+type Project {
+  id: ID!
+  title: String!
+  belonging: Organization
+  period: Period!
+  position: String
+  responsibility: String
+  team: String
+  technologies: [Skill!]!
+}

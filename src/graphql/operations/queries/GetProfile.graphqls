@@ -1,0 +1,26 @@
+query GetProfile {
+  profile {
+    id
+    name
+    birthDate
+    businessTitle
+    speciality
+    accounts {
+      ...Account
+    }
+    email
+    message
+    skills {
+      ...Skill
+    }
+    educationalBackgrounds {
+      ...EducationalFacility
+    }
+    workHistories {
+      ...Organization
+    }
+    projects {
+      ...Project
+    }
+  }
+}

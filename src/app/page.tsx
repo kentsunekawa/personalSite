@@ -1,16 +1,25 @@
 import { NextPage } from "next"
 
 import { client } from "@/graphql/client"
-import { GetPostsQuery, GetPostsDocument } from "@/graphql/generated/types"
+import {
+  GetPostsQuery,
+  GetPostsDocument,
+  GetProfileQuery,
+  GetProfileDocument,
+} from "@/graphql/generated/types"
 
 import { Nav } from "@/components/globals/Nav"
 
 const Page: NextPage = async () => {
-  const { data } = await client.query<GetPostsQuery>({
-    query: GetPostsDocument,
+  // const { data: postsData } = await client.query<GetPostsQuery>({
+  //   query: GetPostsDocument,
+  // })
+  const { data: profileData } = await client.query<GetProfileQuery>({
+    query: GetProfileDocument,
   })
 
-  console.log(data)
+  // console.log(postsData)
+  console.log(profileData)
 
   return (
     <main>

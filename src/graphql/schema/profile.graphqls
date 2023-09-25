@@ -1,0 +1,18 @@
+type Query {
+  profile: Profile!
+}
+
+type Profile {
+  id: ID!
+  name: String!
+  birthDate: String!
+  businessTitle: String!
+  speciality: String!
+  accounts: [Account!]!
+  email: String!
+  message: String
+  skills: [Skill!]!
+  educationalBackgrounds: [EducationalFacility!]!
+  workHistories: [Organization!]!
+  projects: [Project!]!
+}

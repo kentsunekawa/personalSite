@@ -1,0 +1,8 @@
+fragment EducationalFacility on EducationalFacility {
+  id
+  name
+  department
+  period {
+    ...Period
+  }
+}

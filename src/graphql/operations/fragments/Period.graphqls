@@ -1,0 +1,4 @@
+fragment Period on Period {
+  start
+  end
+}

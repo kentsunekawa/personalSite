@@ -2,7 +2,19 @@ type Query {
   posts: [Post!]!
 }
 
+enum PostLabel {
+  HIGH_PRIORITY
+}
+
+enum PostStatus {
+  PUBLISHED
+}
+
 type Post {
   id: ID!
   title: String!
+  date: String!
+  labels: [PostLabel!]!
+  slug: String!
+  status: PostStatus!
 }

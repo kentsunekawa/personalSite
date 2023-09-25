@@ -1,0 +1,11 @@
+enum EmploymentType {
+  FULLTIME
+}
+
+type Organization {
+  id: ID!
+  name: String!
+  period: Period!
+  employmentType: EmploymentType!
+  position: String
+}

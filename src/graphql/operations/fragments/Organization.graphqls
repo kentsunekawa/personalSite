@@ -1,0 +1,9 @@
+fragment Organization on Organization {
+  id
+  name
+  period {
+    ...Period
+  }
+  employmentType
+  position
+}
