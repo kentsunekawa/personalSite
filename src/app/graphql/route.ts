@@ -14,7 +14,11 @@ const server = new ApolloServer({
 
 export async function POST(request: Request): Promise<NextResponse> {
   const json = await request.json()
-  const res = await server.executeOperation({ query: json.query })
+
+  const res = await server.executeOperation({
+    query: json.query,
+    variables: json.variables,
+  })
   assert(res.body.kind === "single")
   return NextResponse.json(res.body.singleResult)
 }

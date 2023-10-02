@@ -1,7 +1,8 @@
-query GetProfile {
-  profile {
+query GetProfile($lang: Lang) {
+  profile(lang: $lang) {
     id
     name
+    image
     birthDate
     businessTitle
     speciality

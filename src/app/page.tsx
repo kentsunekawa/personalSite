@@ -4,22 +4,20 @@ import { client } from "@/graphql/client"
 import {
   GetPostsQuery,
   GetPostsDocument,
-  GetProfileQuery,
-  GetProfileDocument,
+  Lang,
 } from "@/graphql/generated/types"
+import { getProfile } from "@/functions/getProfile"
 
 import { Nav } from "@/components/globals/Nav"
 
 const Page: NextPage = async () => {
-  // const { data: postsData } = await client.query<GetPostsQuery>({
-  //   query: GetPostsDocument,
-  // })
-  const { data: profileData } = await client.query<GetProfileQuery>({
-    query: GetProfileDocument,
+  const { data: postsData } = await client.query<GetPostsQuery>({
+    query: GetPostsDocument,
   })
+  const { data: profileData } = await getProfile(Lang.Ja)
 
   // console.log(postsData)
-  console.log(profileData)
+  // console.log(profileData)
 
   return (
     <main>

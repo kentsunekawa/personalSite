@@ -1,5 +1,5 @@
 import { Project } from "@/graphql/generated/types"
-import { organizations } from "@/database/organizations"
+import { organizations } from "@/database/organizations/ja"
 
 export const projects: Project[] = [
   {

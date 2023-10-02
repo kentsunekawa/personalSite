@@ -1,5 +1,20 @@
-import { profile as profileJa } from "@/database/profiles/ja"
+import { profiles } from "@/database/profiles"
 
-export const profile = () => {
-  return profileJa
+import {
+  Resolver,
+  ResolverTypeWrapper,
+  Profile,
+  GetProfileQueryVariables,
+  Lang,
+} from "@/graphql/generated/types"
+
+export const profile: Resolver<
+  ResolverTypeWrapper<Profile>,
+  {},
+  {},
+  GetProfileQueryVariables
+> = (a, b, c, d) => {
+  console.log(b.lang)
+
+  return b.lang === Lang.En ? profiles.en : profiles.ja
 }

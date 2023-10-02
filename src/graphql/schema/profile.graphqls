@@ -1,10 +1,11 @@
 type Query {
-  profile: Profile!
+  profile(lang: Lang): Profile!
 }
 
 type Profile {
   id: ID!
   name: String!
+  image: String
   birthDate: String!
   businessTitle: String!
   speciality: String!
