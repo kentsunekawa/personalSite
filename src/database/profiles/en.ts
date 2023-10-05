@@ -4,7 +4,7 @@ import { accounts } from "@/database/accounts"
 import { skills } from "@/database/skills"
 import { educationalFacilities } from "@/database/educationalFacilities/en"
 import { organizations } from "@/database/organizations/en"
-import { projects } from "@/database/projects"
+import { projects } from "@/database/projects/en"
 
 export const profile: Profile = {
   id: "1",

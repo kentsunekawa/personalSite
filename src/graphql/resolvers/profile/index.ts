@@ -13,8 +13,4 @@ export const profile: Resolver<
   {},
   {},
   GetProfileQueryVariables
-> = (a, b, c, d) => {
-  console.log(b.lang)
-
-  return b.lang === Lang.En ? profiles.en : profiles.ja
-}
+> = (_, b) => profiles[b.lang ?? Lang.Ja]

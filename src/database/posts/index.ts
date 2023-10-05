@@ -1,12 +1,10 @@
-import { Post, PostLabel, PostStatus } from "@/graphql/generated/types"
+import { Data } from "@/types"
+import { Lang, Post } from "@/graphql/generated/types"
 
-export const posts: Post[] = [
-  {
-    id: "1",
-    title: "記事タイトル",
-    date: "2023-09-25",
-    labels: [PostLabel.HighPriority],
-    slug: "articleSlug",
-    status: PostStatus.Published,
-  },
-]
+import { posts as ja } from "./ja"
+import { posts as en } from "./en"
+
+export const posts: Data<Post[]> = {
+  [Lang.Ja]: ja,
+  [Lang.En]: en,
+}

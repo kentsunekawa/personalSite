@@ -1,5 +1,5 @@
 type Query {
-  posts: [Post!]!
+  posts(lang: Lang): [Post!]!
 }
 
 enum PostLabel {

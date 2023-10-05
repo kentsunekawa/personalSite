@@ -121,6 +121,11 @@ export type Query = {
 };
 
 
+export type QueryPostsArgs = {
+  lang?: InputMaybe<Lang>;
+};
+
+
 export type QueryProfileArgs = {
   lang?: InputMaybe<Lang>;
 };
@@ -146,7 +151,9 @@ export type ProjectFragment = { readonly __typename?: 'Project', readonly id: st
 
 export type SkillFragment = { readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency };
 
-export type GetPostsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetPostsQueryVariables = Exact<{
+  lang?: InputMaybe<Lang>;
+}>;
 
 
 export type GetPostsQuery = { readonly __typename?: 'Query', readonly posts: ReadonlyArray<{ readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus }> };
@@ -230,8 +237,8 @@ export const ProjectFragmentDoc = gql`
 ${PeriodFragmentDoc}
 ${SkillFragmentDoc}`;
 export const GetPostsDocument = gql`
-    query GetPosts {
-  posts {
+    query GetPosts($lang: Lang) {
+  posts(lang: $lang) {
     ...Post
   }
 }
@@ -249,6 +256,7 @@ export const GetPostsDocument = gql`
  * @example
  * const { data, loading, error } = useGetPostsQuery({
  *   variables: {
+ *      lang: // value for 'lang'
  *   },
  * });
  */
@@ -501,7 +509,7 @@ export type ProjectResolvers<ContextType = any, ParentType extends ResolversPare
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  posts?: Resolver<ReadonlyArray<ResolversTypes['Post']>, ParentType, ContextType>;
+  posts?: Resolver<ReadonlyArray<ResolversTypes['Post']>, ParentType, ContextType, Partial<QueryPostsArgs>>;
   profile?: Resolver<ResolversTypes['Profile'], ParentType, ContextType, Partial<QueryProfileArgs>>;
 }>;
 
