@@ -8,6 +8,7 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: 
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type RequireFields<T, K extends keyof T> = Omit<T, K> & { [P in K]-?: NonNullable<T[P]> };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -61,6 +62,7 @@ export type Period = {
 
 export type Post = {
   readonly __typename?: 'Post';
+  readonly content: Scalars['String']['output'];
   readonly date: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly labels: ReadonlyArray<PostLabel>;
@@ -116,8 +118,16 @@ export type Project = {
 
 export type Query = {
   readonly __typename?: 'Query';
+  readonly post?: Maybe<Post>;
   readonly posts: ReadonlyArray<Post>;
   readonly profile: Profile;
+  readonly projects: ReadonlyArray<Project>;
+};
+
+
+export type QueryPostArgs = {
+  lang?: InputMaybe<Lang>;
+  slug: Scalars['String']['input'];
 };
 
 
@@ -127,6 +137,11 @@ export type QueryPostsArgs = {
 
 
 export type QueryProfileArgs = {
+  lang?: InputMaybe<Lang>;
+};
+
+
+export type QueryProjectsArgs = {
   lang?: InputMaybe<Lang>;
 };
 
@@ -145,18 +160,26 @@ export type OrganizationFragment = { readonly __typename?: 'Organization', reado
 
 export type PeriodFragment = { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null };
 
-export type PostFragment = { readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus };
+export type PostFragment = { readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string };
 
 export type ProjectFragment = { readonly __typename?: 'Project', readonly id: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly belonging?: { readonly __typename?: 'Organization', readonly id: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency }> };
 
 export type SkillFragment = { readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency };
+
+export type GetPostQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+  lang?: InputMaybe<Lang>;
+}>;
+
+
+export type GetPostQuery = { readonly __typename?: 'Query', readonly post?: { readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string } | null };
 
 export type GetPostsQueryVariables = Exact<{
   lang?: InputMaybe<Lang>;
 }>;
 
 
-export type GetPostsQuery = { readonly __typename?: 'Query', readonly posts: ReadonlyArray<{ readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus }> };
+export type GetPostsQuery = { readonly __typename?: 'Query', readonly posts: ReadonlyArray<{ readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string }> };
 
 export type GetProfileQueryVariables = Exact<{
   lang?: InputMaybe<Lang>;
@@ -164,6 +187,13 @@ export type GetProfileQueryVariables = Exact<{
 
 
 export type GetProfileQuery = { readonly __typename?: 'Query', readonly profile: { readonly __typename?: 'Profile', readonly id: string, readonly name: string, readonly image?: string | null, readonly birthDate: string, readonly businessTitle: string, readonly speciality: string, readonly email: string, readonly message?: string | null, readonly accounts: ReadonlyArray<{ readonly __typename?: 'Account', readonly id: string, readonly name: string, readonly url: string }>, readonly skills: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency }>, readonly educationalBackgrounds: ReadonlyArray<{ readonly __typename?: 'EducationalFacility', readonly id: string, readonly name: string, readonly department: string, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } }>, readonly workHistories: ReadonlyArray<{ readonly __typename?: 'Organization', readonly id: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } }>, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly belonging?: { readonly __typename?: 'Organization', readonly id: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency }> }> } };
+
+export type GetProjectsQueryVariables = Exact<{
+  lang?: InputMaybe<Lang>;
+}>;
+
+
+export type GetProjectsQuery = { readonly __typename?: 'Query', readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly belonging?: { readonly __typename?: 'Organization', readonly id: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency }> }> };
 
 export const AccountFragmentDoc = gql`
     fragment Account on Account {
@@ -196,6 +226,7 @@ export const PostFragmentDoc = gql`
   labels
   slug
   status
+  content
 }
     `;
 export const OrganizationFragmentDoc = gql`
@@ -236,6 +267,42 @@ export const ProjectFragmentDoc = gql`
     ${OrganizationFragmentDoc}
 ${PeriodFragmentDoc}
 ${SkillFragmentDoc}`;
+export const GetPostDocument = gql`
+    query GetPost($slug: String!, $lang: Lang) {
+  post(slug: $slug, lang: $lang) {
+    ...Post
+  }
+}
+    ${PostFragmentDoc}`;
+
+/**
+ * __useGetPostQuery__
+ *
+ * To run a query within a React component, call `useGetPostQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPostQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *      lang: // value for 'lang'
+ *   },
+ * });
+ */
+export function useGetPostQuery(baseOptions: Apollo.QueryHookOptions<GetPostQuery, GetPostQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetPostQuery, GetPostQueryVariables>(GetPostDocument, options);
+      }
+export function useGetPostLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetPostQuery, GetPostQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetPostQuery, GetPostQueryVariables>(GetPostDocument, options);
+        }
+export type GetPostQueryHookResult = ReturnType<typeof useGetPostQuery>;
+export type GetPostLazyQueryHookResult = ReturnType<typeof useGetPostLazyQuery>;
+export type GetPostQueryResult = Apollo.QueryResult<GetPostQuery, GetPostQueryVariables>;
 export const GetPostsDocument = gql`
     query GetPosts($lang: Lang) {
   posts(lang: $lang) {
@@ -332,6 +399,41 @@ export function useGetProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
 export type GetProfileQueryHookResult = ReturnType<typeof useGetProfileQuery>;
 export type GetProfileLazyQueryHookResult = ReturnType<typeof useGetProfileLazyQuery>;
 export type GetProfileQueryResult = Apollo.QueryResult<GetProfileQuery, GetProfileQueryVariables>;
+export const GetProjectsDocument = gql`
+    query GetProjects($lang: Lang) {
+  projects(lang: $lang) {
+    ...Project
+  }
+}
+    ${ProjectFragmentDoc}`;
+
+/**
+ * __useGetProjectsQuery__
+ *
+ * To run a query within a React component, call `useGetProjectsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetProjectsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetProjectsQuery({
+ *   variables: {
+ *      lang: // value for 'lang'
+ *   },
+ * });
+ */
+export function useGetProjectsQuery(baseOptions?: Apollo.QueryHookOptions<GetProjectsQuery, GetProjectsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetProjectsQuery, GetProjectsQueryVariables>(GetProjectsDocument, options);
+      }
+export function useGetProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetProjectsQuery, GetProjectsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetProjectsQuery, GetProjectsQueryVariables>(GetProjectsDocument, options);
+        }
+export type GetProjectsQueryHookResult = ReturnType<typeof useGetProjectsQuery>;
+export type GetProjectsLazyQueryHookResult = ReturnType<typeof useGetProjectsLazyQuery>;
+export type GetProjectsQueryResult = Apollo.QueryResult<GetProjectsQuery, GetProjectsQueryVariables>;
 export type WithIndex<TObject> = TObject & Record<string, any>;
 export type ResolversObject<TObject> = WithIndex<TObject>;
 
@@ -470,6 +572,7 @@ export type PeriodResolvers<ContextType = any, ParentType extends ResolversParen
 }>;
 
 export type PostResolvers<ContextType = any, ParentType extends ResolversParentTypes['Post'] = ResolversParentTypes['Post']> = ResolversObject<{
+  content?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   labels?: Resolver<ReadonlyArray<ResolversTypes['PostLabel']>, ParentType, ContextType>;
@@ -509,8 +612,10 @@ export type ProjectResolvers<ContextType = any, ParentType extends ResolversPare
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
+  post?: Resolver<Maybe<ResolversTypes['Post']>, ParentType, ContextType, RequireFields<QueryPostArgs, 'slug'>>;
   posts?: Resolver<ReadonlyArray<ResolversTypes['Post']>, ParentType, ContextType, Partial<QueryPostsArgs>>;
   profile?: Resolver<ResolversTypes['Profile'], ParentType, ContextType, Partial<QueryProfileArgs>>;
+  projects?: Resolver<ReadonlyArray<ResolversTypes['Project']>, ParentType, ContextType, Partial<QueryProjectsArgs>>;
 }>;
 
 export type SkillResolvers<ContextType = any, ParentType extends ResolversParentTypes['Skill'] = ResolversParentTypes['Skill']> = ResolversObject<{

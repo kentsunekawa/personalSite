@@ -5,4 +5,5 @@ fragment Post on Post {
   labels
   slug
   status
+  content
 }

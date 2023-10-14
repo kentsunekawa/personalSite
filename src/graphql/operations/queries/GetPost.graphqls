@@ -1,0 +1,5 @@
+query GetPost($slug: String!, $lang: Lang) {
+  post(slug: $slug, lang: $lang) {
+    ...Post
+  }
+}

@@ -1,13 +1,17 @@
 import { NextPage } from "next"
 
-import { PageBase } from "@/components/globals/PageBase"
+import { Lang } from "@/graphql/generated/types"
+import { getProjects } from "@/functions/getProjects"
+import { Projects } from "@/components/pageContents/Projects"
 
 const Page: NextPage = async () => {
+  const { data: projectsData } = await getProjects(Lang.En)
+
   return (
-    <PageBase>
-      <div>en</div>
-      <div>Projects</div>
-    </PageBase>
+    <Projects
+      lang={Lang.En}
+      projects={projectsData.projects.map((project) => project)}
+    />
   )
 }
 

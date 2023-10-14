@@ -1,5 +1,6 @@
 type Query {
   posts(lang: Lang): [Post!]!
+  post(slug: String!, lang: Lang): Post
 }
 
 enum PostLabel {
@@ -17,4 +18,5 @@ type Post {
   labels: [PostLabel!]!
   slug: String!
   status: PostStatus!
+  content: String!
 }

@@ -1,14 +1,12 @@
 import { NextPage } from "next"
 
-import { PageBase } from "@/components/globals/PageBase"
+import { getProjects } from "@/functions/getProjects"
+import { Projects } from "@/components/pageContents/Projects"
 
 const Page: NextPage = async () => {
-  return (
-    <PageBase>
-      <div>ja</div>
-      <div>Projects</div>
-    </PageBase>
-  )
+  const { data: projectsData } = await getProjects()
+
+  return <Projects projects={projectsData.projects.map((project) => project)} />
 }
 
 export default Page

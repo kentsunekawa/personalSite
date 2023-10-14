@@ -1,4 +1,4 @@
-import { posts as postsData } from "@/database/posts"
+import { experiences } from "@/database/experiences"
 import {
   Resolver,
   ResolverTypeWrapper,
@@ -8,8 +8,8 @@ import {
 } from "@/graphql/generated/types"
 
 export const posts: Resolver<
-  ResolverTypeWrapper<Post[]>,
+  ResolverTypeWrapper<Post>[],
   {},
   {},
   GetPostsQueryVariables
-> = (_, b) => postsData[b.lang ?? Lang.Ja]
+> = (_, { lang }) => experiences[lang ?? Lang.Ja]

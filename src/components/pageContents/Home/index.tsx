@@ -9,7 +9,7 @@ type Props = {
   posts: Post[]
 }
 
-export const PageContent: React.FC<Props> = ({ lang = Lang.Ja, profile }) => {
+export const Home: React.FC<Props> = ({ lang = Lang.Ja, profile }) => {
   return (
     <PageBase>
       <Nav />

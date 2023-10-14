@@ -1,12 +1,15 @@
 import { Resolvers } from "@/graphql/generated/types"
 
-import { posts } from "./posts"
 import { profile } from "./profile"
-import { profiles } from "@/database/profiles"
+import { posts } from "./posts"
+import { post } from "./post"
+import { projects } from "./projects"
 
 export const resolvers: Resolvers = {
   Query: {
-    posts,
     profile,
+    projects,
+    posts,
+    post,
   },
 }
