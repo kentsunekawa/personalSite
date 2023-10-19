@@ -1,6 +1,6 @@
 import { NextPage } from "next"
+import { redirect } from "next/navigation"
 
-import { Lang } from "@/graphql/generated/types"
 import { getPosts } from "@/functions/getPosts"
 import { getPost } from "@/functions/getPost"
 import { Experience } from "@/components/pageContents/Experience"
@@ -12,7 +12,7 @@ type Props = {
 const Page: NextPage<Props> = async ({ params }) => {
   const { data: postData } = await getPost(params.slug)
 
-  if (!postData.post) return null
+  if (!postData.post) return redirect("/404")
 
   return <Experience post={postData.post} />
 }

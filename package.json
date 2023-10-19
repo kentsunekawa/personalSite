@@ -23,9 +23,10 @@
     "eslint-config-next": "13.4.16",
     "graphql": "^16.8.1",
     "next": "13.4.16",
+    "raw-loader": "^4.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-markdown": "^8.0.7",
+    "react-markdown": "^9.0.0",
     "remark-gfm": "^4.0.0",
     "styled-components": "^6.0.7",
     "typescript": "5.1.6"
