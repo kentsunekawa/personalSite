@@ -2,9 +2,8 @@
 import { css } from "styled-components"
 
 // import from this project
-import { StyleBaseData } from "@/hooks"
 
-export const createStyles = ({ theme }: StyleBaseData) => {
+export const createStyles = () => {
   return {
     container: css`
       .markdown-body {
@@ -20,7 +19,6 @@ export const createStyles = ({ theme }: StyleBaseData) => {
           list-style-type: disc;
         }
         a {
-          color: ${theme.colors.primary.main};
         }
       }
     `,

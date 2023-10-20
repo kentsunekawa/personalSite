@@ -3,9 +3,8 @@
 import { css } from "styled-components"
 
 // import from this project
-import { StyleBaseData } from "@/hooks"
 
-export const createStyles = ({ theme }: StyleBaseData) => {
+export const createStyles = () => {
   return {
     container: css``,
   }

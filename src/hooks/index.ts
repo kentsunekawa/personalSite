@@ -1,5 +1,14 @@
-import { useStyle, StyleBaseData } from "./useStyle"
+import { useStyle } from "./useStyle"
+import {
+  useThemeName,
+  RowThemeName,
+  ThemeName,
+  THEME_NAMES,
+  castTheme,
+} from "./useThemeName"
 
-export type { StyleBaseData }
+export type { RowThemeName, ThemeName }
 
-export { useStyle }
+export { THEME_NAMES }
+
+export { useStyle, useThemeName, castTheme }
