@@ -8,12 +8,12 @@ const { light, dark } = themes
 export const globalStyle = css`
   :root {
     --fg: #000;
-    --bg: ${light.colors.background};
+    --bg: ${light.colors.bg};
     --test-color: #0f0;
   }
   [data-theme="dark"] {
     --fg: #fff;
-    --bg: ${dark.colors.background};
+    --bg: ${dark.colors.bg};
     --test-color: #f00;
   }
   ${destyle}

@@ -97,6 +97,7 @@ export type Profile = {
   readonly id: Scalars['ID']['output'];
   readonly image?: Maybe<Scalars['String']['output']>;
   readonly message?: Maybe<Scalars['String']['output']>;
+  readonly messsage?: Maybe<Scalars['String']['output']>;
   readonly name: Scalars['String']['output'];
   readonly projects: ReadonlyArray<Project>;
   readonly skills: ReadonlyArray<Skill>;
@@ -591,6 +592,7 @@ export type ProfileResolvers<ContextType = any, ParentType extends ResolversPare
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  messsage?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   projects?: Resolver<ReadonlyArray<ResolversTypes['Project']>, ParentType, ContextType>;
   skills?: Resolver<ReadonlyArray<ResolversTypes['Skill']>, ParentType, ContextType>;

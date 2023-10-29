@@ -2,6 +2,10 @@ import { DefaultTheme } from "styled-components"
 
 import { ThemeName } from "@/hooks/useThemeName"
 
+const names = {
+  bg: "--bg",
+}
+
 type ColorScale = {
   right: string
   main: string
@@ -11,7 +15,7 @@ type ColorScale = {
 export type Theme = {
   colors: {
     color: string
-    background: string
+    bg: string
     primary: ColorScale
     testColor: string
   }
@@ -31,7 +35,7 @@ const commonTheme = {
 export const darkTheme: Theme = {
   colors: {
     ...commonTheme,
-    background: "#333",
+    bg: "#333",
     testColor: "#00f",
   },
 }
@@ -39,7 +43,7 @@ export const darkTheme: Theme = {
 export const lightTheme: Theme = {
   colors: {
     ...commonTheme,
-    background: "#fff",
+    bg: "#fff",
     testColor: "#f0f",
   },
 }

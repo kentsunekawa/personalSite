@@ -16,4 +16,5 @@ type Profile {
   educationalBackgrounds: [EducationalFacility!]!
   workHistories: [Organization!]!
   projects: [Project!]!
+  messsage: String
 }

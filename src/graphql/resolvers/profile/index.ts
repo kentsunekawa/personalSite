@@ -1,4 +1,4 @@
-import { profiles } from "@/database/profiles"
+import { profile as profileData } from "@/database/profile"
 
 import {
   Resolver,
@@ -13,4 +13,4 @@ export const profile: Resolver<
   {},
   {},
   GetProfileQueryVariables
-> = (_, b) => profiles[b.lang ?? Lang.Ja]
+> = (_, b) => profileData[b.lang ?? Lang.Ja]

@@ -1,5 +1,4 @@
 "use client"
-
 import { Lang, Post } from "@/graphql/generated/types"
 import { PageBase } from "@/components/globals/PageBase"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
