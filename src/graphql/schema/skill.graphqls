@@ -5,6 +5,7 @@ enum Proficiency {
 
 type Skill {
   id: ID!
+  slug: String!
   name: String!
   proficiency: Proficiency!
 }

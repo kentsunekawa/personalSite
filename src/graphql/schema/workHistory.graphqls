@@ -2,10 +2,12 @@ enum EmploymentType {
   FULLTIME
 }
 
-type Organization {
+type WorkHistory {
   id: ID!
+  slug: String!
   name: String!
   period: Period!
   employmentType: EmploymentType!
   position: String
+  description: String
 }

@@ -4,11 +4,13 @@ type Query {
 
 type Project {
   id: ID!
+  slug: String!
   title: String!
-  belonging: Organization
+  belonging: WorkHistory
   period: Period!
   position: String
   responsibility: String
   team: String
   technologies: [Skill!]!
+  description: String
 }

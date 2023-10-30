@@ -1,11 +1,10 @@
 import { Data } from "@/types"
 
+export { slugs } from "./slugs"
 import { Project, Lang } from "@/graphql/generated/types"
-
-import { projects as ja } from "./ja"
-import { projects as en } from "./en"
+import { phr } from "./phr"
 
 export const projects: Data<Project[]> = {
-  [Lang.Ja]: ja,
-  [Lang.En]: en,
+  [Lang.Ja]: [phr.JA],
+  [Lang.En]: [phr.EN],
 }

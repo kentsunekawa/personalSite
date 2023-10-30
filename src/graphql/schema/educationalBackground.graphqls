@@ -1,4 +1,4 @@
-type EducationalFacility {
+type EducationalBackground {
   id: ID!
   name: String!
   department: String!

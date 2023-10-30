@@ -15,10 +15,10 @@ query GetProfile($lang: Lang) {
       ...Skill
     }
     educationalBackgrounds {
-      ...EducationalFacility
+      ...EducationalBackground
     }
     workHistories {
-      ...Organization
+      ...WorkHistory
     }
     projects {
       ...Project

@@ -26,8 +26,8 @@ export type Account = {
   readonly url: Scalars['String']['output'];
 };
 
-export type EducationalFacility = {
-  readonly __typename?: 'EducationalFacility';
+export type EducationalBackground = {
+  readonly __typename?: 'EducationalBackground';
   readonly department: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly name: Scalars['String']['output'];
@@ -45,15 +45,6 @@ export const Lang = {
 } as const;
 
 export type Lang = typeof Lang[keyof typeof Lang];
-export type Organization = {
-  readonly __typename?: 'Organization';
-  readonly employmentType: EmploymentType;
-  readonly id: Scalars['ID']['output'];
-  readonly name: Scalars['String']['output'];
-  readonly period: Period;
-  readonly position?: Maybe<Scalars['String']['output']>;
-};
-
 export type Period = {
   readonly __typename?: 'Period';
   readonly end?: Maybe<Scalars['String']['output']>;
@@ -92,7 +83,7 @@ export type Profile = {
   readonly accounts: ReadonlyArray<Account>;
   readonly birthDate: Scalars['String']['output'];
   readonly businessTitle: Scalars['String']['output'];
-  readonly educationalBackgrounds: ReadonlyArray<EducationalFacility>;
+  readonly educationalBackgrounds: ReadonlyArray<EducationalBackground>;
   readonly email: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly image?: Maybe<Scalars['String']['output']>;
@@ -102,16 +93,18 @@ export type Profile = {
   readonly projects: ReadonlyArray<Project>;
   readonly skills: ReadonlyArray<Skill>;
   readonly speciality: Scalars['String']['output'];
-  readonly workHistories: ReadonlyArray<Organization>;
+  readonly workHistories: ReadonlyArray<WorkHistory>;
 };
 
 export type Project = {
   readonly __typename?: 'Project';
-  readonly belonging?: Maybe<Organization>;
+  readonly belonging?: Maybe<WorkHistory>;
+  readonly description?: Maybe<Scalars['String']['output']>;
   readonly id: Scalars['ID']['output'];
   readonly period: Period;
   readonly position?: Maybe<Scalars['String']['output']>;
   readonly responsibility?: Maybe<Scalars['String']['output']>;
+  readonly slug: Scalars['String']['output'];
   readonly team?: Maybe<Scalars['String']['output']>;
   readonly technologies: ReadonlyArray<Skill>;
   readonly title: Scalars['String']['output'];
@@ -151,21 +144,33 @@ export type Skill = {
   readonly id: Scalars['ID']['output'];
   readonly name: Scalars['String']['output'];
   readonly proficiency: Proficiency;
+  readonly slug: Scalars['String']['output'];
+};
+
+export type WorkHistory = {
+  readonly __typename?: 'WorkHistory';
+  readonly description?: Maybe<Scalars['String']['output']>;
+  readonly employmentType: EmploymentType;
+  readonly id: Scalars['ID']['output'];
+  readonly name: Scalars['String']['output'];
+  readonly period: Period;
+  readonly position?: Maybe<Scalars['String']['output']>;
+  readonly slug: Scalars['String']['output'];
 };
 
 export type AccountFragment = { readonly __typename?: 'Account', readonly id: string, readonly name: string, readonly url: string };
 
-export type EducationalFacilityFragment = { readonly __typename?: 'EducationalFacility', readonly id: string, readonly name: string, readonly department: string, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } };
-
-export type OrganizationFragment = { readonly __typename?: 'Organization', readonly id: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } };
+export type EducationalBackgroundFragment = { readonly __typename?: 'EducationalBackground', readonly id: string, readonly name: string, readonly department: string, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } };
 
 export type PeriodFragment = { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null };
 
 export type PostFragment = { readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string };
 
-export type ProjectFragment = { readonly __typename?: 'Project', readonly id: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly belonging?: { readonly __typename?: 'Organization', readonly id: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency }> };
+export type ProjectFragment = { readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> };
 
-export type SkillFragment = { readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency };
+export type SkillFragment = { readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency };
+
+export type WorkHistoryFragment = { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } };
 
 export type GetPostQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -187,14 +192,14 @@ export type GetProfileQueryVariables = Exact<{
 }>;
 
 
-export type GetProfileQuery = { readonly __typename?: 'Query', readonly profile: { readonly __typename?: 'Profile', readonly id: string, readonly name: string, readonly image?: string | null, readonly birthDate: string, readonly businessTitle: string, readonly speciality: string, readonly email: string, readonly message?: string | null, readonly accounts: ReadonlyArray<{ readonly __typename?: 'Account', readonly id: string, readonly name: string, readonly url: string }>, readonly skills: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency }>, readonly educationalBackgrounds: ReadonlyArray<{ readonly __typename?: 'EducationalFacility', readonly id: string, readonly name: string, readonly department: string, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } }>, readonly workHistories: ReadonlyArray<{ readonly __typename?: 'Organization', readonly id: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } }>, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly belonging?: { readonly __typename?: 'Organization', readonly id: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency }> }> } };
+export type GetProfileQuery = { readonly __typename?: 'Query', readonly profile: { readonly __typename?: 'Profile', readonly id: string, readonly name: string, readonly image?: string | null, readonly birthDate: string, readonly businessTitle: string, readonly speciality: string, readonly email: string, readonly message?: string | null, readonly accounts: ReadonlyArray<{ readonly __typename?: 'Account', readonly id: string, readonly name: string, readonly url: string }>, readonly skills: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }>, readonly educationalBackgrounds: ReadonlyArray<{ readonly __typename?: 'EducationalBackground', readonly id: string, readonly name: string, readonly department: string, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } }>, readonly workHistories: ReadonlyArray<{ readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } }>, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> }> } };
 
 export type GetProjectsQueryVariables = Exact<{
   lang?: InputMaybe<Lang>;
 }>;
 
 
-export type GetProjectsQuery = { readonly __typename?: 'Query', readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly belonging?: { readonly __typename?: 'Organization', readonly id: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly name: string, readonly proficiency: Proficiency }> }> };
+export type GetProjectsQuery = { readonly __typename?: 'Query', readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> }> };
 
 export const AccountFragmentDoc = gql`
     fragment Account on Account {
@@ -209,8 +214,8 @@ export const PeriodFragmentDoc = gql`
   end
 }
     `;
-export const EducationalFacilityFragmentDoc = gql`
-    fragment EducationalFacility on EducationalFacility {
+export const EducationalBackgroundFragmentDoc = gql`
+    fragment EducationalBackground on EducationalBackground {
   id
   name
   department
@@ -230,20 +235,23 @@ export const PostFragmentDoc = gql`
   content
 }
     `;
-export const OrganizationFragmentDoc = gql`
-    fragment Organization on Organization {
+export const WorkHistoryFragmentDoc = gql`
+    fragment WorkHistory on WorkHistory {
   id
+  slug
   name
   period {
     ...Period
   }
   employmentType
   position
+  description
 }
     ${PeriodFragmentDoc}`;
 export const SkillFragmentDoc = gql`
     fragment Skill on Skill {
   id
+  slug
   name
   proficiency
 }
@@ -251,9 +259,10 @@ export const SkillFragmentDoc = gql`
 export const ProjectFragmentDoc = gql`
     fragment Project on Project {
   id
+  slug
   title
   belonging {
-    ...Organization
+    ...WorkHistory
   }
   period {
     ...Period
@@ -264,8 +273,9 @@ export const ProjectFragmentDoc = gql`
   technologies {
     ...Skill
   }
+  description
 }
-    ${OrganizationFragmentDoc}
+    ${WorkHistoryFragmentDoc}
 ${PeriodFragmentDoc}
 ${SkillFragmentDoc}`;
 export const GetPostDocument = gql`
@@ -357,20 +367,21 @@ export const GetProfileDocument = gql`
       ...Skill
     }
     educationalBackgrounds {
-      ...EducationalFacility
+      ...EducationalBackground
     }
     workHistories {
-      ...Organization
+      ...WorkHistory
     }
     projects {
       ...Project
     }
+    message
   }
 }
     ${AccountFragmentDoc}
 ${SkillFragmentDoc}
-${EducationalFacilityFragmentDoc}
-${OrganizationFragmentDoc}
+${EducationalBackgroundFragmentDoc}
+${WorkHistoryFragmentDoc}
 ${ProjectFragmentDoc}`;
 
 /**
@@ -509,11 +520,10 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = ResolversObject<{
   Account: ResolverTypeWrapper<Account>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
-  EducationalFacility: ResolverTypeWrapper<EducationalFacility>;
+  EducationalBackground: ResolverTypeWrapper<EducationalBackground>;
   EmploymentType: EmploymentType;
   ID: ResolverTypeWrapper<Scalars['ID']['output']>;
   Lang: Lang;
-  Organization: ResolverTypeWrapper<Organization>;
   Period: ResolverTypeWrapper<Period>;
   Post: ResolverTypeWrapper<Post>;
   PostLabel: PostLabel;
@@ -524,15 +534,15 @@ export type ResolversTypes = ResolversObject<{
   Query: ResolverTypeWrapper<{}>;
   Skill: ResolverTypeWrapper<Skill>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
+  WorkHistory: ResolverTypeWrapper<WorkHistory>;
 }>;
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
   Account: Account;
   Boolean: Scalars['Boolean']['output'];
-  EducationalFacility: EducationalFacility;
+  EducationalBackground: EducationalBackground;
   ID: Scalars['ID']['output'];
-  Organization: Organization;
   Period: Period;
   Post: Post;
   Profile: Profile;
@@ -540,6 +550,7 @@ export type ResolversParentTypes = ResolversObject<{
   Query: {};
   Skill: Skill;
   String: Scalars['String']['output'];
+  WorkHistory: WorkHistory;
 }>;
 
 export type AccountResolvers<ContextType = any, ParentType extends ResolversParentTypes['Account'] = ResolversParentTypes['Account']> = ResolversObject<{
@@ -549,20 +560,11 @@ export type AccountResolvers<ContextType = any, ParentType extends ResolversPare
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type EducationalFacilityResolvers<ContextType = any, ParentType extends ResolversParentTypes['EducationalFacility'] = ResolversParentTypes['EducationalFacility']> = ResolversObject<{
+export type EducationalBackgroundResolvers<ContextType = any, ParentType extends ResolversParentTypes['EducationalBackground'] = ResolversParentTypes['EducationalBackground']> = ResolversObject<{
   department?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   period?: Resolver<ResolversTypes['Period'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
-export type OrganizationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Organization'] = ResolversParentTypes['Organization']> = ResolversObject<{
-  employmentType?: Resolver<ResolversTypes['EmploymentType'], ParentType, ContextType>;
-  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  period?: Resolver<ResolversTypes['Period'], ParentType, ContextType>;
-  position?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -587,7 +589,7 @@ export type ProfileResolvers<ContextType = any, ParentType extends ResolversPare
   accounts?: Resolver<ReadonlyArray<ResolversTypes['Account']>, ParentType, ContextType>;
   birthDate?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   businessTitle?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  educationalBackgrounds?: Resolver<ReadonlyArray<ResolversTypes['EducationalFacility']>, ParentType, ContextType>;
+  educationalBackgrounds?: Resolver<ReadonlyArray<ResolversTypes['EducationalBackground']>, ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -597,16 +599,18 @@ export type ProfileResolvers<ContextType = any, ParentType extends ResolversPare
   projects?: Resolver<ReadonlyArray<ResolversTypes['Project']>, ParentType, ContextType>;
   skills?: Resolver<ReadonlyArray<ResolversTypes['Skill']>, ParentType, ContextType>;
   speciality?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  workHistories?: Resolver<ReadonlyArray<ResolversTypes['Organization']>, ParentType, ContextType>;
+  workHistories?: Resolver<ReadonlyArray<ResolversTypes['WorkHistory']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type ProjectResolvers<ContextType = any, ParentType extends ResolversParentTypes['Project'] = ResolversParentTypes['Project']> = ResolversObject<{
-  belonging?: Resolver<Maybe<ResolversTypes['Organization']>, ParentType, ContextType>;
+  belonging?: Resolver<Maybe<ResolversTypes['WorkHistory']>, ParentType, ContextType>;
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   period?: Resolver<ResolversTypes['Period'], ParentType, ContextType>;
   position?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   responsibility?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   team?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   technologies?: Resolver<ReadonlyArray<ResolversTypes['Skill']>, ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -624,18 +628,30 @@ export type SkillResolvers<ContextType = any, ParentType extends ResolversParent
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   proficiency?: Resolver<ResolversTypes['Proficiency'], ParentType, ContextType>;
+  slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type WorkHistoryResolvers<ContextType = any, ParentType extends ResolversParentTypes['WorkHistory'] = ResolversParentTypes['WorkHistory']> = ResolversObject<{
+  description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  employmentType?: Resolver<ResolversTypes['EmploymentType'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  period?: Resolver<ResolversTypes['Period'], ParentType, ContextType>;
+  position?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type Resolvers<ContextType = any> = ResolversObject<{
   Account?: AccountResolvers<ContextType>;
-  EducationalFacility?: EducationalFacilityResolvers<ContextType>;
-  Organization?: OrganizationResolvers<ContextType>;
+  EducationalBackground?: EducationalBackgroundResolvers<ContextType>;
   Period?: PeriodResolvers<ContextType>;
   Post?: PostResolvers<ContextType>;
   Profile?: ProfileResolvers<ContextType>;
   Project?: ProjectResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   Skill?: SkillResolvers<ContextType>;
+  WorkHistory?: WorkHistoryResolvers<ContextType>;
 }>;
 

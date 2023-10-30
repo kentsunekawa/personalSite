@@ -13,8 +13,8 @@ type Profile {
   email: String!
   message: String
   skills: [Skill!]!
-  educationalBackgrounds: [EducationalFacility!]!
-  workHistories: [Organization!]!
+  educationalBackgrounds: [EducationalBackground!]!
+  workHistories: [WorkHistory!]!
   projects: [Project!]!
   messsage: String
 }

@@ -4,3 +4,7 @@ export type Data<T> = {
   [Lang.Ja]: T
   [Lang.En]: T
 }
+
+export type OmitIdSlug<T> = Omit<T, "id" | "slug">
+
+export type TypeofValue<T> = T[keyof T]

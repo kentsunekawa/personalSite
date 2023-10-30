@@ -1,20 +1,29 @@
 import { css } from "styled-components"
 import { destyle } from "@/styles/destyle"
-import { themes } from "./theme"
+import { themes, VAR_NAMES } from "./theme"
 import { githubMarkdown } from "./githubMarkdown"
 
-const { light, dark } = themes
+const {
+  light: { colors: lColors },
+  dark: { colors: dColors },
+} = themes
 
 export const globalStyle = css`
   :root {
+    /* colors */
     --fg: #000;
-    --bg: ${light.colors.bg};
-    --test-color: #0f0;
+    --bg: ${lColors.bg};
+    --primary-light: ${lColors.primary.right};
+    --primary-main: ${lColors.primary.main};
+    --primary-dark: ${lColors.primary.dark};
   }
   [data-theme="dark"] {
+    /* colors */
     --fg: #fff;
-    --bg: ${dark.colors.bg};
-    --test-color: #f00;
+    --bg: ${dColors.bg};
+    --primary-light: ${dColors.primary.right};
+    --primary-main: ${dColors.primary.main};
+    --primary-dark: ${dColors.primary.dark};
   }
   ${destyle}
   p,

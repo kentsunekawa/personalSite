@@ -1,6 +1,8 @@
 // import from libraries
 import { css, RuleSet } from "styled-components"
 
+import { VAR_NAMES } from "@/styles/theme"
+
 export const BREAK_POINTS = {
   sp: 375,
   spMax: 767,
