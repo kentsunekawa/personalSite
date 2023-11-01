@@ -1,14 +1,15 @@
 "use client"
-import { Lang, Post } from "@/graphql/generated/types"
+// import from this project
+import { PageState } from "@/types"
+import { Post } from "@/graphql/generated/types"
 import { PageBase } from "@/components/globals/PageBase"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
 
-type Props = {
-  lang?: Lang
+type Props = PageState & {
   post: Post
 }
 
-export const Experience: React.FC<Props> = ({ lang = Lang.Ja, post }) => {
+export const Experience: React.FC<Props> = ({ lang, post }) => {
   const { title, content } = post
   return (
     <PageBase>

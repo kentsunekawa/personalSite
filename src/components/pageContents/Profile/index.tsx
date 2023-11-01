@@ -1,4 +1,6 @@
 "use client"
+// import from this project
+import { PageState } from "@/types"
 import { Lang, Profile as ProfileType } from "@/graphql/generated/types"
 import { PageBase } from "@/components/globals/PageBase"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
@@ -7,12 +9,11 @@ import { EducationalBackgrounds } from "@/components/parts/EducationalBackground
 import { WorkHistories } from "@/components/parts/WorkHistories"
 import { Summary } from "./Summary"
 
-type Props = {
-  lang?: Lang
+type Props = PageState & {
   profile: ProfileType
 }
 
-export const Profile: React.FC<Props> = ({ lang = Lang.Ja, profile }) => {
+export const Profile: React.FC<Props> = ({ lang, profile }) => {
   const {
     name,
     image,

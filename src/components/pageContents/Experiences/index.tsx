@@ -1,15 +1,14 @@
 "use client"
 // import from libraries
-import Link from "next/link"
 
 // import from this project
+import { PageState } from "@/types"
 import { getPageInfo } from "@/utils"
-import { Lang, Post } from "@/graphql/generated/types"
+import { Post } from "@/graphql/generated/types"
 import { PageBase } from "@/components/globals/PageBase"
 import { LinkBox } from "@/components/parts/LinkBox"
 
-type Props = {
-  lang: Lang
+type Props = PageState & {
   posts: Post[]
 }
 

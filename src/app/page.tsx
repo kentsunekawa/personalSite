@@ -1,20 +1,32 @@
+// import from libraries
 import { NextPage } from "next"
 
-import { PostLabel } from "@/graphql/generated/types"
+// import from this project
+import { PageState } from "@/types"
+import { Lang, PostLabel } from "@/graphql/generated/types"
+import { PageContainer } from "@/components/globals/PageContainer"
 import { getProfile } from "@/functions/getProfile"
 import { getPosts } from "@/functions/getPosts"
 
 import { Home } from "@/components/pageContents/Home"
+
+const pageState: PageState = {
+  lang: Lang.Ja,
+  pageName: "home",
+}
 
 const Page: NextPage = async () => {
   const { data: postsData } = await getPosts([PostLabel.HighPriority])
   const { data: profileData } = await getProfile()
 
   return (
-    <Home
-      profile={profileData.profile}
-      posts={postsData.posts.map((post) => post)}
-    />
+    <PageContainer {...pageState}>
+      <Home
+        {...pageState}
+        profile={profileData.profile}
+        posts={postsData.posts.map((post) => post)}
+      />
+    </PageContainer>
   )
 }
 

@@ -1,3 +1,4 @@
+import { PageName } from "@/constants"
 import { Lang } from "@/graphql/generated/types"
 
 export type Data<T> = {
@@ -8,3 +9,8 @@ export type Data<T> = {
 export type OmitIdSlug<T> = Omit<T, "id" | "slug">
 
 export type TypeofValue<T> = T[keyof T]
+
+export type PageState = {
+  pageName: PageName
+  lang: Lang
+}
