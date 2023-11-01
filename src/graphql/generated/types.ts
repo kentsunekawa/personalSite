@@ -68,6 +68,7 @@ export const PostLabel = {
 
 export type PostLabel = typeof PostLabel[keyof typeof PostLabel];
 export const PostStatus = {
+  Draft: 'DRAFT',
   Published: 'PUBLISHED'
 } as const;
 
@@ -88,7 +89,6 @@ export type Profile = {
   readonly id: Scalars['ID']['output'];
   readonly image?: Maybe<Scalars['String']['output']>;
   readonly message?: Maybe<Scalars['String']['output']>;
-  readonly messsage?: Maybe<Scalars['String']['output']>;
   readonly name: Scalars['String']['output'];
   readonly projects: ReadonlyArray<Project>;
   readonly skills: ReadonlyArray<Skill>;
@@ -127,6 +127,7 @@ export type QueryPostArgs = {
 
 export type QueryPostsArgs = {
   lang?: InputMaybe<Lang>;
+  searchPostsInput?: InputMaybe<SearchPostsInput>;
 };
 
 
@@ -137,6 +138,11 @@ export type QueryProfileArgs = {
 
 export type QueryProjectsArgs = {
   lang?: InputMaybe<Lang>;
+};
+
+export type SearchPostsInput = {
+  readonly labels?: InputMaybe<ReadonlyArray<PostLabel>>;
+  readonly status?: InputMaybe<ReadonlyArray<PostStatus>>;
 };
 
 export type Skill = {
@@ -182,6 +188,7 @@ export type GetPostQuery = { readonly __typename?: 'Query', readonly post?: { re
 
 export type GetPostsQueryVariables = Exact<{
   lang?: InputMaybe<Lang>;
+  searchPostsInput?: InputMaybe<SearchPostsInput>;
 }>;
 
 
@@ -315,8 +322,8 @@ export type GetPostQueryHookResult = ReturnType<typeof useGetPostQuery>;
 export type GetPostLazyQueryHookResult = ReturnType<typeof useGetPostLazyQuery>;
 export type GetPostQueryResult = Apollo.QueryResult<GetPostQuery, GetPostQueryVariables>;
 export const GetPostsDocument = gql`
-    query GetPosts($lang: Lang) {
-  posts(lang: $lang) {
+    query GetPosts($lang: Lang, $searchPostsInput: SearchPostsInput) {
+  posts(lang: $lang, searchPostsInput: $searchPostsInput) {
     ...Post
   }
 }
@@ -335,6 +342,7 @@ export const GetPostsDocument = gql`
  * const { data, loading, error } = useGetPostsQuery({
  *   variables: {
  *      lang: // value for 'lang'
+ *      searchPostsInput: // value for 'searchPostsInput'
  *   },
  * });
  */
@@ -532,6 +540,7 @@ export type ResolversTypes = ResolversObject<{
   Profile: ResolverTypeWrapper<Profile>;
   Project: ResolverTypeWrapper<Project>;
   Query: ResolverTypeWrapper<{}>;
+  SearchPostsInput: SearchPostsInput;
   Skill: ResolverTypeWrapper<Skill>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   WorkHistory: ResolverTypeWrapper<WorkHistory>;
@@ -548,6 +557,7 @@ export type ResolversParentTypes = ResolversObject<{
   Profile: Profile;
   Project: Project;
   Query: {};
+  SearchPostsInput: SearchPostsInput;
   Skill: Skill;
   String: Scalars['String']['output'];
   WorkHistory: WorkHistory;
@@ -594,7 +604,6 @@ export type ProfileResolvers<ContextType = any, ParentType extends ResolversPare
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   image?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  messsage?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   projects?: Resolver<ReadonlyArray<ResolversTypes['Project']>, ParentType, ContextType>;
   skills?: Resolver<ReadonlyArray<ResolversTypes['Skill']>, ParentType, ContextType>;

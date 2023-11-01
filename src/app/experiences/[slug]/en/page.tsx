@@ -21,7 +21,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 export default Page
 
 export async function generateStaticParams() {
-  const { data } = await getPosts()
+  const { data } = await getPosts(undefined, Lang.En)
 
   return data.posts.map(({ slug }) => ({
     slug,

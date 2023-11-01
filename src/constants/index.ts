@@ -1,1 +1,1 @@
-export { appInfo } from "./appInfo"
+export { APP_INFO } from "./appInfo"

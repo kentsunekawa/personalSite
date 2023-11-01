@@ -1,14 +1,14 @@
 import { Profile } from "@/graphql/generated/types"
 
 import { accounts } from "@/database/accounts"
-import { skills } from "@/database/skills"
-import { educationalBackgrounds } from "@/database/educationalBackgrounds/en"
-import { workHistories } from "@/database/workHistories"
+import { getSkills } from "@/database/skills"
+import { educationalBackgrounds } from "@/database/educationalBackgrounds"
+import { getWorkHistories } from "@/database/workHistories"
 import { projects } from "@/database/projects"
 import message from "./message.md"
 
-export const profile: Profile = {
-  id: "1",
+export const en: Profile = {
+  id: "profile_en",
   name: "Ken Tsunekawa",
   image: "/img/me.jpg",
   birthDate: "1988-05-12",
@@ -16,9 +16,9 @@ export const profile: Profile = {
   email: "k.tsunekawa.dev@gmail.com",
   businessTitle: "Front-End Developer / UX Engineer",
   speciality: "Web Front-End Development / Mobile App Development",
-  skills,
-  educationalBackgrounds,
-  workHistories: workHistories.EN,
+  skills: getSkills(),
+  educationalBackgrounds: educationalBackgrounds.EN,
+  workHistories: getWorkHistories("EN"),
   projects: projects.EN,
   message,
 }

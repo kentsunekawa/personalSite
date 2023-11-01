@@ -18,8 +18,10 @@ export const getWorkHistory = (
 
 export const getWorkHistories = (
   lang: Lang,
-  targetSlugs: TypeofValue<typeof slugs>[]
+  targetSlugs?: TypeofValue<typeof slugs>[]
 ) =>
-  workHistories[lang].filter(({ slug }) =>
-    targetSlugs.includes(slug as TypeofValue<typeof slugs>)
-  )
+  targetSlugs
+    ? workHistories[lang].filter(({ slug }) =>
+        targetSlugs.includes(slug as TypeofValue<typeof slugs>)
+      )
+    : workHistories[lang]

@@ -1,6 +1,6 @@
 import { EducationalBackground } from "@/graphql/generated/types"
 
-export const educationalBackgrounds: EducationalBackground[] = [
+export const ja: EducationalBackground[] = [
   {
     id: "kinkiUniv",
     name: "近畿大学",

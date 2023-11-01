@@ -1,5 +1,5 @@
-export const appInfo = {
+export const APP_INFO = {
   siteName: "Ken Tsunekawa",
-  catchCopy: "Improve UX to make everyday better.",
+  catchCopy: "Develop UX beyond screens.",
   copyright: "2023 Ken Tsunekawa.",
 }

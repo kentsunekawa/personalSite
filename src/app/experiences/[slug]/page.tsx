@@ -1,6 +1,7 @@
 import { NextPage } from "next"
 import { redirect } from "next/navigation"
 
+import { Lang } from "@/graphql/generated/types"
 import { getPosts } from "@/functions/getPosts"
 import { getPost } from "@/functions/getPost"
 import { Experience } from "@/components/pageContents/Experience"
@@ -20,7 +21,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 export default Page
 
 export async function generateStaticParams() {
-  const { data } = await getPosts()
+  const { data } = await getPosts(undefined, Lang.Ja)
 
   return data.posts.map(({ slug }) => ({
     slug,

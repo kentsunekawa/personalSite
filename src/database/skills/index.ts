@@ -30,5 +30,7 @@ export const skills: Skill[] = [
   },
 ]
 
-export const getSkills = (targetSlugs: SlugName[]) =>
-  skills.filter(({ slug }) => targetSlugs.includes(slug as SlugName))
+export const getSkills = (targetSlugs?: SlugName[]) =>
+  targetSlugs
+    ? skills.filter(({ slug }) => targetSlugs.includes(slug as SlugName))
+    : skills

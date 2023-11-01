@@ -1,5 +1,5 @@
-query GetPosts($lang: Lang) {
-  posts(lang: $lang) {
+query GetPosts($lang: Lang, $searchPostsInput: SearchPostsInput) {
+  posts(lang: $lang, searchPostsInput: $searchPostsInput) {
     ...Post
   }
 }

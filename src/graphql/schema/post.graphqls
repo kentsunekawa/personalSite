@@ -1,5 +1,5 @@
 type Query {
-  posts(lang: Lang): [Post!]!
+  posts(lang: Lang, searchPostsInput: SearchPostsInput): [Post!]!
   post(slug: String!, lang: Lang): Post
 }
 
@@ -8,7 +8,13 @@ enum PostLabel {
 }
 
 enum PostStatus {
+  DRAFT
   PUBLISHED
+}
+
+input SearchPostsInput {
+  status: [PostStatus!]
+  labels: [PostLabel!]
 }
 
 type Post {

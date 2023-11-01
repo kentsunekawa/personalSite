@@ -5,7 +5,7 @@ import { getPosts } from "@/functions/getPosts"
 import { Experiences } from "@/components/pageContents/Experiences"
 
 const Page: NextPage = async () => {
-  const { data: postsData } = await getPosts(Lang.En)
+  const { data: postsData } = await getPosts(undefined, Lang.En)
 
   return (
     <Experiences posts={postsData.posts.map((post) => post)} lang={Lang.En} />
