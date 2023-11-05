@@ -5,6 +5,7 @@
 import { APP_INFO } from "@/constants"
 import { useStyle } from "@/hooks"
 import { ToggleTheme } from "@/components/parts/ToggleTheme"
+import { LangChanger } from "@/components/parts/LangChanger"
 import { createStyles } from "./styles"
 
 export const Header: React.FC = () => {
@@ -13,6 +14,7 @@ export const Header: React.FC = () => {
     <header css={styles.container}>
       <a href="/">{APP_INFO.siteName}</a>
       <ToggleTheme />
+      <LangChanger />
     </header>
   )
 }

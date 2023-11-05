@@ -11,6 +11,10 @@ import { Projects } from "@/components/pageContents/Projects"
 const pageState: PageState = {
   lang: Lang.Ja,
   pageName: "projects",
+  translatedLangs: {
+    [Lang.Ja]: true,
+    [Lang.En]: false,
+  },
 }
 
 const Page: NextPage = async () => {

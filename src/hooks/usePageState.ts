@@ -8,12 +8,6 @@ import {
 export const usePageState = () => {
   const pageState = useContext(PageStateContext)
 
-  if (typeof pageState === "undefined") {
-    throw new Error(
-      "usePageState should be used within the PageStateContext provider!"
-    )
-  }
-
   return { pageState }
 }
 

@@ -48,7 +48,7 @@ export const PAGE_INFO: PageInfo = {
   home: {
     path: "/",
     createPath(lang = Lang.Ja) {
-      return `${this.path}/${checkLang(lang)}`
+      return `${this.path}${checkLang(lang)}`
     },
   },
   profile: {

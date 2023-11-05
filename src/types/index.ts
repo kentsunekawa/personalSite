@@ -13,4 +13,7 @@ export type TypeofValue<T> = T[keyof T]
 export type PageState = {
   pageName: PageName
   lang: Lang
+  translatedLangs: {
+    [k in Lang]: boolean
+  }
 }

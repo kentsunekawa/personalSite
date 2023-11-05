@@ -1,15 +1,31 @@
 "use client"
 // import from libraries
+import Link from "next/link"
 
 // import from this project
-import { useStyle } from "@/hooks"
+import { getPageInfo } from "@/utils"
+import { useStyle, usePageState } from "@/hooks"
 import { createStyles } from "./styles"
 
-export type Props = {
-  value?: string
-}
-
-export const LangChanger: React.FC<Props> = ({ value }) => {
+export const LangChanger: React.FC = () => {
   const { styles } = useStyle(createStyles)
-  return <div css={styles.container}>{value}</div>
+
+  const { pageState } = usePageState()
+
+  if (!pageState) return null
+
+  return (
+    <div css={styles.container}>
+      {pageState.lang !== "EN" && (
+        <Link href={getPageInfo(pageState.pageName).createPath("EN")}>
+          English
+        </Link>
+      )}
+      {pageState.lang !== "JA" && (
+        <Link href={getPageInfo(pageState.pageName).createPath("JA")}>
+          Japanese
+        </Link>
+      )}
+    </div>
+  )
 }

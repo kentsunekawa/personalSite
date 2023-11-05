@@ -17,6 +17,10 @@ type Props = {
 const pageState: PageState = {
   lang: Lang.En,
   pageName: "experience",
+  translatedLangs: {
+    [Lang.Ja]: true,
+    [Lang.En]: true,
+  },
 }
 
 const Page: NextPage<Props> = async ({ params }) => {
@@ -26,7 +30,7 @@ const Page: NextPage<Props> = async ({ params }) => {
 
   return (
     <PageContainer {...pageState}>
-      <Experience pageName="experience" post={postData.post} lang={Lang.En} />
+      <Experience {...pageState} post={postData.post} />
     </PageContainer>
   )
 }

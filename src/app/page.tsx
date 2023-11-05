@@ -13,6 +13,10 @@ import { Home } from "@/components/pageContents/Home"
 const pageState: PageState = {
   lang: Lang.Ja,
   pageName: "home",
+  translatedLangs: {
+    [Lang.Ja]: true,
+    [Lang.En]: true,
+  },
 }
 
 const Page: NextPage = async () => {

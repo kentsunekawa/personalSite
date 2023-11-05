@@ -8,11 +8,13 @@ import {
 } from "react"
 import { PageState } from "@/types"
 
-type PageStateContextProps = PageState | undefined
+type PageStateContextProps = PageState
 
-export const PageStateContext = createContext<PageStateContextProps>(undefined!)
+export const PageStateContext = createContext<
+  PageStateContextProps | undefined
+>(undefined!)
 export const SetPageStateContext = createContext<
-  Dispatch<SetStateAction<PageStateContextProps>>
+  Dispatch<SetStateAction<PageStateContextProps | undefined>>
 >(undefined!)
 
 export const PageStateProvider: React.FC<{ children: React.ReactNode }> = ({

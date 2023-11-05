@@ -7,6 +7,6 @@ type Props = PageState & {
   projects: Project[]
 }
 
-export const Projects: React.FC<Props> = ({ lang, projects }) => {
+export const Projects: React.FC<Props> = ({ projects, ...pageState }) => {
   return <PageBase>{projects.map(({ title }) => title)}</PageBase>
 }

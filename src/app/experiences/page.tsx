@@ -11,6 +11,10 @@ import { Experiences } from "@/components/pageContents/Experiences"
 const pageState: PageState = {
   lang: Lang.Ja,
   pageName: "experiences",
+  translatedLangs: {
+    [Lang.Ja]: true,
+    [Lang.En]: true,
+  },
 }
 
 const Page: NextPage = async () => {
@@ -18,11 +22,7 @@ const Page: NextPage = async () => {
 
   return (
     <PageContainer {...pageState}>
-      <Experiences
-        pageName="experiences"
-        posts={postsData.posts.map((post) => post)}
-        lang={Lang.Ja}
-      />
+      <Experiences {...pageState} posts={postsData.posts.map((post) => post)} />
     </PageContainer>
   )
 }

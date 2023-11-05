@@ -11,6 +11,10 @@ import { Profile } from "@/components/pageContents/Profile"
 const pageState: PageState = {
   lang: Lang.En,
   pageName: "profile",
+  translatedLangs: {
+    [Lang.Ja]: true,
+    [Lang.En]: true,
+  },
 }
 
 const Page: NextPage = async () => {
