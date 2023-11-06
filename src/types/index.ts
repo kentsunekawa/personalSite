@@ -16,4 +16,7 @@ export type PageState = {
   translatedLangs: {
     [k in Lang]: boolean
   }
+  pathInfo?: {
+    [k: string]: string
+  }
 }

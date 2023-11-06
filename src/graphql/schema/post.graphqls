@@ -17,6 +17,11 @@ input SearchPostsInput {
   labels: [PostLabel!]
 }
 
+type PostLang {
+  EN: Boolean!
+  JA: Boolean!
+}
+
 type Post {
   id: ID!
   title: String!
@@ -25,4 +30,5 @@ type Post {
   slug: String!
   status: PostStatus!
   content: String!
+  lang: PostLang!
 }

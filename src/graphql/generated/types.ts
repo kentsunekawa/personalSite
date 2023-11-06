@@ -57,6 +57,7 @@ export type Post = {
   readonly date: Scalars['String']['output'];
   readonly id: Scalars['ID']['output'];
   readonly labels: ReadonlyArray<PostLabel>;
+  readonly lang: PostLang;
   readonly slug: Scalars['String']['output'];
   readonly status: PostStatus;
   readonly title: Scalars['String']['output'];
@@ -67,6 +68,12 @@ export const PostLabel = {
 } as const;
 
 export type PostLabel = typeof PostLabel[keyof typeof PostLabel];
+export type PostLang = {
+  readonly __typename?: 'PostLang';
+  readonly EN: Scalars['Boolean']['output'];
+  readonly JA: Scalars['Boolean']['output'];
+};
+
 export const PostStatus = {
   Draft: 'DRAFT',
   Published: 'PUBLISHED'
@@ -170,7 +177,7 @@ export type EducationalBackgroundFragment = { readonly __typename?: 'Educational
 
 export type PeriodFragment = { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null };
 
-export type PostFragment = { readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string };
+export type PostFragment = { readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string, readonly lang: { readonly __typename?: 'PostLang', readonly EN: boolean, readonly JA: boolean } };
 
 export type ProjectFragment = { readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType: EmploymentType, readonly position?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> };
 
@@ -184,7 +191,7 @@ export type GetPostQueryVariables = Exact<{
 }>;
 
 
-export type GetPostQuery = { readonly __typename?: 'Query', readonly post?: { readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string } | null };
+export type GetPostQuery = { readonly __typename?: 'Query', readonly post?: { readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string, readonly lang: { readonly __typename?: 'PostLang', readonly EN: boolean, readonly JA: boolean } } | null };
 
 export type GetPostsQueryVariables = Exact<{
   lang?: InputMaybe<Lang>;
@@ -192,7 +199,7 @@ export type GetPostsQueryVariables = Exact<{
 }>;
 
 
-export type GetPostsQuery = { readonly __typename?: 'Query', readonly posts: ReadonlyArray<{ readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string }> };
+export type GetPostsQuery = { readonly __typename?: 'Query', readonly posts: ReadonlyArray<{ readonly __typename?: 'Post', readonly id: string, readonly title: string, readonly date: string, readonly labels: ReadonlyArray<PostLabel>, readonly slug: string, readonly status: PostStatus, readonly content: string, readonly lang: { readonly __typename?: 'PostLang', readonly EN: boolean, readonly JA: boolean } }> };
 
 export type GetProfileQueryVariables = Exact<{
   lang?: InputMaybe<Lang>;
@@ -240,6 +247,10 @@ export const PostFragmentDoc = gql`
   slug
   status
   content
+  lang {
+    EN
+    JA
+  }
 }
     `;
 export const WorkHistoryFragmentDoc = gql`
@@ -535,6 +546,7 @@ export type ResolversTypes = ResolversObject<{
   Period: ResolverTypeWrapper<Period>;
   Post: ResolverTypeWrapper<Post>;
   PostLabel: PostLabel;
+  PostLang: ResolverTypeWrapper<PostLang>;
   PostStatus: PostStatus;
   Proficiency: Proficiency;
   Profile: ResolverTypeWrapper<Profile>;
@@ -554,6 +566,7 @@ export type ResolversParentTypes = ResolversObject<{
   ID: Scalars['ID']['output'];
   Period: Period;
   Post: Post;
+  PostLang: PostLang;
   Profile: Profile;
   Project: Project;
   Query: {};
@@ -589,9 +602,16 @@ export type PostResolvers<ContextType = any, ParentType extends ResolversParentT
   date?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   labels?: Resolver<ReadonlyArray<ResolversTypes['PostLabel']>, ParentType, ContextType>;
+  lang?: Resolver<ResolversTypes['PostLang'], ParentType, ContextType>;
   slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   status?: Resolver<ResolversTypes['PostStatus'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+}>;
+
+export type PostLangResolvers<ContextType = any, ParentType extends ResolversParentTypes['PostLang'] = ResolversParentTypes['PostLang']> = ResolversObject<{
+  EN?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  JA?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
@@ -657,6 +677,7 @@ export type Resolvers<ContextType = any> = ResolversObject<{
   EducationalBackground?: EducationalBackgroundResolvers<ContextType>;
   Period?: PeriodResolvers<ContextType>;
   Post?: PostResolvers<ContextType>;
+  PostLang?: PostLangResolvers<ContextType>;
   Profile?: ProfileResolvers<ContextType>;
   Project?: ProjectResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;

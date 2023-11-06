@@ -4,18 +4,18 @@
 // import from this project
 import { useStyle } from "@/hooks"
 import { Footer } from "@/components/globals/Footer"
-import { Header } from "@/components/globals/Header"
+import { Header, Props as HeaderProps } from "@/components/globals/Header"
 import { createStyles } from "./styles"
 
 export type Props = {
   children: React.ReactNode
-}
+} & HeaderProps
 
-export const PageBase: React.FC<Props> = ({ children }) => {
+export const PageBase: React.FC<Props> = ({ children, langInfo }) => {
   const { styles } = useStyle(createStyles)
   return (
     <div css={styles.container}>
-      <Header />
+      <Header langInfo={langInfo} />
       <main>{children}</main>
       <Footer />
     </div>

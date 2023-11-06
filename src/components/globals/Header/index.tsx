@@ -5,16 +5,20 @@
 import { APP_INFO } from "@/constants"
 import { useStyle } from "@/hooks"
 import { ToggleTheme } from "@/components/parts/ToggleTheme"
-import { LangChanger } from "@/components/parts/LangChanger"
+import { LangChanger, LangInfo } from "@/components/parts/LangChanger"
 import { createStyles } from "./styles"
 
-export const Header: React.FC = () => {
+export type Props = {
+  langInfo?: LangInfo
+}
+
+export const Header: React.FC<Props> = ({ langInfo }) => {
   const { styles } = useStyle(createStyles)
   return (
     <header css={styles.container}>
       <a href="/">{APP_INFO.siteName}</a>
       <ToggleTheme />
-      <LangChanger />
+      <LangChanger langInfo={langInfo} />
     </header>
   )
 }

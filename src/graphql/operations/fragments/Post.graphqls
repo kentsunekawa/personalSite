@@ -6,4 +6,8 @@ fragment Post on Post {
   slug
   status
   content
+  lang {
+    EN
+    JA
+  }
 }
