@@ -17,19 +17,16 @@ type Props = {
 const Page: NextPage<Props> = async ({ params }) => {
   const { data: postData } = await getPost(params.slug, Lang.En)
 
+  if (!postData.post) return redirect("/404")
+
   const pageState: PageState = {
     lang: Lang.En,
     pageName: "experience",
-    translatedLangs: {
-      [Lang.Ja]: true,
-      [Lang.En]: true,
-    },
+    translatedLangs: postData.post.lang,
     pathInfo: {
       slug: params.slug,
     },
   }
-
-  if (!postData.post) return redirect("/404")
 
   return (
     <PageContainer {...pageState}>

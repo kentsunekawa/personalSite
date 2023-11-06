@@ -11,12 +11,18 @@ export type Props = {
   children: React.ReactNode
 } & HeaderProps
 
-export const PageBase: React.FC<Props> = ({ children, langInfo }) => {
+export const PageBase: React.FC<Props> = ({
+  children,
+  showTopLogo,
+  showNav,
+}) => {
   const { styles } = useStyle(createStyles)
   return (
     <div css={styles.container}>
-      <Header langInfo={langInfo} />
-      <main>{children}</main>
+      <Header showTopLogo={showTopLogo} showNav={showNav} />
+      <main>
+        <div>{children}</div>
+      </main>
       <Footer />
     </div>
   )

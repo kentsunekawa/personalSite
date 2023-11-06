@@ -1,7 +1,7 @@
 "use client"
 // import from this project
 import { PageState } from "@/types"
-import { Lang, Profile as ProfileType } from "@/graphql/generated/types"
+import { Profile as ProfileType } from "@/graphql/generated/types"
 import { PageBase } from "@/components/globals/PageBase"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
 import { Skills } from "@/components/parts/Skills"

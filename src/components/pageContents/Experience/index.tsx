@@ -9,11 +9,11 @@ type Props = PageState & {
   post: Post
 }
 
-export const Experience: React.FC<Props> = ({ lang, post }) => {
-  const { title, content, date, lang: postLang } = post
+export const Experience: React.FC<Props> = ({ post }) => {
+  const { title, content, date } = post
 
   return (
-    <PageBase langInfo={postLang}>
+    <PageBase>
       <div>{title}</div>
       <div>{date}</div>
       <div>
