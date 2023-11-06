@@ -1,7 +1,6 @@
 import { css } from "styled-components"
 import { destyle } from "@/styles/destyle"
-import { themes, VAR_NAMES } from "./theme"
-import { githubMarkdown } from "./githubMarkdown"
+import { themes } from "./theme"
 
 const {
   light: { colors: lColors },
@@ -47,5 +46,4 @@ export const globalStyle = css`
   html {
     background: var(--bg);
   }
-  ${githubMarkdown}
 `

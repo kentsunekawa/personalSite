@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import ReactMarkdown from "react-markdown"
 import gfm from "remark-gfm"
 
-import { useStyle } from "@/hooks"
+import { useStyle, useThemeName } from "@/hooks"
 import { createStyles } from "./styles"
 
 type Props = {
@@ -10,7 +10,8 @@ type Props = {
 }
 
 export const MarkdownDisplay: React.FC<Props> = ({ children }) => {
-  const { styles } = useStyle(createStyles)
+  const { theme } = useThemeName()
+  const { styles } = useStyle(createStyles, { theme })
 
   useEffect(() => {
     const linkes = document.querySelectorAll("a")

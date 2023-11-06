@@ -27,8 +27,19 @@ export const useThemeName = () => {
 
   const themeName = useMemo(() => castTheme(nextTheme), [nextTheme])
 
+  const theme = useMemo(() => {
+    if (themeName === "system") {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
+    }
+
+    return themeName
+  }, [themeName])
+
   return {
-    setThemeName,
+    theme,
     themeName,
+    setThemeName,
   }
 }

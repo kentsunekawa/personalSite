@@ -2,10 +2,13 @@
 import { css } from "styled-components"
 
 // import from this project
+import { ThemeName } from "@/hooks"
+import { githubMarkdown } from "@/styles/githubMarkdown"
 
-export const createStyles = () => {
+export const createStyles = (args?: { theme: ThemeName }) => {
   return {
     container: css`
+      ${githubMarkdown[args?.theme ?? "light"]}
       .markdown-body {
         font-size: 14px;
         ul,

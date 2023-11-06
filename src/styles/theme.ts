@@ -55,7 +55,7 @@ export const darkTheme: Theme = {
   colors: {
     ...commonTheme,
     fg: "#fff",
-    bg: "#222",
+    bg: "#0d1117",
     test: {
       color: "#00f",
     },
