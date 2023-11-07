@@ -8,6 +8,7 @@ import { APP_INFO } from "@/constants"
 import { PageBase } from "@/components/globals/PageBase"
 import { Nav } from "./Nav"
 import { Accounts } from "@/components/parts/Accounts"
+import { Texts } from "@/components/parts/Texts"
 import { Posts } from "./Posts"
 
 type Props = PageState & {
@@ -20,7 +21,10 @@ export const Home: React.FC<Props> = ({ lang, profile, posts }) => {
   return (
     <PageBase showTopLogo={false} showNav={false}>
       <div>
-        <h1>{APP_INFO.catchCopy}</h1>
+        <Texts.Heading tag="h1" size="h1">
+          {APP_INFO.catchCopy}
+        </Texts.Heading>
+
         <div>
           <p>{name}</p>
           <p>{businessTitle}</p>

@@ -1,3 +1,4 @@
+"use client"
 // import from libraries
 import { css } from "styled-components"
 
@@ -5,7 +6,7 @@ import { css } from "styled-components"
 
 export type HeadingSize = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 export type Size = "small" | "medium" | "large"
-export type Weight = 100 | 400 | 500
+export type Weight = "100" | "400" | "500" | "700"
 export type Align = "center" | "right" | "left"
 
 export const createStyles = () => {
@@ -22,14 +23,17 @@ export const createStyles = () => {
       `,
     },
     weight: {
-      100: css`
+      "100": css`
         font-weight: 100;
       `,
-      400: css`
+      "400": css`
         font-weight: 400;
       `,
-      500: css`
+      "500": css`
         font-weight: 500;
+      `,
+      "700": css`
+        font-weight: 700;
       `,
     },
     heading: {
@@ -81,7 +85,7 @@ export const createStyles = () => {
         letter-spacing: 0;
       `,
     },
-    subTitle: {
+    subHeading: {
       small: css`
         font-size: 18px;
         line-height: 1.6em;
@@ -103,27 +107,27 @@ export const createStyles = () => {
       line-height: 1.6em;
       letter-spacing: -0.03em;
     `,
-    overline: css`
-      font-size: 10px;
-      line-height: 1.6em;
-      letter-spacing: -0.025em;
-    `,
-    buttonLabel: {
-      small: css`
-        font-size: 14px;
-        line-height: 1.6em;
-        letter-spacing: -0.028em;
-      `,
-      medium: css`
-        font-size: 16px;
-        line-height: 1.6em;
-        letter-spacing: 0;
-      `,
-      large: css`
-        font-size: 18px;
-        line-height: 1.6em;
-        letter-spacing: 0;
-      `,
-    },
+    // overline: css`
+    //   font-size: 10px;
+    //   line-height: 1.6em;
+    //   letter-spacing: -0.025em;
+    // `,
+    // buttonLabel: {
+    //   small: css`
+    //     font-size: 14px;
+    //     line-height: 1.6em;
+    //     letter-spacing: -0.028em;
+    //   `,
+    //   medium: css`
+    //     font-size: 16px;
+    //     line-height: 1.6em;
+    //     letter-spacing: 0;
+    //   `,
+    //   large: css`
+    //     font-size: 18px;
+    //     line-height: 1.6em;
+    //     letter-spacing: 0;
+    //   `,
+    // },
   }
 }
