@@ -8,6 +8,7 @@ import { getPageInfo } from "@/utils"
 import { useStyle, usePageState } from "@/hooks"
 import { ToggleTheme } from "@/components/parts/ToggleTheme"
 import { Nav } from "@/components/globals/Nav"
+import { Button } from "@/components/parts/Button"
 import { LangChanger } from "@/components/parts/LangChanger"
 import { createStyles } from "./styles"
 
@@ -28,14 +29,14 @@ export const Header: React.FC<Props> = ({
 
   return (
     <header css={styles.container}>
-      {showTopLogo && (
-        <div>
+      <div>
+        {showTopLogo && (
           <Link href={getPageInfo("home").createPath(pageState.lang)}>
             {APP_INFO.siteName}
           </Link>
-        </div>
-      )}
-      <div>
+        )}
+      </div>
+      <div css={styles.menuArea}>
         {showNav && <Nav />}
         <ToggleTheme />
         <LangChanger langInfo={pageState.translatedLangs} />

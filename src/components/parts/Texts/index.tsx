@@ -1,8 +1,8 @@
 "use client"
 // import from libraries
-import { RuleSet } from "styled-components"
 
 // import from this project
+import { Css } from "@/types"
 import { useStyle } from "@/hooks"
 import {
   createStyles,
@@ -15,11 +15,11 @@ import {
 type CommonProps = {
   weight?: Weight
   align?: Align
-  css?: RuleSet<object>
+  css?: Css
   children: React.ReactNode
 }
 
-export type HeadingProps = CommonProps & {
+type HeadingProps = CommonProps & {
   tag?: HeadingSize
   size?: HeadingSize
 }
@@ -59,14 +59,14 @@ export const Heading: React.FC<HeadingProps> = ({
   }
 }
 
-export type SubHeadingProps = CommonProps & {
+type SubHeadingProps = CommonProps & {
   tag?: HeadingSize
   size?: Size
 }
 
 export const SubHeading: React.FC<SubHeadingProps> = ({
   tag,
-  size = "medium",
+  size = "m",
   weight = "400",
   align = "left",
   css,
@@ -99,12 +99,12 @@ export const SubHeading: React.FC<SubHeadingProps> = ({
   }
 }
 
-export type TextProps = CommonProps & {
+type TextProps = CommonProps & {
   size?: Size
 }
 
 export const Text: React.FC<TextProps> = ({
-  size = "medium",
+  size = "m",
   weight = "400",
   align = "left",
   css,
@@ -121,8 +121,8 @@ export const Text: React.FC<TextProps> = ({
   )
 }
 
-export type CaptionProps = CommonProps & {
-  css?: RuleSet<object>
+type CaptionProps = CommonProps & {
+  css?: Css
   children: React.ReactNode
 }
 

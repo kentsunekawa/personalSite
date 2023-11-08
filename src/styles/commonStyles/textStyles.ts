@@ -5,7 +5,7 @@ import { css } from "styled-components"
 // import from this project
 
 export type HeadingSize = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-export type Size = "small" | "medium" | "large"
+export type Size = "s" | "m" | "l"
 export type Weight = "100" | "400" | "500" | "700"
 export type Align = "center" | "right" | "left"
 
@@ -69,34 +69,34 @@ export const createStyles = () => {
       `,
     },
     text: {
-      small: css`
+      s: css`
         font-size: 12px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
-      medium: css`
+      m: css`
         font-size: 14px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
-      large: css`
+      l: css`
         font-size: 16px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
     },
     subHeading: {
-      small: css`
+      s: css`
         font-size: 18px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
-      medium: css`
+      m: css`
         font-size: 20px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
-      large: css`
+      l: css`
         font-size: 22px;
         line-height: 1.6em;
         letter-spacing: 0;
@@ -113,17 +113,17 @@ export const createStyles = () => {
     //   letter-spacing: -0.025em;
     // `,
     // buttonLabel: {
-    //   small: css`
+    //   s: css`
     //     font-size: 14px;
     //     line-height: 1.6em;
     //     letter-spacing: -0.028em;
     //   `,
-    //   medium: css`
+    //   m: css`
     //     font-size: 16px;
     //     line-height: 1.6em;
     //     letter-spacing: 0;
     //   `,
-    //   large: css`
+    //   l: css`
     //     font-size: 18px;
     //     line-height: 1.6em;
     //     letter-spacing: 0;

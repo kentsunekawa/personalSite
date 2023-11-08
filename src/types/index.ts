@@ -1,5 +1,6 @@
 import { PageName } from "@/constants"
 import { Lang } from "@/graphql/generated/types"
+import { RuleSet } from "styled-components"
 
 export type Data<T> = {
   [Lang.Ja]: T
@@ -19,4 +20,10 @@ export type PageState = {
   pathInfo?: {
     [k: string]: string
   }
+}
+
+export type Css = RuleSet<object>
+
+export type InsertStyles<T extends string> = {
+  [k in T]: Css
 }

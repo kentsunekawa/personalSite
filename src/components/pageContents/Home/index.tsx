@@ -21,12 +21,10 @@ export const Home: React.FC<Props> = ({ lang, profile, posts }) => {
   return (
     <PageBase showTopLogo={false} showNav={false}>
       <div>
-        <Texts.Heading tag="h1" size="h1">
-          {APP_INFO.catchCopy}
-        </Texts.Heading>
+        <Texts.Heading size="h1">{APP_INFO.catchCopy}</Texts.Heading>
 
         <div>
-          <p>{name}</p>
+          <Texts.Text>{name}</Texts.Text>
           <p>{businessTitle}</p>
           <p>{email}</p>
           <div>

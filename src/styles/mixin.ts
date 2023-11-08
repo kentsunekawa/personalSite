@@ -1,7 +1,7 @@
 // import from libraries
 import { css, RuleSet } from "styled-components"
 
-import { VAR_NAMES } from "@/styles/theme"
+import { Css } from "@/types"
 
 export const BREAK_POINTS = {
   sp: 375,
@@ -25,7 +25,7 @@ const queries = {
   pcMin_gt: `(min-width: ${BREAK_POINTS.pcMin}px)`,
 }
 
-export const mq = (query: Mq, style: RuleSet<object>) => css`
+export const mq = (query: Mq, style: Css) => css`
   @media ${queries[query]} {
     ${style}
   }
