@@ -25,12 +25,12 @@ export const Accounts: React.FC<Props> = ({ accounts }) => {
             <React.Fragment key={name}>
               <li key={id}>
                 <Button href={url} target="_blank">
-                  <Texts.Text size="m">{name}</Texts.Text>
+                  {name}
                 </Button>
               </li>
               {i < accounts.length - 1 && (
                 <li>
-                  <Texts.Text size="m">/</Texts.Text>
+                  <Texts.Text>/</Texts.Text>
                 </li>
               )}
             </React.Fragment>

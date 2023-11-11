@@ -34,7 +34,7 @@ export const Home: React.FC<Props> = ({ lang, profile, posts }) => {
     <PageBase showTopLogo={false} showNav={false}>
       <div>
         <div>
-          <Texts.Heading size="h3" tag="h1" insertCss={styles.slogan}>
+          <Texts.Heading size="h3" tag="h1" font="en" weight="700">
             {APP_INFO.catchCopy}
           </Texts.Heading>
         </div>

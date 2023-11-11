@@ -10,7 +10,7 @@ export const createStyles = () => {
   return {
     container: css``,
     slogan: css`
-      ${fonts().inter}
+      ${fonts().en}
     `,
   }
 }

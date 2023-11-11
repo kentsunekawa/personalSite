@@ -21,7 +21,7 @@ export const ToggleTheme: React.FC = () => {
       <select
         value={themeName}
         onChange={(e) => setThemeName(castTheme(e.target.value))}
-        css={textStyles.text.s}
+        css={textStyles.text.m}
       >
         <option value={THEME_NAMES.light}>Light</option>
         <option value={THEME_NAMES.dark}>Dark</option>

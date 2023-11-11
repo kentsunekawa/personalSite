@@ -48,8 +48,7 @@ export const adjustWidth = (num: number, gap: number) => {
 }
 
 export const fonts = () => ({
-  inter: css`
+  en: css`
     font-family: "Inter", sans-serif !important;
-    font-weight: 800;
   `,
 })

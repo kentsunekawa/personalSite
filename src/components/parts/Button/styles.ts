@@ -9,7 +9,7 @@ import {
   createStyles as createTextStyle,
   Size,
 } from "@/styles/commonStyles/textStyles"
-import { hoveredLink } from "@/styles/mixin"
+import { hoveredLink, fonts } from "@/styles/mixin"
 
 export type StyleProps = {
   type?: "filled" | "border" | "text" | "block"
@@ -23,7 +23,6 @@ export const createStyles = (styleProps?: StyleProps) => {
   const size = styleProps?.size ?? "m"
   const type = styleProps?.type ?? "text"
   const hasPadding = type !== "text"
-
   const color = styleProps?.color ?? "fg"
   const colorVarName = color === "fg" ? VAR_NAMES.fg : VAR_NAMES[color].main
 
@@ -47,7 +46,6 @@ export const createStyles = (styleProps?: StyleProps) => {
         padding: 8px;
         border-radius: 4px;
       `}
-        
       ${hoveredLink()}
     `,
   }

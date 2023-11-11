@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
   const { styles } = useStyle(createStyles)
   return (
     <footer css={styles.container}>
-      <Texts.Text>&copy; {APP_INFO.copyright}</Texts.Text>
+      <Texts.Text size="s">&copy; {APP_INFO.copyright}</Texts.Text>
     </footer>
   )
 }

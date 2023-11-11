@@ -15,7 +15,6 @@ import {
 type CommonProps = {
   weight?: Weight
   align?: Align
-  css?: Css
   insertCss?: Css
   children: React.ReactNode
 }
@@ -128,9 +127,9 @@ export const Text: React.FC<TextProps> = ({
 }
 
 export const Caption: React.FC<CommonProps> = ({
-  insertCss,
   weight = "400",
   align = "left",
+  insertCss,
   children,
 }) => {
   const { styles } = useStyle(createStyles)

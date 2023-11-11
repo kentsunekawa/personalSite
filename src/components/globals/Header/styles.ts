@@ -23,7 +23,7 @@ export const createStyles = () => {
       )}
     `,
     name: css`
-      ${fonts().inter}
+      ${fonts().en}
     `,
     menuArea: css`
       display: flex;
