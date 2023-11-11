@@ -5,6 +5,7 @@ import Link from "next/link"
 // import from this project
 import { useStyle, usePageState } from "@/hooks"
 import { getPageInfo } from "@/utils"
+import { Button } from "@/components/parts/Button"
 import { createStyles } from "./styles"
 
 export const Nav: React.FC = () => {
@@ -15,21 +16,33 @@ export const Nav: React.FC = () => {
 
   return (
     <nav css={styles.container}>
-      <ul>
+      <ul css={styles.list}>
         <li>
-          <Link href={getPageInfo("profile").createPath(pageState.lang)}>
+          <Button
+            href={getPageInfo("profile").createPath(pageState.lang)}
+            size="l"
+            type="block"
+          >
             Profile
-          </Link>
+          </Button>
         </li>
         <li>
-          <Link href={getPageInfo("projects").createPath(pageState.lang)}>
+          <Button
+            href={getPageInfo("projects").createPath(pageState.lang)}
+            size="l"
+            type="block"
+          >
             Projects
-          </Link>
+          </Button>
         </li>
         <li>
-          <Link href={getPageInfo("experiences").createPath(pageState.lang)}>
+          <Button
+            href={getPageInfo("experiences").createPath(pageState.lang)}
+            size="l"
+            type="block"
+          >
             Experiences
-          </Link>
+          </Button>
         </li>
       </ul>
     </nav>

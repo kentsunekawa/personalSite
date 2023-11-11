@@ -1,10 +1,12 @@
 "use client"
 // import from libraries
-import Link from "next/link"
+import React from "react"
 
 // import from this project
 import { Account as AccountType } from "@/graphql/generated/types"
 import { useStyle } from "@/hooks"
+import { Texts } from "@/components/parts/Texts"
+import { Button } from "@/components/parts/Button"
 import { createStyles } from "./styles"
 
 export type Account = Pick<AccountType, "id" | "name" | "url">
@@ -17,19 +19,24 @@ export const Accounts: React.FC<Props> = ({ accounts }) => {
   const { styles } = useStyle(createStyles)
   return (
     <div css={styles.container}>
-      <div>
-        {accounts.length > 0 && (
-          <ul>
-            {accounts.map(({ id, name, url }) => (
+      {accounts.length > 0 && (
+        <ul css={styles.list}>
+          {accounts.map(({ id, name, url }, i) => (
+            <React.Fragment key={name}>
               <li key={id}>
-                <Link href={url} target="_blank">
-                  {name}
-                </Link>
+                <Button href={url} target="_blank">
+                  <Texts.Text size="m">{name}</Texts.Text>
+                </Button>
               </li>
-            ))}
-          </ul>
-        )}
-      </div>
+              {i < accounts.length - 1 && (
+                <li>
+                  <Texts.Text size="m">/</Texts.Text>
+                </li>
+              )}
+            </React.Fragment>
+          ))}
+        </ul>
+      )}
     </div>
   )
 }

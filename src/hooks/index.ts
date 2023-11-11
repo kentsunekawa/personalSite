@@ -1,15 +1,5 @@
-import { useStyle } from "./useStyle"
-import {
-  useThemeName,
-  RowThemeName,
-  ThemeName,
-  THEME_NAMES,
-  castTheme,
-} from "./useThemeName"
-import { usePageState, useSetPageState } from "./usePageState"
-
-export type { RowThemeName, ThemeName }
-
-export { THEME_NAMES }
-
-export { useStyle, useThemeName, castTheme, usePageState, useSetPageState }
+export { useStyle } from "./useStyle"
+export type { RowThemeName, ThemeName } from "./useThemeName"
+export { useThemeName, THEME_NAMES, castTheme } from "./useThemeName"
+export { usePageState, useSetPageState } from "./usePageState"
+export { useTextStyles } from "./useTextStyles"

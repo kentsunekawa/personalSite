@@ -16,6 +16,7 @@ type CommonProps = {
   weight?: Weight
   align?: Align
   css?: Css
+  insertCss?: Css
   children: React.ReactNode
 }
 
@@ -29,7 +30,7 @@ export const Heading: React.FC<HeadingProps> = ({
   size = "h1",
   weight = "400",
   align = "left",
-  css,
+  insertCss,
   children,
 }) => {
   const { styles } = useStyle(createStyles)
@@ -38,7 +39,7 @@ export const Heading: React.FC<HeadingProps> = ({
     styles.align[align],
     styles.weight[weight],
     styles.heading[size],
-    css,
+    insertCss,
   ]
 
   switch (tag) {
@@ -69,7 +70,7 @@ export const SubHeading: React.FC<SubHeadingProps> = ({
   size = "m",
   weight = "400",
   align = "left",
-  css,
+  insertCss,
   children,
 }) => {
   const { styles } = useStyle(createStyles)
@@ -78,7 +79,7 @@ export const SubHeading: React.FC<SubHeadingProps> = ({
     styles.align[align],
     styles.weight[weight],
     styles.subHeading[size],
-    css,
+    insertCss,
   ]
 
   switch (tag) {
@@ -107,27 +108,27 @@ export const Text: React.FC<TextProps> = ({
   size = "m",
   weight = "400",
   align = "left",
-  css,
+  insertCss,
   children,
 }) => {
   const { styles } = useStyle(createStyles)
 
   return (
     <p
-      css={[styles.align[align], styles.weight[weight], styles.text[size], css]}
+      css={[
+        styles.align[align],
+        styles.weight[weight],
+        styles.text[size],
+        insertCss,
+      ]}
     >
       {children}
     </p>
   )
 }
 
-type CaptionProps = CommonProps & {
-  css?: Css
-  children: React.ReactNode
-}
-
-export const Caption: React.FC<CaptionProps> = ({
-  css,
+export const Caption: React.FC<CommonProps> = ({
+  insertCss,
   weight = "400",
   align = "left",
   children,
@@ -135,7 +136,14 @@ export const Caption: React.FC<CaptionProps> = ({
   const { styles } = useStyle(createStyles)
 
   return (
-    <p css={[styles.align[align], styles.weight[weight], styles.caption, css]}>
+    <p
+      css={[
+        styles.align[align],
+        styles.weight[weight],
+        styles.caption,
+        insertCss,
+      ]}
+    >
       {children}
     </p>
   )

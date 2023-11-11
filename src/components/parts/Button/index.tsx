@@ -2,7 +2,6 @@
 // import from libraries
 import { HTMLAttributeAnchorTarget } from "react"
 import Link from "next/link"
-import { RuleSet } from "styled-components"
 
 // import from this project
 import { InsertStyles } from "@/types"
@@ -22,11 +21,12 @@ export const Button: React.FC<Props> = ({
   target,
   type,
   size,
+  color,
   onClick,
   insertStyles,
   children,
 }) => {
-  const { styles } = useStyle(createStyles, { type, size })
+  const { styles } = useStyle(createStyles, { type, size, color })
   return href ? (
     <Link
       href={href}

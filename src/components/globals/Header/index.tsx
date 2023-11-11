@@ -31,7 +31,10 @@ export const Header: React.FC<Props> = ({
     <header css={styles.container}>
       <div>
         {showTopLogo && (
-          <Link href={getPageInfo("home").createPath(pageState.lang)}>
+          <Link
+            href={getPageInfo("home").createPath(pageState.lang)}
+            css={styles.name}
+          >
             {APP_INFO.siteName}
           </Link>
         )}

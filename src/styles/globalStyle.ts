@@ -10,7 +10,7 @@ const {
 export const globalStyle = css`
   :root {
     /* colors */
-    --fg: #000;
+    --fg: ${lColors.fg};
     --bg: ${lColors.bg};
     --primary-light: ${lColors.primary.right};
     --primary-main: ${lColors.primary.main};
@@ -45,5 +45,8 @@ export const globalStyle = css`
   }
   html {
     background: var(--bg);
+  }
+  * {
+    color: var(--fg);
   }
 `

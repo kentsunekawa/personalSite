@@ -3,14 +3,21 @@ import { DefaultTheme } from "styled-components"
 import { ThemeName } from "@/hooks/useThemeName"
 
 export const VAR_NAMES = {
-  fg: "--fb",
+  fg: "--fg",
   bg: "--bg",
   primary: {
     light: "--primary-light",
     main: "--primary-main",
     dark: "--primary-dark",
   },
+  secondary: {
+    light: "--secondary-light",
+    main: "--secondary-main",
+    dark: "--secondary-dark",
+  },
 } as const
+
+export type ColorName = "primary" | "secondary"
 
 type ColorScale = {
   right: string
@@ -23,17 +30,20 @@ export type Theme = {
     fg: string
     bg: string
     primary: ColorScale
-    test: {
-      color: string
-    }
+  } & {
+    [k in ColorName]: ColorScale
   }
 }
 
 export type Mode = "light" | "dark" | "system"
 
 const commonTheme = {
-  color: "#555",
   primary: {
+    right: "#59cfdc",
+    main: "#2b96a1",
+    dark: "#215e60",
+  },
+  secondary: {
     right: "#59cfdc",
     main: "#2b96a1",
     dark: "#215e60",
@@ -45,9 +55,6 @@ export const lightTheme: Theme = {
     ...commonTheme,
     fg: "#222",
     bg: "#fff",
-    test: {
-      color: "#f0f",
-    },
   },
 }
 
@@ -56,9 +63,6 @@ export const darkTheme: Theme = {
     ...commonTheme,
     fg: "#fff",
     bg: "#0d1117",
-    test: {
-      color: "#00f",
-    },
   },
 }
 

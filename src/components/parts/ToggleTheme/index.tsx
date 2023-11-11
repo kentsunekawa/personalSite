@@ -2,11 +2,18 @@
 // import from libraries
 
 // import from this project
-import { useStyle, useThemeName, THEME_NAMES, castTheme } from "@/hooks"
+import {
+  useStyle,
+  useThemeName,
+  THEME_NAMES,
+  castTheme,
+  useTextStyles,
+} from "@/hooks"
 import { createStyles } from "./styles"
 
 export const ToggleTheme: React.FC = () => {
   const { styles } = useStyle(createStyles)
+  const { styles: textStyles } = useTextStyles()
   const { themeName, setThemeName } = useThemeName()
 
   return (
@@ -14,6 +21,7 @@ export const ToggleTheme: React.FC = () => {
       <select
         value={themeName}
         onChange={(e) => setThemeName(castTheme(e.target.value))}
+        css={textStyles.text.s}
       >
         <option value={THEME_NAMES.light}>Light</option>
         <option value={THEME_NAMES.dark}>Dark</option>

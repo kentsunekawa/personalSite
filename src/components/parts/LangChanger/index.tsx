@@ -8,6 +8,7 @@ import { PageState } from "@/types"
 import { getPageInfo } from "@/utils"
 import { Lang } from "@/graphql/generated/types"
 import { useStyle, usePageState } from "@/hooks"
+import { Button } from "@/components/parts/Button"
 import { createStyles } from "./styles"
 
 export type LangInfo = {
@@ -59,9 +60,9 @@ export const LangChanger: React.FC<Props> = ({
       {options.length > 0 && (
         <>
           {options.map(({ label, href }) => (
-            <Link key={label} href={href}>
+            <Button key={label} href={href} type="block">
               {label}
-            </Link>
+            </Button>
           ))}
         </>
       )}
