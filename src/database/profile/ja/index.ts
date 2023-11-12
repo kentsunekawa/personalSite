@@ -14,7 +14,7 @@ export const ja: Profile = {
   birthDate: "1988-05-12",
   accounts,
   email: "k.tsunekawa.dev@gmail.com",
-  businessTitle: "フロントエンドエンジニア / UI エンジニア",
+  businessTitle: "Front-End Developer / UX Engineer",
   speciality: "WEB フロントエンド開発 / スマートフォンアプリ開発",
   skills: getSkills(),
   educationalBackgrounds: educationalBackgrounds.JA,

@@ -13,10 +13,10 @@ export type Post = Pick<PostType, "id" | "date" | "slug" | "title">
 
 export type Props = {
   posts: Post[]
-  lang?: Lang
+  lang: Lang
 }
 
-export const Posts: React.FC<Props> = ({ posts, lang = Lang.Ja }) => {
+export const Posts: React.FC<Props> = ({ posts, lang }) => {
   const { styles } = useStyle(createStyles)
   return (
     <div css={styles.container}>
@@ -34,7 +34,7 @@ export const Posts: React.FC<Props> = ({ posts, lang = Lang.Ja }) => {
                   {title}
                 </Texts.SubHeading>
                 <Texts.Caption insertCss={styles.date}>
-                  {formatDateString(date)}
+                  {formatDateString(date, lang)}
                 </Texts.Caption>
               </Link>
             </li>

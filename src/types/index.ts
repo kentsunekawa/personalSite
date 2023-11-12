@@ -25,5 +25,5 @@ export type PageState = {
 export type Css = RuleSet<object>
 
 export type InsertStyles<T extends string> = {
-  [k in T]: Css
+  [k in T]?: Css
 }

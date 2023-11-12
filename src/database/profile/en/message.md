@@ -1,9 +1,4 @@
-## hogehoge
+My name is Ken Tsunekawa. I'm a front-end developer.
+Thank you for visiting this web site.
 
-### foofoofoo
-
-lang = en
-
-- apple
-- orange
-- grape
+Nice to meet you.
