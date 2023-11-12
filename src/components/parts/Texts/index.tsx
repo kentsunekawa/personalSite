@@ -16,6 +16,7 @@ type CommonProps = {
   weight?: Weight
   align?: Align
   insertCss?: Css
+  title?: string
   children: React.ReactNode
 }
 
@@ -30,6 +31,7 @@ export const Heading: React.FC<HeadingProps> = ({
   weight = "m",
   align = "left",
   insertCss,
+  title,
   children,
 }) => {
   const { styles } = useStyle(createStyles)
@@ -43,19 +45,47 @@ export const Heading: React.FC<HeadingProps> = ({
 
   switch (tag) {
     case "h1":
-      return <h1 css={combinedCss}>{children}</h1>
+      return (
+        <h1 title={title} css={combinedCss}>
+          {children}
+        </h1>
+      )
     case "h2":
-      return <h2 css={combinedCss}>{children}</h2>
+      return (
+        <h2 title={title} css={combinedCss}>
+          {children}
+        </h2>
+      )
     case "h3":
-      return <h3 css={combinedCss}>{children}</h3>
+      return (
+        <h3 title={title} css={combinedCss}>
+          {children}
+        </h3>
+      )
     case "h4":
-      return <h4 css={combinedCss}>{children}</h4>
+      return (
+        <h4 title={title} css={combinedCss}>
+          {children}
+        </h4>
+      )
     case "h5":
-      return <h5 css={combinedCss}>{children}</h5>
+      return (
+        <h5 title={title} css={combinedCss}>
+          {children}
+        </h5>
+      )
     case "h6":
-      return <h6 css={combinedCss}>{children}</h6>
+      return (
+        <h6 title={title} css={combinedCss}>
+          {children}
+        </h6>
+      )
     default:
-      return <p css={combinedCss}>{children}</p>
+      return (
+        <p title={title} css={combinedCss}>
+          {children}
+        </p>
+      )
   }
 }
 
@@ -70,6 +100,7 @@ export const SubHeading: React.FC<SubHeadingProps> = ({
   weight = "m",
   align = "left",
   insertCss,
+  title,
   children,
 }) => {
   const { styles } = useStyle(createStyles)
@@ -83,19 +114,47 @@ export const SubHeading: React.FC<SubHeadingProps> = ({
 
   switch (tag) {
     case "h1":
-      return <h1 css={combinedCss}>{children}</h1>
+      return (
+        <h1 title={title} css={combinedCss}>
+          {children}
+        </h1>
+      )
     case "h2":
-      return <h2 css={combinedCss}>{children}</h2>
+      return (
+        <h2 title={title} css={combinedCss}>
+          {children}
+        </h2>
+      )
     case "h3":
-      return <h3 css={combinedCss}>{children}</h3>
+      return (
+        <h3 title={title} css={combinedCss}>
+          {children}
+        </h3>
+      )
     case "h4":
-      return <h4 css={combinedCss}>{children}</h4>
+      return (
+        <h4 title={title} css={combinedCss}>
+          {children}
+        </h4>
+      )
     case "h5":
-      return <h5 css={combinedCss}>{children}</h5>
+      return (
+        <h5 title={title} css={combinedCss}>
+          {children}
+        </h5>
+      )
     case "h6":
-      return <h6 css={combinedCss}>{children}</h6>
+      return (
+        <h6 title={title} css={combinedCss}>
+          {children}
+        </h6>
+      )
     default:
-      return <p css={combinedCss}>{children}</p>
+      return (
+        <p title={title} css={combinedCss}>
+          {children}
+        </p>
+      )
   }
 }
 
@@ -108,12 +167,14 @@ export const Text: React.FC<TextProps> = ({
   weight = "m",
   align = "left",
   insertCss,
+  title,
   children,
 }) => {
   const { styles } = useStyle(createStyles)
 
   return (
     <p
+      title={title}
       css={[
         styles.align[align],
         styles.weight[weight],
@@ -130,12 +191,14 @@ export const Caption: React.FC<CommonProps> = ({
   weight = "m",
   align = "left",
   insertCss,
+  title,
   children,
 }) => {
   const { styles } = useStyle(createStyles)
 
   return (
     <p
+      title={title}
       css={[
         styles.align[align],
         styles.weight[weight],

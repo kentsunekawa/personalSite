@@ -52,3 +52,11 @@ export const fonts = () => ({
     font-family: "Inter", sans-serif !important;
   `,
 })
+
+// テキストの行の制限
+export const limitTextRow = (limit = 1) => css`
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: ${limit};
+  -webkit-box-orient: vertical;
+`

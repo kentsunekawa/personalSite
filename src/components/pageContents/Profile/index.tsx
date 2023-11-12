@@ -5,7 +5,7 @@ import { useStyle } from "@/hooks"
 import { Profile as ProfileType, Lang } from "@/graphql/generated/types"
 import { PageBase } from "@/components/globals/PageBase"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
-import { Skills } from "@/components/parts/Skills"
+import { Skills } from "@/components/pageContents/Profile/Skills"
 import { EducationalBackgrounds } from "@/components/parts/EducationalBackgrounds"
 import { WorkHistories } from "@/components/parts/WorkHistories"
 import { Section } from "@/components/parts/contents/Section"
@@ -89,7 +89,6 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
             >
               <Skills skills={skills} />
             </Section.Box>
-
             <Section.Box
               title={{
                 tag: "h2",
@@ -100,7 +99,6 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
                 educationalBackgrounds={educationalBackgrounds}
               />
             </Section.Box>
-
             <Section.Box
               title={{
                 tag: "h2",
