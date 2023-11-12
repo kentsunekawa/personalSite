@@ -12,7 +12,7 @@ export type Props = {
   href?: string
   target?: HTMLAttributeAnchorTarget
   onClick?: () => void
-  insertStyles?: InsertStyles<"container">
+  insertCss?: InsertStyles<"container">
   children: React.ReactNode
 } & StyleProps
 
@@ -23,7 +23,7 @@ export const Button: React.FC<Props> = ({
   size,
   color,
   onClick,
-  insertStyles,
+  insertCss,
   children,
 }) => {
   const { styles } = useStyle(createStyles, { type, size, color })
@@ -32,7 +32,7 @@ export const Button: React.FC<Props> = ({
       href={href}
       onClick={onClick}
       target={target}
-      css={[styles.container, insertStyles?.container]}
+      css={[styles.container, insertCss?.container]}
     >
       {children}
     </Link>
@@ -40,7 +40,7 @@ export const Button: React.FC<Props> = ({
     <button
       type="button"
       onClick={onClick}
-      css={[styles.container, insertStyles?.container]}
+      css={[styles.container, insertCss?.container]}
     >
       {children}
     </button>

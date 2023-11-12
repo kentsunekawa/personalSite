@@ -36,5 +36,11 @@ export const createStyles = () => {
       width: 100%;
       padding-top: ${headerHeight};
     `,
+    spacer: css`
+      display: block;
+      width: 1px;
+      height: 16px;
+      background: var(${VAR_NAMES.fg});
+    `,
   }
 }

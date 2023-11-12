@@ -1,13 +1,11 @@
 "use client"
 // import from libraries
-import dynamic from "next/dynamic"
 
 // import from this project
 import { PageState } from "@/types"
 import { Profile, Post } from "@/graphql/generated/types"
-import { APP_INFO } from "@/constants"
 import { useStyle } from "@/hooks"
-import { PageBase } from "@/components/globals/PageBase"
+import { Header } from "@/components/globals/Header"
 import { MQ } from "@/components/parts/MQ"
 import { Nav } from "./Nav"
 import { Accounts } from "@/components/parts/Accounts"
@@ -21,21 +19,20 @@ type Props = PageState & {
   posts: Post[]
 }
 
-const MediaQuery = dynamic(() => import("react-responsive"), {
-  ssr: false,
-})
-
 export const Home: React.FC<Props> = ({ lang, profile, posts }) => {
   const { name, businessTitle, accounts, email } = profile
 
   const { styles } = useStyle(createStyles)
 
   return (
-    <PageBase showTopLogo={false} showNav={false}>
-      <div>
+    <>
+      <Header showTopLogo={false} showNav={false} />
+      <div css={styles.main}>
         <div>
-          <Texts.Heading size="h3" tag="h1" font="en" weight="700">
-            {APP_INFO.catchCopy}
+          <Texts.Heading size="h3" tag="h1" weight="b">
+            Developing UX
+            <br />
+            Beyond screens.
           </Texts.Heading>
         </div>
         <div>
@@ -58,6 +55,6 @@ export const Home: React.FC<Props> = ({ lang, profile, posts }) => {
           </div>
         </MQ>
       </div>
-    </PageBase>
+    </>
   )
 }

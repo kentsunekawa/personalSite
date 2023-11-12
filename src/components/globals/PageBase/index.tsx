@@ -9,17 +9,13 @@ import { createStyles } from "./styles"
 
 export type Props = {
   children: React.ReactNode
-} & HeaderProps
+}
 
-export const PageBase: React.FC<Props> = ({
-  children,
-  showTopLogo,
-  showNav,
-}) => {
+export const PageBase: React.FC<Props> = ({ children }) => {
   const { styles } = useStyle(createStyles)
   return (
     <div css={styles.container}>
-      <Header showTopLogo={showTopLogo} showNav={showNav} />
+      <Header />
       <main css={styles.main}>
         <div css={styles.mainInner}>{children}</div>
       </main>

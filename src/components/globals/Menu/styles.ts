@@ -16,12 +16,16 @@ export const createStyles = () => {
       z-index: 110;
       background: var(${VAR_NAMES.bg});
     `,
-    inner: css`
+    main: css`
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
       height: 100%;
+      padding: 40px;
+    `,
+    inner: css`
+      padding: 40px;
     `,
     closeButton: css`
       position: absolute;
@@ -29,13 +33,22 @@ export const createStyles = () => {
       right: 16px;
     `,
     nav: {
+      container: css`
+        width: 100%;
+      `,
       list: css`
         display: flex;
         flex-wrap: wrap;
-        gap: 40px 0;
+        gap: 32px 0;
       `,
       item: css`
         width: 100%;
+      `,
+      button: css`
+        width: 100%;
+      `,
+      text: css`
+        font-size: 16px;
       `,
     },
   }

@@ -50,15 +50,30 @@ export const Header: React.FC<Props> = ({
           )}
         </div>
         <div css={styles.menuArea}>
+          <MQ mq="pcMin_gt">
+            {showNav && (
+              <>
+                <Nav />
+                <span css={styles.spacer} />
+              </>
+            )}
+          </MQ>
+
           <LangChanger langInfo={pageState.translatedLangs} />
           <ToggleTheme />
           <MQ mq="tbMax_lt">
-            <Button onClick={() => setIsOpenMenu(true)}>Menu</Button>
-            {isOpenMenu && (
-              <Menu isOpen={isOpenMenu} close={() => setIsOpenMenu(false)} />
+            {showNav && (
+              <>
+                <Button onClick={() => setIsOpenMenu(true)}>…</Button>
+                {isOpenMenu && (
+                  <Menu
+                    isOpen={isOpenMenu}
+                    close={() => setIsOpenMenu(false)}
+                  />
+                )}
+              </>
             )}
           </MQ>
-          <MQ mq="tbMin_gt">{showNav && <Nav />}</MQ>
         </div>
       </header>
     </>

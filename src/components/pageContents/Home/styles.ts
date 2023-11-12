@@ -9,8 +9,8 @@ import { fonts } from "@/styles/mixin"
 export const createStyles = () => {
   return {
     container: css``,
-    slogan: css`
-      ${fonts().en}
+    main: css`
+      padding: 40px;
     `,
   }
 }
