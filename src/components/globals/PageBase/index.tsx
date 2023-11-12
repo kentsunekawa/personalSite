@@ -20,8 +20,8 @@ export const PageBase: React.FC<Props> = ({
   return (
     <div css={styles.container}>
       <Header showTopLogo={showTopLogo} showNav={showNav} />
-      <main>
-        <div>{children}</div>
+      <main css={styles.main}>
+        <div css={styles.mainInner}>{children}</div>
       </main>
       <Footer />
     </div>

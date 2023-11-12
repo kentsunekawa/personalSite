@@ -27,7 +27,16 @@ export const Summary: React.FC<Props> = ({ data }) => {
     <div css={styles.container}>
       {image && (
         <div>
-          <Image src={image} width={400} height={400} alt="avatar image" />
+          <Image
+            src={image}
+            width={400}
+            height={400}
+            alt="avatar image"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+          />
         </div>
       )}
       <div>

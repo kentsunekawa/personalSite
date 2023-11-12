@@ -7,20 +7,20 @@ import { VAR_NAMES } from "@/styles/theme"
 import { fonts, mq } from "@/styles/mixin"
 
 export const createStyles = () => {
+  const headerHeight = "56px"
   return {
     container: css`
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      height: 56px;
-      padding: 0 16px;
-      ${mq(
-        "tbMin_gt",
-        css`
-          padding: 0 24px;
-        `
-      )}
+      height: ${headerHeight};
+      padding: 0 24px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      background: var(${VAR_NAMES.bg});
     `,
     name: css`
       ${fonts().en}
@@ -31,6 +31,10 @@ export const createStyles = () => {
       align-items: center;
       height: 100%;
       gap: 0 18px;
+    `,
+    space: css`
+      width: 100%;
+      padding-top: ${headerHeight};
     `,
   }
 }

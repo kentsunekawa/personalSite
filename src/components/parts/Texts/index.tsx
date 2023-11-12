@@ -27,7 +27,7 @@ type HeadingProps = CommonProps & {
 export const Heading: React.FC<HeadingProps> = ({
   tag,
   size = "h1",
-  weight = "400",
+  weight = "m",
   align = "left",
   insertCss,
   children,
@@ -67,7 +67,7 @@ type SubHeadingProps = CommonProps & {
 export const SubHeading: React.FC<SubHeadingProps> = ({
   tag,
   size = "m",
-  weight = "400",
+  weight = "m",
   align = "left",
   insertCss,
   children,
@@ -105,7 +105,7 @@ type TextProps = CommonProps & {
 
 export const Text: React.FC<TextProps> = ({
   size = "m",
-  weight = "400",
+  weight = "m",
   align = "left",
   insertCss,
   children,
@@ -127,7 +127,7 @@ export const Text: React.FC<TextProps> = ({
 }
 
 export const Caption: React.FC<CommonProps> = ({
-  weight = "400",
+  weight = "m",
   align = "left",
   insertCss,
   children,

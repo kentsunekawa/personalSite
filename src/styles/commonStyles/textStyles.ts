@@ -6,7 +6,7 @@ import { css } from "styled-components"
 
 export type HeadingSize = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 export type Size = "s" | "m" | "l"
-export type Weight = "100" | "400" | "500" | "700"
+export type Weight = "l" | "m" | "b" | "xb"
 export type Align = "center" | "right" | "left"
 
 export const createStyles = () => {
@@ -23,16 +23,16 @@ export const createStyles = () => {
       `,
     },
     weight: {
-      "100": css`
+      l: css`
         font-weight: 100;
       `,
-      "400": css`
+      m: css`
         font-weight: 400;
       `,
-      "500": css`
+      b: css`
         font-weight: 500;
       `,
-      "700": css`
+      xb: css`
         font-weight: 700;
       `,
     },

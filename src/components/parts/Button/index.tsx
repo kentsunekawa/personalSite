@@ -37,7 +37,11 @@ export const Button: React.FC<Props> = ({
       {children}
     </Link>
   ) : (
-    <button type="button" css={[styles.container, insertStyles?.container]}>
+    <button
+      type="button"
+      onClick={onClick}
+      css={[styles.container, insertStyles?.container]}
+    >
       {children}
     </button>
   )
