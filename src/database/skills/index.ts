@@ -52,7 +52,7 @@ export const skills: Skill[] = [
   {
     id: "graphql",
     slug: slugs.graphql,
-    name: "graphql",
+    name: "GraphQL",
     proficiency: Proficiency.Experienced,
   },
   {

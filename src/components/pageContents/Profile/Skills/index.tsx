@@ -6,6 +6,7 @@ import Image from "next/image"
 // import from this project
 import { Skill as SkillType } from "@/graphql/generated/types"
 import { useStyle } from "@/hooks"
+import { IMAGE_PATHS } from "@/constants"
 import { Texts } from "@/components/parts/Texts"
 import { createStyles } from "./styles"
 
@@ -16,17 +17,21 @@ export type Props = {
 }
 
 type BoxProps = {
-  src: string
   name: string
+  slug: string
 }
 
-const Box: React.FC<BoxProps> = ({ src, name }) => {
+const getImagePath = (slug: string) =>
+  //@ts-ignore
+  IMAGE_PATHS.technologies[slug] ?? IMAGE_PATHS.technologies.noImage
+
+const Box: React.FC<BoxProps> = ({ name, slug }) => {
   const { styles } = useStyle(createStyles)
   return (
     <div css={styles.box.container}>
       <div css={styles.box.imageWrapper}>
         <Image
-          src="/img/techImages/react.png"
+          src={getImagePath(slug)}
           alt=""
           width={100}
           height={100}
@@ -34,12 +39,7 @@ const Box: React.FC<BoxProps> = ({ src, name }) => {
         />
       </div>
       <div css={styles.box.nameWrapper}>
-        <Texts.Text
-          size="s"
-          align="center"
-          insertCss={styles.box.name}
-          title={name}
-        >
+        <Texts.Text insertCss={styles.box.name} title={name}>
           {name}
         </Texts.Text>
       </div>
@@ -64,9 +64,9 @@ export const Skills: React.FC<Props> = ({ skills }) => {
       {experiencedSkills.length > 0 && (
         <div css={styles.section}>
           <ul css={styles.list}>
-            {experiencedSkills.map(({ id, name }) => (
-              <li key={id} css={[styles.item.common, styles.item.primary]}>
-                <Box src="/img/techImages/react.png" name={name} />
+            {experiencedSkills.map(({ id, name, slug }) => (
+              <li key={id} css={styles.item}>
+                <Box slug={slug} name={name} />
               </li>
             ))}
           </ul>
@@ -75,9 +75,9 @@ export const Skills: React.FC<Props> = ({ skills }) => {
       {otherSkills.length > 0 && (
         <div css={styles.section}>
           <ul css={styles.list}>
-            {otherSkills.map(({ id, name }) => (
-              <li key={id} css={[styles.item.common, styles.item.secondary]}>
-                <Box src="/img/techImages/react.png" name={name} />
+            {otherSkills.map(({ id, name, slug }) => (
+              <li key={id} css={styles.item}>
+                <Box slug={slug} name={name} />
               </li>
             ))}
           </ul>

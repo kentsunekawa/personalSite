@@ -2,7 +2,8 @@
 // import from libraries
 
 // import from this project
-import { WorkHistory as WorkHistoryType } from "@/graphql/generated/types"
+import { Lang, WorkHistory as WorkHistoryType } from "@/graphql/generated/types"
+import { ContentsBox } from "@/components/parts/contents/ContentsBox"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
 import { useStyle } from "@/hooks"
 import { createStyles } from "./styles"
@@ -19,10 +20,11 @@ export type WorkHistory = Pick<
 >
 
 export type Props = {
+  lang: Lang
   workHistories: readonly WorkHistory[]
 }
 
-export const WorkHistories: React.FC<Props> = ({ workHistories }) => {
+export const WorkHistories: React.FC<Props> = ({ lang, workHistories }) => {
   const { styles } = useStyle(createStyles)
   return (
     <div css={styles.container}>
@@ -40,17 +42,27 @@ export const WorkHistories: React.FC<Props> = ({ workHistories }) => {
                 description,
               }) => (
                 <li key={id}>
-                  <p>{name}</p>
-                  <p>{employmentType}</p>
-                  <p>{position}</p>
-                  <div>
-                    <p>{start}</p>〜<p>{end}</p>
-                  </div>
-                  {description && (
-                    <div>
-                      <MarkdownDisplay>{description}</MarkdownDisplay>
-                    </div>
-                  )}
+                  <ContentsBox
+                    lang={lang}
+                    contents={{
+                      title: {
+                        tag: "h3",
+                        node: name,
+                      },
+                      subTitle: `${
+                        position ? `${position} ` : ""
+                      }${employmentType}`,
+                      period: {
+                        start,
+                        end,
+                      },
+                      main: description && (
+                        <div>
+                          <MarkdownDisplay>{description}</MarkdownDisplay>
+                        </div>
+                      ),
+                    }}
+                  />
                 </li>
               )
             )}

@@ -2,8 +2,12 @@
 // import from libraries
 
 // import from this project
-import { EducationalBackground as EducationalBackgroundType } from "@/graphql/generated/types"
+import {
+  Lang,
+  EducationalBackground as EducationalBackgroundType,
+} from "@/graphql/generated/types"
 import { useStyle } from "@/hooks"
+import { ContentsBox } from "@/components/parts/contents/ContentsBox"
 import { createStyles } from "./styles"
 
 export type EducationalBackground = Pick<
@@ -12,10 +16,12 @@ export type EducationalBackground = Pick<
 >
 
 export type Props = {
+  lang: Lang
   educationalBackgrounds: readonly EducationalBackground[]
 }
 
 export const EducationalBackgrounds: React.FC<Props> = ({
+  lang,
   educationalBackgrounds,
 }) => {
   const { styles } = useStyle(createStyles)
@@ -27,11 +33,20 @@ export const EducationalBackgrounds: React.FC<Props> = ({
             {educationalBackgrounds.map(
               ({ id, name, department, period: { start, end } }) => (
                 <li key={id}>
-                  <p>{name}</p>
-                  <p>{department}</p>
-                  <div>
-                    <p>{start}</p>〜<p>{end}</p>
-                  </div>
+                  <ContentsBox
+                    lang={lang}
+                    contents={{
+                      title: {
+                        tag: "h3",
+                        node: name,
+                      },
+                      subTitle: department,
+                      period: {
+                        start,
+                        end,
+                      },
+                    }}
+                  />
                 </li>
               )
             )}

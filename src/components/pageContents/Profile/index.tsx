@@ -96,6 +96,7 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
               }}
             >
               <EducationalBackgrounds
+                lang={lang}
                 educationalBackgrounds={educationalBackgrounds}
               />
             </Section.Box>
@@ -105,7 +106,7 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
                 node: contents[lang].sectionLabels.workHistories,
               }}
             >
-              <WorkHistories workHistories={workHistories} />
+              <WorkHistories lang={lang} workHistories={workHistories} />
             </Section.Box>
           </Section.Wrapper>
         </div>

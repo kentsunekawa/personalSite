@@ -3,8 +3,12 @@
 import { css } from "styled-components"
 
 // import from this project
-import { VAR_NAMES } from "@/styles/theme"
 import { limitTextRow } from "@/styles/mixin"
+import { mq } from "@/styles/mixin"
+
+const createItemStyle = (numInRow: number, gap: number) => css`
+  width: calc(${100 / numInRow}% - ${(gap * numInRow) / (numInRow - 1)}px);
+`
 
 export const createStyles = () => {
   return {
@@ -23,23 +27,18 @@ export const createStyles = () => {
       width: 100%;
       gap: 8px;
     `,
-    item: {
-      common: css``,
-      primary: css`
-        width: calc(${100 / 6}% - ${(8 * 6) / 5}px);
-      `,
-      secondary: css`
-        width: calc(${100 / 8}% - ${(8 * 8) / 7}px);
-      `,
-    },
+    item: css`
+      ${createItemStyle(2, 8)}
+      ${mq("tbMin_gt", createItemStyle(3, 8))}
+    `,
     box: {
       container: css`
         display: flex;
         flex-wrap: wrap;
-        gap: 4px 0;
+        gap: 0 8px;
       `,
       imageWrapper: css`
-        width: 100%;
+        width: 32px;
         border-radius: 4px;
         overflow: hidden;
       `,
@@ -48,10 +47,13 @@ export const createStyles = () => {
         height: auto;
       `,
       nameWrapper: css`
-        width: 100%;
+        display: flex;
+        align-items: center;
+        width: calc(100% - 40px);
       `,
       name: css`
         ${limitTextRow(1)}
+        text-align: left;
       `,
     },
   }
