@@ -7,12 +7,13 @@ import { css } from "styled-components"
 export const createStyles = () => {
   return {
     container: css`
-      display: flex;
       width: 100%;
-      height: 120px;
-      justify-content: flex-end;
-      align-items: flex-end;
-      padding: 24px;
+      border-radius: 4px;
+      overflow: hidden;
+    `,
+    image: css`
+      width: 100%;
+      height: auto;
     `,
   }
 }

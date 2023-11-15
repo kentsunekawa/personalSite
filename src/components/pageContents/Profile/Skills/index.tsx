@@ -1,13 +1,12 @@
 "use client"
 // import from libraries
 import { useMemo } from "react"
-import Image from "next/image"
 
 // import from this project
 import { Skill as SkillType } from "@/graphql/generated/types"
 import { useStyle } from "@/hooks"
-import { IMAGE_PATHS } from "@/constants"
 import { Texts } from "@/components/parts/Texts"
+import { TechnologyIcon } from "@/components/parts/TechnologyIcon"
 import { createStyles } from "./styles"
 
 export type Skill = Pick<SkillType, "id" | "slug" | "name" | "proficiency">
@@ -21,22 +20,12 @@ type BoxProps = {
   slug: string
 }
 
-const getImagePath = (slug: string) =>
-  //@ts-ignore
-  IMAGE_PATHS.technologies[slug] ?? IMAGE_PATHS.technologies.noImage
-
 const Box: React.FC<BoxProps> = ({ name, slug }) => {
   const { styles } = useStyle(createStyles)
   return (
     <div css={styles.box.container}>
       <div css={styles.box.imageWrapper}>
-        <Image
-          src={getImagePath(slug)}
-          alt=""
-          width={100}
-          height={100}
-          css={styles.box.image}
-        />
+        <TechnologyIcon slug={slug} />
       </div>
       <div css={styles.box.nameWrapper}>
         <Texts.Text insertCss={styles.box.name} title={name}>

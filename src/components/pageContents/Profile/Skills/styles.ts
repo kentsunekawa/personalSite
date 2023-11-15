@@ -39,8 +39,6 @@ export const createStyles = () => {
       `,
       imageWrapper: css`
         width: 32px;
-        border-radius: 4px;
-        overflow: hidden;
       `,
       image: css`
         width: 100%;

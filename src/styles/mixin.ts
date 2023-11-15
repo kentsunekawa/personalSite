@@ -47,12 +47,6 @@ export const adjustWidth = (num: number, gap: number) => {
   `
 }
 
-export const fonts = () => ({
-  en: css`
-    font-family: "Inter", sans-serif !important;
-  `,
-})
-
 // テキストの行の制限
 export const limitTextRow = (limit = 1) => css`
   display: -webkit-box;
@@ -60,3 +54,21 @@ export const limitTextRow = (limit = 1) => css`
   -webkit-line-clamp: ${limit};
   -webkit-box-orient: vertical;
 `
+
+const weights = {
+  l: css`
+    font-weight: 100;
+  `,
+  m: css`
+    font-weight: 400;
+  `,
+  b: css`
+    font-weight: 500;
+  `,
+  xb: css`
+    font-weight: 700;
+  `,
+}
+
+export const fontWeights = (weight?: "l" | "m" | "b" | "xb") =>
+  weight ? weights[weight] : weights

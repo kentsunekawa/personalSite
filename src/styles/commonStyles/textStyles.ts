@@ -3,6 +3,7 @@
 import { css } from "styled-components"
 
 // import from this project
+import { fontWeights } from "@/styles/mixin"
 
 export type HeadingSize = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
 export type Size = "s" | "m" | "l"
@@ -22,20 +23,7 @@ export const createStyles = () => {
         text-align: left;
       `,
     },
-    weight: {
-      l: css`
-        font-weight: 100;
-      `,
-      m: css`
-        font-weight: 400;
-      `,
-      b: css`
-        font-weight: 500;
-      `,
-      xb: css`
-        font-weight: 700;
-      `,
-    },
+    weight: fontWeights(),
     heading: {
       h1: css`
         font-size: 28px;

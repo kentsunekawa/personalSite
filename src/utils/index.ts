@@ -1,5 +1,5 @@
 import { Lang } from "@/graphql/generated/types"
-import { PAGE_INFO, PageName } from "@/constants"
+import { PAGE_INFO, IMAGE_PATHS, PageName } from "@/constants"
 
 export const getPageInfo = (pageName: PageName) => PAGE_INFO[pageName]
 
@@ -12,3 +12,7 @@ export const formatDateString = (dateString: string, lang: Lang) => {
       return `${year}年${month}月${date}日`
   }
 }
+
+export const geTechnologyImagePath = (slug: string) =>
+  //@ts-ignore
+  IMAGE_PATHS.technologies[slug] ?? IMAGE_PATHS.technologies.noImage
