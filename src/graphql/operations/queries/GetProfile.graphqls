@@ -10,6 +10,7 @@ query GetProfile($lang: Lang) {
       ...Account
     }
     email
+    introduction
     message
     skills {
       ...Skill

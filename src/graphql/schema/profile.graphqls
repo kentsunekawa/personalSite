@@ -11,6 +11,7 @@ type Profile {
   speciality: String!
   accounts: [Account!]!
   email: String!
+  introduction: String
   message: String
   skills: [Skill!]!
   educationalBackgrounds: [EducationalBackground!]!

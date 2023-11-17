@@ -5,7 +5,7 @@ import { NextPage } from "next"
 import { PageState } from "@/types"
 import { Lang } from "@/graphql/generated/types"
 import { PageContainer } from "@/components/globals/PageContainer"
-import { getProfile } from "@/functions/getProfile"
+import { getCommonData } from "@/functions/getCommonData"
 import { Profile } from "@/components/pageContents/Profile"
 
 const pageState: PageState = {
@@ -18,11 +18,11 @@ const pageState: PageState = {
 }
 
 const Page: NextPage = async () => {
-  const { data: profileData } = await getProfile(Lang.En)
+  const commonData = await getCommonData(Lang.En)
 
   return (
-    <PageContainer {...pageState}>
-      <Profile {...pageState} profile={profileData.profile} />
+    <PageContainer {...pageState} commonData={commonData}>
+      <Profile {...pageState} profile={commonData.profile} />
     </PageContainer>
   )
 }

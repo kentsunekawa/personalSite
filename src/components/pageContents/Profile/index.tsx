@@ -20,7 +20,7 @@ type Props = PageState & {
 const contents = {
   [Lang.Ja]: {
     sectionLabels: {
-      message: "自己紹介",
+      introduction: "自己紹介",
       skills: "スキル",
       educationalBackgrounds: "学歴",
       workHistories: "職務経歴",
@@ -28,7 +28,7 @@ const contents = {
   },
   [Lang.En]: {
     sectionLabels: {
-      message: "Message",
+      introduction: "Introduction",
       skills: "Skills",
       educationalBackgrounds: "Educational backgrounds",
       workHistories: "Work histories",
@@ -46,6 +46,7 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
     accounts,
     email,
     message,
+    introduction,
     skills,
     educationalBackgrounds,
     workHistories,
@@ -87,16 +88,7 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
           </div>
           <div css={styles.layout.main}>
             <Section.Wrapper>
-              {message && (
-                <Section.Box
-                  title={{
-                    tag: "h2",
-                    node: contents[lang].sectionLabels.message,
-                  }}
-                >
-                  <MarkdownDisplay>{message}</MarkdownDisplay>
-                </Section.Box>
-              )}
+              {message && <MarkdownDisplay>{message}</MarkdownDisplay>}
               <Section.Box
                 title={{
                   tag: "h2",
@@ -124,6 +116,16 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
               >
                 <WorkHistories lang={lang} workHistories={workHistories} />
               </Section.Box>
+              {introduction && (
+                <Section.Box
+                  title={{
+                    tag: "h2",
+                    node: contents[lang].sectionLabels.introduction,
+                  }}
+                >
+                  <MarkdownDisplay>{introduction}</MarkdownDisplay>
+                </Section.Box>
+              )}
             </Section.Wrapper>
           </div>
         </div>

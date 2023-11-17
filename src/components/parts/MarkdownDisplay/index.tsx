@@ -1,7 +1,10 @@
+"use client"
+// import from libraries
 import { useEffect } from "react"
 import ReactMarkdown from "react-markdown"
 import gfm from "remark-gfm"
 
+// import from this project
 import { useStyle, useThemeName } from "@/hooks"
 import { createStyles } from "./styles"
 

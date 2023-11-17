@@ -5,7 +5,7 @@ import { NextPage } from "next"
 import { PageState } from "@/types"
 import { Lang, PostLabel } from "@/graphql/generated/types"
 import { PageContainer } from "@/components/globals/PageContainer"
-import { getProfile } from "@/functions/getProfile"
+import { getCommonData } from "@/functions/getCommonData"
 import { getPosts } from "@/functions/getPosts"
 
 import { Home } from "@/components/pageContents/Home"
@@ -21,13 +21,13 @@ const pageState: PageState = {
 
 const Page: NextPage = async () => {
   const { data: postsData } = await getPosts([PostLabel.HighPriority])
-  const { data: profileData } = await getProfile()
+  const commonData = await getCommonData(Lang.Ja)
 
   return (
-    <PageContainer {...pageState}>
+    <PageContainer {...pageState} commonData={commonData}>
       <Home
         {...pageState}
-        profile={profileData.profile}
+        profile={commonData.profile}
         posts={postsData.posts.map((post) => post)}
       />
     </PageContainer>

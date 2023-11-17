@@ -1,5 +1,13 @@
 type Account {
   id: ID!
-  name: String!
+  name: SocialMedia!
   url: String!
+}
+
+enum SocialMedia {
+  FACEBOOK
+  LINKEDIN
+  WANTEDLY
+  INSTAGRAM
+  GITHUB
 }

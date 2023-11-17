@@ -5,6 +5,7 @@ import { NextPage } from "next"
 import { PageState } from "@/types"
 import { Lang } from "@/graphql/generated/types"
 import { PageContainer } from "@/components/globals/PageContainer"
+import { getCommonData } from "@/functions/getCommonData"
 import { getProjects } from "@/functions/getProjects"
 import { Projects } from "@/components/pageContents/Projects"
 
@@ -19,9 +20,10 @@ const pageState: PageState = {
 
 const Page: NextPage = async () => {
   const { data: projectsData } = await getProjects()
+  const commonData = await getCommonData(Lang.Ja)
 
   return (
-    <PageContainer {...pageState}>
+    <PageContainer {...pageState} commonData={commonData}>
       <Projects
         {...pageState}
         projects={projectsData.projects.map((project) => project)}

@@ -3,15 +3,33 @@
 
 // import from this project
 import { APP_INFO } from "@/constants"
-import { useStyle } from "@/hooks"
+import { useStyle, useProfile } from "@/hooks"
 import { Texts } from "@/components/parts/Texts"
+import { Button } from "@/components/parts/Button"
+import { Accounts } from "@/components/parts/Accounts"
 import { createStyles } from "./styles"
 
-export const Footer: React.FC = () => {
+type Props = {
+  isSimple?: boolean
+}
+
+export const Footer: React.FC<Props> = ({ isSimple }) => {
   const { styles } = useStyle(createStyles)
+
+  const { profile } = useProfile()
+
   return (
     <footer css={styles.container}>
-      <Texts.Text size="s">&copy; {APP_INFO.copyright}</Texts.Text>
+      <div css={styles.content.container}>
+        {!isSimple && profile && (
+          <div css={styles.content.row}>
+            <Accounts accounts={profile.accounts} email={profile.email} />
+          </div>
+        )}
+        <div css={styles.content.row}>
+          <Texts.Text size="s">&copy; {APP_INFO.copyright}</Texts.Text>
+        </div>
+      </div>
     </footer>
   )
 }

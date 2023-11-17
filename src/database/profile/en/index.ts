@@ -6,6 +6,7 @@ import { educationalBackgrounds } from "@/database/educationalBackgrounds"
 import { getWorkHistories } from "@/database/workHistories"
 import { projects } from "@/database/projects"
 import message from "./message.md"
+import introduction from "./introduction.md"
 
 export const en: Profile = {
   id: "profile_en",
@@ -21,4 +22,5 @@ export const en: Profile = {
   workHistories: getWorkHistories("EN"),
   projects: projects.EN,
   message,
+  introduction,
 }

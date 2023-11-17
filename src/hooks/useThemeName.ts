@@ -1,11 +1,7 @@
 import { useCallback, useMemo } from "react"
 import { useTheme } from "next-themes"
 
-export const THEME_NAMES = {
-  light: "light",
-  dark: "dark",
-  system: "system",
-} as const
+import { THEME_NAMES } from "@/constants"
 
 export type RowThemeName = (typeof THEME_NAMES)[keyof typeof THEME_NAMES]
 

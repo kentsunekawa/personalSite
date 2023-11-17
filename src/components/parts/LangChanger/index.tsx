@@ -56,16 +56,14 @@ export const LangChanger: React.FC<Props> = ({
   if (!options) return null
 
   return (
-    <div css={styles.container}>
-      {options.length > 0 && (
-        <>
-          {options.map(({ label, href }) => (
-            <Button key={label} href={href} type="block">
-              {label}
-            </Button>
-          ))}
-        </>
-      )}
-    </div>
+    options.length > 0 && (
+      <div css={styles.container}>
+        {options.map(({ label, href }) => (
+          <Button key={label} href={href} type="block">
+            {label}
+          </Button>
+        ))}
+      </div>
+    )
   )
 }

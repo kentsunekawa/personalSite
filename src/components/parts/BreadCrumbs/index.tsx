@@ -54,7 +54,7 @@ export const BreadCrumbs: React.FC<Props> = ({ lang, clumbs }) => {
               </li>
               {i < clumbs.length - 1 && (
                 <li>
-                  <Texts.Text>{` > `}</Texts.Text>
+                  <Texts.Text>{` _ `}</Texts.Text>
                 </li>
               )}
             </React.Fragment>

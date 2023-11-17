@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import { APP_INFO } from "@/constants/appInfo"
 import { GlobalStyle } from "@/components/globals/GlobalStyles"
 import { PageStateProvider } from "@/components/providers/PageStateProvider"
+import { CommonDataProvider } from "@/components/providers/CommonDataProvider"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 
 const inter = Inter({
@@ -26,7 +27,9 @@ export default function RootLayout({
       <GlobalStyle />
       <body className={inter.className}>
         <PageStateProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <CommonDataProvider>
+            <ThemeProvider>{children}</ThemeProvider>
+          </CommonDataProvider>
         </PageStateProvider>
       </body>
     </html>

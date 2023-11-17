@@ -6,6 +6,7 @@ import { redirect } from "next/navigation"
 import { PageState } from "@/types"
 import { PageContainer } from "@/components/globals/PageContainer"
 import { Lang } from "@/graphql/generated/types"
+import { getCommonData } from "@/functions/getCommonData"
 import { getPosts } from "@/functions/getPosts"
 import { getPost } from "@/functions/getPost"
 import { Experience } from "@/components/pageContents/Experience"
@@ -15,6 +16,7 @@ type Props = {
 }
 
 const Page: NextPage<Props> = async ({ params }) => {
+  const commonData = await getCommonData(Lang.En)
   const { data: postData } = await getPost(params.slug, Lang.En)
 
   if (!postData.post) return redirect("/404")
@@ -29,7 +31,7 @@ const Page: NextPage<Props> = async ({ params }) => {
   }
 
   return (
-    <PageContainer {...pageState}>
+    <PageContainer {...pageState} commonData={commonData}>
       <Experience {...pageState} post={postData.post} />
     </PageContainer>
   )

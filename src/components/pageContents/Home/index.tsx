@@ -56,7 +56,7 @@ export const Home: React.FC<Props> = ({ lang, profile, posts }) => {
           </div>
         </MQ>
       </div>
-      <Footer />
+      <Footer isSimple />
     </>
   )
 }

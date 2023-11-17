@@ -5,12 +5,7 @@ import { PageName } from "@/constants"
 import { getPageInfo } from "@/utils"
 import { usePageState } from "@/hooks"
 
-const navItems: { pageName: PageName; label: string }[] = [
-  { pageName: "home", label: "Home" },
-  { pageName: "profile", label: "Profile" },
-  { pageName: "projects", label: "Projects" },
-  { pageName: "experiences", label: "Experiences" },
-]
+const navItems: PageName[] = ["home", "profile", "projects", "experiences"]
 
 export const useNavButton = (onClickCurrentPage: () => void) => {
   const { pageState } = usePageState()
@@ -22,21 +17,20 @@ export const useNavButton = (onClickCurrentPage: () => void) => {
 
   const linksInfo = useMemo(
     () =>
-      navItems.map(({ pageName, label }) => {
+      navItems.map((pageName) => {
         const isCurrent = isJudgeCurrent(pageName)
+        const { displayName, createPath } = getPageInfo(pageName)
         return {
           isCurrent,
           pageName,
-          label,
+          label: displayName,
           props: {
             ...(isCurrent && pageState
               ? {
                   onClick: onClickCurrentPage,
                 }
               : {
-                  href:
-                    pageState &&
-                    getPageInfo(pageName).createPath(pageState.lang),
+                  href: pageState && createPath(pageState.lang),
                 }),
           },
         }

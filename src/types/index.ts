@@ -1,5 +1,5 @@
 import { PageName } from "@/constants"
-import { Lang } from "@/graphql/generated/types"
+import { Lang, Profile } from "@/graphql/generated/types"
 import { RuleSet } from "styled-components"
 
 export type Data<T> = {
@@ -26,4 +26,8 @@ export type Css = RuleSet<object>
 
 export type InsertStyles<T extends string> = {
   [k in T]?: Css
+}
+
+export type CommonData = {
+  profile: Profile
 }

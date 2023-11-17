@@ -12,6 +12,7 @@ import { Nav } from "@/components/globals/Nav"
 import { Texts } from "@/components/parts/Texts"
 import { Button } from "@/components/parts/Button"
 import { Menu } from "@/components/globals/Menu"
+import { Icons } from "@/components/parts/Icons"
 import { MQ } from "@/components/parts/MQ"
 import { LangChanger } from "@/components/parts/LangChanger"
 import { createStyles } from "./styles"
@@ -61,7 +62,9 @@ export const Header: React.FC<Props> = ({
           <MQ mq="tbMax_lt">
             {showNav && (
               <>
-                <Button onClick={() => setIsOpenMenu(true)}>…</Button>
+                <Button onClick={() => setIsOpenMenu(true)}>
+                  <Icons.Menu />
+                </Button>
                 {isOpenMenu && (
                   <Menu
                     isOpen={isOpenMenu}

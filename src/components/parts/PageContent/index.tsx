@@ -8,6 +8,7 @@ import {
   BreadCrumbs,
   Props as BreadCrumbsProps,
 } from "@/components/parts/BreadCrumbs"
+import { MQ } from "@/components/parts/MQ"
 import { createStyles } from "./styles"
 
 export type Props = {
@@ -28,11 +29,13 @@ export const PageContent: React.FC<Props> = ({
 
   return (
     <div css={styles.container}>
-      {breadCrumsInfo && (
-        <div css={styles.breadCrumArea}>
-          <BreadCrumbs {...breadCrumsInfo} />
-        </div>
-      )}
+      <MQ mq="tbMin_gt">
+        {breadCrumsInfo && (
+          <div css={styles.breadCrumArea}>
+            <BreadCrumbs {...breadCrumsInfo} />
+          </div>
+        )}
+      </MQ>
       {(title || summary) && (
         <div css={styles.headerArea.container}>
           {title && (
