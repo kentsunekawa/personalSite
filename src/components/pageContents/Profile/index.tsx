@@ -4,6 +4,7 @@ import { PageState } from "@/types"
 import { useStyle } from "@/hooks"
 import { Profile as ProfileType, Lang } from "@/graphql/generated/types"
 import { PageBase } from "@/components/globals/PageBase"
+import { PageContent } from "@/components/parts/PageContent"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
 import { Skills } from "@/components/pageContents/Profile/Skills"
 import { EducationalBackgrounds } from "@/components/parts/EducationalBackgrounds"
@@ -54,63 +55,79 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
 
   return (
     <PageBase>
-      <div css={styles.layout.container}>
-        <div css={styles.layout.sub}>
-          <Summary
-            lang={lang}
-            data={{
-              name,
-              image,
-              email,
-              birthDate,
-              businessTitle,
-              speciality,
-              accounts,
-            }}
-          />
-        </div>
-        <div css={styles.layout.main}>
-          <Section.Wrapper>
-            {message && (
+      <PageContent
+        breadCrumsInfo={{
+          lang,
+          clumbs: [
+            {
+              pageName: "home",
+            },
+            {
+              isCurrent: true,
+              pageName: "profile",
+            },
+          ],
+        }}
+        title="Profile"
+      >
+        <div css={styles.layout.container}>
+          <div css={styles.layout.sub}>
+            <Summary
+              lang={lang}
+              data={{
+                name,
+                image,
+                email,
+                birthDate,
+                businessTitle,
+                speciality,
+                accounts,
+              }}
+            />
+          </div>
+          <div css={styles.layout.main}>
+            <Section.Wrapper>
+              {message && (
+                <Section.Box
+                  title={{
+                    tag: "h2",
+                    node: contents[lang].sectionLabels.message,
+                  }}
+                >
+                  <MarkdownDisplay>{message}</MarkdownDisplay>
+                </Section.Box>
+              )}
               <Section.Box
                 title={{
                   tag: "h2",
-                  node: contents[lang].sectionLabels.message,
+                  node: contents[lang].sectionLabels.skills,
                 }}
               >
-                <MarkdownDisplay>{message}</MarkdownDisplay>
+                <Skills skills={skills} />
               </Section.Box>
-            )}
-            <Section.Box
-              title={{
-                tag: "h2",
-                node: contents[lang].sectionLabels.skills,
-              }}
-            >
-              <Skills skills={skills} />
-            </Section.Box>
-            <Section.Box
-              title={{
-                tag: "h2",
-                node: contents[lang].sectionLabels.educationalBackgrounds,
-              }}
-            >
-              <EducationalBackgrounds
-                lang={lang}
-                educationalBackgrounds={educationalBackgrounds}
-              />
-            </Section.Box>
-            <Section.Box
-              title={{
-                tag: "h2",
-                node: contents[lang].sectionLabels.workHistories,
-              }}
-            >
-              <WorkHistories lang={lang} workHistories={workHistories} />
-            </Section.Box>
-          </Section.Wrapper>
+              <Section.Box
+                title={{
+                  tag: "h2",
+                  node: contents[lang].sectionLabels.educationalBackgrounds,
+                }}
+              >
+                <EducationalBackgrounds
+                  lang={lang}
+                  educationalBackgrounds={educationalBackgrounds}
+                />
+              </Section.Box>
+              <Section.Box
+                title={{
+                  tag: "h2",
+                  node: contents[lang].sectionLabels.workHistories,
+                }}
+              >
+                <WorkHistories lang={lang} workHistories={workHistories} />
+              </Section.Box>
+            </Section.Wrapper>
+          </div>
         </div>
-      </div>
+      </PageContent>
     </PageBase>
   )
 }

@@ -11,33 +11,24 @@ export const createStyles = () => {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
-      gap: 16px 0;
+      gap: 24px 0;
     `,
-    header: css`
-      display: flex;
-      flex-wrap: wrap;
+    breadCrumArea: css`
       width: 100%;
-      gap: 4px 0;
     `,
+    headerArea: {
+      container: css`
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 24px 0;
+      `,
+      row: css`
+        width: 100%;
+      `,
+    },
     main: css`
       width: 100%;
     `,
-    periodArea: {
-      container: css`
-        width: 100%;
-      `,
-      text: css``,
-    },
-    titleArea: {
-      container: css`
-        width: 100%;
-      `,
-    },
-    subTitleArea: {
-      container: css`
-        width: 100%;
-      `,
-    },
-    definitionTableStyles: {},
   }
 }

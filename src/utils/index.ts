@@ -1,7 +1,7 @@
 import { Lang } from "@/graphql/generated/types"
-import { PAGE_INFO, IMAGE_PATHS, PageName } from "@/constants"
+import { PAGES_INFO, IMAGE_PATHS, PageName } from "@/constants"
 
-export const getPageInfo = (pageName: PageName) => PAGE_INFO[pageName]
+export const getPageInfo = (pageName: PageName) => PAGES_INFO[pageName]
 
 export const formatDateString = (dateString: string, lang: Lang) => {
   switch (lang) {

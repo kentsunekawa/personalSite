@@ -5,7 +5,7 @@ import { getSkills } from "@/database/skills"
 import description from "./description.md"
 
 export const en: OmitIdSlug<Project> = {
-  title: "Developing PHR application",
+  title: "Developing HCU web application",
   belonging: getWorkHistory("EN", "alturaX"),
   period: {
     start: "2022-03-01",

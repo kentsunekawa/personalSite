@@ -6,6 +6,7 @@ import { PageState } from "@/types"
 import { Profile, Post } from "@/graphql/generated/types"
 import { useStyle } from "@/hooks"
 import { Header } from "@/components/globals/Header"
+import { Footer } from "@/components/globals/Footer"
 import { MQ } from "@/components/parts/MQ"
 import { Nav } from "./Nav"
 import { Accounts } from "@/components/parts/Accounts"
@@ -55,6 +56,7 @@ export const Home: React.FC<Props> = ({ lang, profile, posts }) => {
           </div>
         </MQ>
       </div>
+      <Footer />
     </>
   )
 }

@@ -13,7 +13,7 @@ export type Props = {
     label: string
     data: React.ReactNode
   }[]
-  insertStyles?: InsertStyles<"container" | "dtText" | "dd">
+  insertStyles?: InsertStyles<"container" | "dt" | "dtText" | "dd">
 }
 
 export const DefinitionTable: React.FC<Props> = ({ data, insertStyles }) => {
@@ -23,7 +23,7 @@ export const DefinitionTable: React.FC<Props> = ({ data, insertStyles }) => {
     <dl css={[styles.container, insertStyles?.container]}>
       {data.map(({ label, data: main }) => (
         <React.Fragment key={label}>
-          <dt css={styles.dt}>
+          <dt css={[styles.dt, insertStyles?.dt]}>
             <Texts.Caption insertCss={insertStyles?.dtText}>
               {label}:
             </Texts.Caption>

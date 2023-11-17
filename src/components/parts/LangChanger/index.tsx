@@ -20,7 +20,7 @@ type Props = {
 }
 
 const createHref = (lang: Lang, pageState: PageState) =>
-  getPageInfo(pageState.pageName).createPath(lang, pageState.pathInfo)
+  getPageInfo(pageState.pageName).createPath(lang, pageState.params)
 
 export const LangChanger: React.FC<Props> = ({
   langInfo = {

@@ -3,12 +3,18 @@
 import { css } from "styled-components"
 
 // import from this project
-import { hoveredLink } from "@/styles/mixin"
 
 export const createStyles = () => {
   return {
     container: css`
-      ${hoveredLink()}
+      width: 100%;
+    `,
+    list: css`
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
     `,
   }
 }

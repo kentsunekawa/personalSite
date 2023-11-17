@@ -8,15 +8,18 @@ export type PageName =
   | "projects"
 
 export type PageInfo = {
-  [k in PageName]: {
-    path: string
-    createPath: (
-      lang?: Lang,
-      pathInfo?: {
-        [k: string]: string
-      }
-    ) => string
-  }
+  path: string
+  displayName: string
+  createPath: (
+    lang: Lang,
+    params?: {
+      [k: string]: string
+    }
+  ) => string
+}
+
+export type PagesInfo = {
+  [k in PageName]: PageInfo
 }
 
 const checkLang = (lang?: Lang) => (!lang || lang === Lang.Ja ? "" : "en")
@@ -35,7 +38,7 @@ export const strFormat = (
       : m
   )
 
-// PAGE_INFO の変数置換
+// PAGES_INFO の変数置換
 export const createUrl = (
   path: string,
   replacement?: {
@@ -44,35 +47,42 @@ export const createUrl = (
 ): string =>
   replacement ? strFormat(path, replacement, /:([^/]+)($|(?=\/))/g) : path
 
-export const PAGE_INFO: PageInfo = {
+export const PAGES_INFO: PagesInfo = {
   home: {
     path: "/",
+    displayName: "Home",
     createPath(lang = Lang.Ja) {
-      return `${this.path}${checkLang(lang)}`
+      return `${PAGES_INFO.home.path}${checkLang(lang)}`
     },
   },
   profile: {
     path: "/profile",
+    displayName: "Profile",
     createPath(lang = Lang.Ja) {
-      return `${this.path}/${checkLang(lang)}`
-    },
-  },
-  experiences: {
-    path: "/experiences",
-    createPath(lang = Lang.Ja) {
-      return `${this.path}/${checkLang(lang)}`
-    },
-  },
-  experience: {
-    path: "/experiences/:slug",
-    createPath(lang = Lang.Ja, pathInfo) {
-      return `${createUrl(this.path, pathInfo)}/${checkLang(lang)}`
+      return `${PAGES_INFO.profile.path}/${checkLang(lang)}`
     },
   },
   projects: {
     path: "/projects",
+    displayName: "Projects",
     createPath(lang = Lang.Ja) {
-      return `${this.path}/${checkLang(lang)}`
+      return `${PAGES_INFO.projects.path}/${checkLang(lang)}`
+    },
+  },
+  experiences: {
+    path: "/experiences",
+    displayName: "Experiences",
+    createPath(lang = Lang.Ja) {
+      return `${PAGES_INFO.experiences.path}/${checkLang(lang)}`
+    },
+  },
+  experience: {
+    path: "/experiences/:slug",
+    displayName: "Experience",
+    createPath(lang = Lang.Ja, params) {
+      return `${createUrl(PAGES_INFO.experience.path, params)}/${checkLang(
+        lang
+      )}`
     },
   },
 }

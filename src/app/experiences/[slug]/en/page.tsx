@@ -23,7 +23,7 @@ const Page: NextPage<Props> = async ({ params }) => {
     lang: Lang.En,
     pageName: "experience",
     translatedLangs: postData.post.lang,
-    pathInfo: {
+    params: {
       slug: params.slug,
     },
   }
