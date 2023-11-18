@@ -15,5 +15,11 @@ export const createStyles = () => {
       flex-wrap: wrap;
       gap: 0 4px;
     `,
+    button: {
+      container: css`
+        font-size: 20px;
+        line-height: 1em;
+      `,
+    },
   }
 }

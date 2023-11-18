@@ -30,5 +30,10 @@ export const createStyles = () => {
         width: 100%;
       `,
     },
+    accounts: {
+      list: css`
+        justify-content: flex-end;
+      `,
+    },
   }
 }

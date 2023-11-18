@@ -5,8 +5,11 @@ type Query {
 type Profile {
   id: ID!
   name: String!
+  subName: String
   image: String
   birthDate: String!
+  place: String!
+  languages: [LangSKill!]!
   businessTitle: String!
   speciality: String!
   accounts: [Account!]!
@@ -17,4 +20,15 @@ type Profile {
   educationalBackgrounds: [EducationalBackground!]!
   workHistories: [WorkHistory!]!
   projects: [Project!]!
+}
+
+type LangSKill {
+  lang: Lang!
+  level: LangLevel!
+}
+
+enum LangLevel {
+  DAILY
+  BUSINESS
+  NATIVE
 }

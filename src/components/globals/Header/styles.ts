@@ -20,7 +20,16 @@ export const createStyles = () => {
       top: 0;
       left: 0;
       z-index: 100;
+    `,
+    bg: css`
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
       background: var(${VAR_NAMES.bg});
+      opacity: 0.85;
+      z-index: -1;
     `,
     menuArea: css`
       display: flex;

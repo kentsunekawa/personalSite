@@ -38,13 +38,6 @@ const contents = {
 
 export const Profile: React.FC<Props> = ({ lang, profile }) => {
   const {
-    name,
-    image,
-    birthDate,
-    businessTitle,
-    speciality,
-    accounts,
-    email,
     message,
     introduction,
     skills,
@@ -73,18 +66,7 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
       >
         <div css={styles.layout.container}>
           <div css={styles.layout.sub}>
-            <Summary
-              lang={lang}
-              data={{
-                name,
-                image,
-                email,
-                birthDate,
-                businessTitle,
-                speciality,
-                accounts,
-              }}
-            />
+            <Summary lang={lang} data={profile} />
           </div>
           <div css={styles.layout.main}>
             <Section.Wrapper>

@@ -33,20 +33,16 @@ export const Home: React.FC<Props> = ({ lang, profile, posts }) => {
           <Texts.Heading size="h3" tag="h1" weight="b">
             Developing UX
             <br />
-            Beyond screens.
+            Beyond screens
+            <br />
+            To make the world better.
           </Texts.Heading>
         </div>
         <div>
           <Texts.Text>{name}</Texts.Text>
           <Texts.Text>{businessTitle}</Texts.Text>
-          <Button
-            // href={`mailto:${email}`}
-            href="hog"
-          >
-            {email}
-          </Button>
           <div>
-            <Accounts accounts={accounts} />
+            <Accounts accounts={accounts} email={email} />
           </div>
         </div>
         <Nav />

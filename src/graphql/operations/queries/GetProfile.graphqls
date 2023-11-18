@@ -2,8 +2,14 @@ query GetProfile($lang: Lang) {
   profile(lang: $lang) {
     id
     name
+    subName
     image
     birthDate
+    place
+    languages {
+      lang
+      level
+    }
     businessTitle
     speciality
     accounts {

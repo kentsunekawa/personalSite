@@ -1,3 +1,4 @@
+"use client"
 // import from libraries
 import { css } from "styled-components"
 

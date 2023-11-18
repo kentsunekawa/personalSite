@@ -1,4 +1,4 @@
-import { Profile } from "@/graphql/generated/types"
+import { Lang, LangLevel, Profile } from "@/graphql/generated/types"
 
 import { accounts } from "@/database/accounts"
 import { getSkills } from "@/database/skills"
@@ -13,6 +13,17 @@ export const en: Profile = {
   name: "Ken Tsunekawa",
   image: "/img/me.jpg",
   birthDate: "1988-05-12",
+  place: "Osaka, Japan",
+  languages: [
+    {
+      lang: Lang.Ja,
+      level: LangLevel.Native,
+    },
+    {
+      lang: Lang.En,
+      level: LangLevel.Daily,
+    },
+  ],
   accounts,
   email: "k.tsunekawa.dev@gmail.com",
   businessTitle: "Front-End Developer / UX Engineer",

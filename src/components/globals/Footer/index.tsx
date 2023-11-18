@@ -5,7 +5,6 @@
 import { APP_INFO } from "@/constants"
 import { useStyle, useProfile } from "@/hooks"
 import { Texts } from "@/components/parts/Texts"
-import { Button } from "@/components/parts/Button"
 import { Accounts } from "@/components/parts/Accounts"
 import { createStyles } from "./styles"
 
@@ -23,11 +22,17 @@ export const Footer: React.FC<Props> = ({ isSimple }) => {
       <div css={styles.content.container}>
         {!isSimple && profile && (
           <div css={styles.content.row}>
-            <Accounts accounts={profile.accounts} email={profile.email} />
+            <Accounts
+              accounts={profile.accounts}
+              email={profile.email}
+              insertStyles={styles.accounts}
+            />
           </div>
         )}
         <div css={styles.content.row}>
-          <Texts.Text size="s">&copy; {APP_INFO.copyright}</Texts.Text>
+          <Texts.Text size="s" align="right">
+            &copy; {APP_INFO.copyright}
+          </Texts.Text>
         </div>
       </div>
     </footer>
