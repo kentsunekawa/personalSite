@@ -19,9 +19,6 @@ export const createStyles = () => {
       width: 100%;
       gap: 4px 0;
     `,
-    main: css`
-      width: 100%;
-    `,
     periodArea: {
       container: css`
         width: 100%;
@@ -39,5 +36,22 @@ export const createStyles = () => {
       `,
     },
     definitionTableStyles: {},
+    main: css`
+      width: 100%;
+    `,
+    moreArea: {
+      container: css`
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px 0;
+      `,
+      main: css`
+        width: 100%;
+      `,
+      buttonArea: css`
+        width: 100%;
+      `,
+    },
   }
 }

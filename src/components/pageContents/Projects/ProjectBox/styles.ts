@@ -22,19 +22,5 @@ export const createStyles = () => {
         width: 40px;
       `,
     },
-    main: {
-      container: css`
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px 0;
-      `,
-      buttonArea: css`
-        width: 100%;
-      `,
-      main: css`
-        width: 100%;
-      `,
-    },
   }
 }

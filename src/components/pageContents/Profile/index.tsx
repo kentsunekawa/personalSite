@@ -7,8 +7,8 @@ import { PageBase } from "@/components/globals/PageBase"
 import { PageContent } from "@/components/parts/PageContent"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
 import { Skills } from "@/components/pageContents/Profile/Skills"
-import { EducationalBackgrounds } from "@/components/parts/EducationalBackgrounds"
-import { WorkHistories } from "@/components/parts/WorkHistories"
+import { EducationalBackgrounds } from "@/components/pageContents/Profile/EducationalBackgrounds"
+import { WorkHistories } from "@/components/pageContents/Profile/WorkHistories"
 import { Section } from "@/components/parts/contents/Section"
 import { createStyles } from "./styles"
 import { Summary } from "./Summary"
@@ -71,33 +71,39 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
           <div css={styles.layout.main}>
             <Section.Wrapper>
               {message && <MarkdownDisplay>{message}</MarkdownDisplay>}
-              <Section.Box
-                title={{
-                  tag: "h2",
-                  node: contents[lang].sectionLabels.skills,
-                }}
-              >
-                <Skills skills={skills} />
-              </Section.Box>
-              <Section.Box
-                title={{
-                  tag: "h2",
-                  node: contents[lang].sectionLabels.educationalBackgrounds,
-                }}
-              >
-                <EducationalBackgrounds
-                  lang={lang}
-                  educationalBackgrounds={educationalBackgrounds}
-                />
-              </Section.Box>
-              <Section.Box
-                title={{
-                  tag: "h2",
-                  node: contents[lang].sectionLabels.workHistories,
-                }}
-              >
-                <WorkHistories lang={lang} workHistories={workHistories} />
-              </Section.Box>
+              {skills.length > 0 && (
+                <Section.Box
+                  title={{
+                    tag: "h2",
+                    node: contents[lang].sectionLabels.skills,
+                  }}
+                >
+                  <Skills skills={skills} />
+                </Section.Box>
+              )}
+              {educationalBackgrounds.length > 0 && (
+                <Section.Box
+                  title={{
+                    tag: "h2",
+                    node: contents[lang].sectionLabels.educationalBackgrounds,
+                  }}
+                >
+                  <EducationalBackgrounds
+                    lang={lang}
+                    educationalBackgrounds={educationalBackgrounds}
+                  />
+                </Section.Box>
+              )}
+              {workHistories.length > 0 && (
+                <Section.Box
+                  title={{
+                    tag: "h2",
+                    node: contents[lang].sectionLabels.workHistories,
+                  }}
+                >
+                  <WorkHistories lang={lang} workHistories={workHistories} />
+                </Section.Box>
+              )}
               {introduction && (
                 <Section.Box
                   title={{

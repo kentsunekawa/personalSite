@@ -9,6 +9,7 @@ import { useStyle } from "@/hooks"
 import { CONTENTS } from "@/constants"
 import { formatDateString } from "@/utils"
 import { Texts } from "@/components/parts/Texts"
+import { Button } from "@/components/parts/Button"
 import { DefinitionTable } from "@/components/parts/DefinitionTable"
 import { createStyles } from "./styles"
 import { Accounts } from "@/components/parts/Accounts"
@@ -86,7 +87,11 @@ export const Summary: React.FC<Props> = ({ data, lang }) => {
             },
             {
               label: "Email",
-              data: <Texts.Text size="s">{email}</Texts.Text>,
+              data: (
+                <Button href={`mailto:${email}`} size="s">
+                  {email}
+                </Button>
+              ),
             },
             {
               label: "Accounts",

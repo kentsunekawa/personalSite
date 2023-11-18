@@ -3,11 +3,11 @@ import { WorkHistory, EmploymentType } from "@/graphql/generated/types"
 import description from "./description.md"
 
 export const en: OmitIdSlug<WorkHistory> = {
-  name: "ALTURA X 株式会社",
+  name: "ALTURA X.Inc",
   period: {
-    start: "2021-06-01",
-    end: "2023-09-30",
+    start: "2023-01-01",
   },
-  position: "Front-end developer",
-  // description,
+  employmentType: EmploymentType.Fulltime,
+  position: "Front-End Developer",
+  description,
 }

@@ -10,4 +10,13 @@ export const ja: EducationalBackground[] = [
       end: "2011-03-31",
     },
   },
+  {
+    id: "oscd",
+    name: "大阪総合デザイン専門学校",
+    department: "ビジュアルコミュニケーションデザイン学科",
+    period: {
+      start: "2011-04-01",
+      end: "2013-03-31",
+    },
+  },
 ]

@@ -12,7 +12,7 @@ export const ja: Profile = {
   id: "profile_ja",
   name: "常川 健",
   subName: "Ken Tsunekawa",
-  image: "/img/me.jpg",
+  // image: "/img/me.jpg",
   birthDate: "1988-05-12",
   place: "大阪",
   languages: [

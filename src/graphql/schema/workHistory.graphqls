@@ -7,7 +7,7 @@ type WorkHistory {
   slug: String!
   name: String!
   period: Period!
-  employmentType: EmploymentType!
+  employmentType: EmploymentType
   position: String
   description: String
 }

@@ -5,7 +5,7 @@ import { useStyle } from "@/hooks"
 import { Project } from "@/graphql/generated/types"
 import { PageBase } from "@/components/globals/PageBase"
 import { PageContent } from "@/components/parts/PageContent"
-import { Texts } from "@/components/parts/Texts"
+import { BoxList } from "@/components/parts/contents/BoxList"
 import { ProjectBox } from "./ProjectBox"
 import { createStyles } from "./styles"
 
@@ -35,13 +35,13 @@ export const Projects: React.FC<Props> = ({ lang, projects, ...pageState }) => {
         summary={<div>説明が入ります</div>}
       >
         <div css={styles.container}>
-          <ul css={styles.list}>
-            {projects.map((project) => (
-              <li key={project.id} css={styles.item}>
-                <ProjectBox lang={lang} project={project} />
-              </li>
-            ))}
-          </ul>
+          <BoxList
+            contents={projects.map((project) => ({
+              key: project.id,
+              node: <ProjectBox lang={lang} project={project} />,
+            }))}
+          />
+          <ul css={styles.list}></ul>
         </div>
       </PageContent>
     </PageBase>

@@ -6,7 +6,6 @@ import { useStyle } from "@/hooks"
 import { TechnologyIcon } from "@/components/parts/TechnologyIcon"
 import { Lang, Project } from "@/graphql/generated/types"
 import { ContentsBox } from "@/components/parts/contents/ContentsBox"
-import { Button } from "@/components/parts/Button"
 import { Texts } from "@/components/parts/Texts"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
 
@@ -92,19 +91,8 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
         },
         period,
         metaInfo,
-        main: description ? (
-          <div css={styles.main.container}>
-            {isOpen && (
-              <div css={styles.main.main}>
-                <MarkdownDisplay>{description}</MarkdownDisplay>
-              </div>
-            )}
-            <div css={styles.main.buttonArea}>
-              <Button type="block" onClick={() => setIsOpen((prev) => !prev)}>
-                {isOpen ? "Hide" : "More"}
-              </Button>
-            </div>
-          </div>
+        moreArea: description ? (
+          <MarkdownDisplay>{description}</MarkdownDisplay>
         ) : null,
       }}
     />

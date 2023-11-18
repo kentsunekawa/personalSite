@@ -10,6 +10,7 @@ export const createStyles = () => {
       width: 100%;
       border-radius: 4px;
       overflow: hidden;
+      background: #fff;
     `,
     image: css`
       width: 100%;

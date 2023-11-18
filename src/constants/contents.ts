@@ -1,4 +1,4 @@
-import { Lang, LangLevel } from "@/graphql/generated/types"
+import { Lang, LangLevel, EmploymentType } from "@/graphql/generated/types"
 
 export const CONTENTS = {
   [Lang.Ja]: {
@@ -11,6 +11,9 @@ export const CONTENTS = {
       [LangLevel.Business]: "ビジネスレベル",
       [LangLevel.Daily]: "日常会話",
     },
+    employmentType: {
+      [EmploymentType.Fulltime]: "正社員",
+    },
   },
   [Lang.En]: {
     language: {
@@ -21,6 +24,9 @@ export const CONTENTS = {
       [LangLevel.Native]: "Native",
       [LangLevel.Business]: "Business",
       [LangLevel.Daily]: "Daily conversation",
+    },
+    employmentType: {
+      [EmploymentType.Fulltime]: "Fulltime",
     },
   },
 } as const

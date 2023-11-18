@@ -5,9 +5,11 @@ import description from "./description.md"
 export const ja: OmitIdSlug<WorkHistory> = {
   name: "ALTURA X 株式会社",
   period: {
-    start: "2023-01-01",
+    start: "2021-06-01",
+    end: "2023-09-30",
   },
   employmentType: EmploymentType.Fulltime,
-  position: "フロントエンドエンジニア",
-  description,
+  position:
+    "フロントエンドエンジニア / モバイルアプリエンジニア / フロントエンドチームリーダー",
+  // description,
 }

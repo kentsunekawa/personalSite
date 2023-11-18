@@ -28,7 +28,7 @@ const Box: React.FC<BoxProps> = ({ name, slug }) => {
         <TechnologyIcon slug={slug} />
       </div>
       <div css={styles.box.nameWrapper}>
-        <Texts.Text insertCss={styles.box.name} title={name}>
+        <Texts.Text size="s" insertCss={styles.box.name} title={name}>
           {name}
         </Texts.Text>
       </div>
