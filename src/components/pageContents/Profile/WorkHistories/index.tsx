@@ -30,7 +30,20 @@ export type Props = {
 export const WorkHistories: React.FC<Props> = ({ lang, workHistories }) => {
   const { styles } = useStyle(createStyles)
 
-  const contents = CONTENTS[lang]
+  const contents = {
+    [Lang.Ja]: {
+      labels: {
+        employmentType: "雇用形態",
+        position: "ポジジョン",
+      },
+    },
+    [Lang.En]: {
+      labels: {
+        employmentType: "Enployment type",
+        position: "Responsibility",
+      },
+    },
+  }
 
   return (
     <div css={styles.container}>
@@ -63,10 +76,10 @@ export const WorkHistories: React.FC<Props> = ({ lang, workHistories }) => {
                     ...(employmentType
                       ? [
                           {
-                            label: "Employment",
+                            label: contents[lang].labels.employmentType,
                             data: (
                               <Texts.Text>
-                                {contents.employmentType[employmentType]}
+                                {CONTENTS[lang].employmentType[employmentType]}
                               </Texts.Text>
                             ),
                           },
@@ -75,7 +88,7 @@ export const WorkHistories: React.FC<Props> = ({ lang, workHistories }) => {
                     ...(position
                       ? [
                           {
-                            label: "Responsibility",
+                            label: contents[lang].labels.position,
                             data: <Texts.Text>{position}</Texts.Text>,
                           },
                         ]

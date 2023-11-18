@@ -6,9 +6,9 @@ import { slugs } from "../slugs"
 import { en } from "./en"
 import { ja } from "./ja"
 
-const commonData = createPostCommonData(slugs.linkOfMind)
+const commonData = createPostCommonData(slugs.nosh)
 
-export const linkOfMind: Data<WorkHistory> = {
+export const nosh: Data<WorkHistory> = {
   [Lang.Ja]: {
     ...commonData.JA,
     ...ja,

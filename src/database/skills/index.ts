@@ -216,5 +216,7 @@ export const skills: Skill[] = [
 
 export const getSkills = (targetSlugs?: SlugName[]) =>
   targetSlugs
-    ? skills.filter(({ slug }) => targetSlugs.includes(slug as SlugName))
+    ? targetSlugs
+        .map((targetSlug) => skills.find(({ slug }) => slug === targetSlug))
+        .filter((item): item is NonNullable<typeof item> => item != null)
     : skills

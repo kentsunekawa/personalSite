@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Lang } from "@/graphql/generated/types"
 import { useStyle } from "@/hooks"
 import { formatDateString } from "@/utils"
+import { CONTENTS } from "@/constants"
 import { HeadingSize } from "@/styles/commonStyles/textStyles"
 import {
   DefinitionTable,
@@ -33,6 +34,19 @@ export type Props = {
   }
 }
 
+const textContents = {
+  [Lang.Ja]: {
+    texts: {
+      now: "現在",
+    },
+  },
+  [Lang.En]: {
+    texts: {
+      now: "Now",
+    },
+  },
+}
+
 export const ContentsBox: React.FC<Props> = ({ lang, contents }) => {
   const { styles } = useStyle(createStyles)
 
@@ -45,8 +59,10 @@ export const ContentsBox: React.FC<Props> = ({ lang, contents }) => {
       <div css={styles.header}>
         {period && (
           <div css={styles.titleArea.container}>
-            <Texts.Caption>{`${formatDateString(period.start, lang)}${
-              period.end ? ` - ${formatDateString(period.end, lang)}` : ""
+            <Texts.Caption>{`${formatDateString(period.start, lang)} - ${
+              period.end
+                ? `${formatDateString(period.end, lang)}`
+                : textContents[lang].texts.now
             }`}</Texts.Caption>
           </div>
         )}

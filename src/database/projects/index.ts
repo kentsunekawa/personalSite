@@ -7,5 +7,5 @@ import { hcu } from "./hcu"
 
 export const projects: Data<Project[]> = {
   [Lang.Ja]: [phr.JA, hcu.JA],
-  [Lang.En]: [phr.EN, hcu.EN],
+  [Lang.En]: [],
 }

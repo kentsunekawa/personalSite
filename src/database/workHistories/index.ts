@@ -2,13 +2,16 @@ import { Data, TypeofValue } from "@/types"
 import { Lang, WorkHistory } from "@/graphql/generated/types"
 
 import { slugs } from "./slugs"
+import { linkOfMind } from "./linkOfMind"
+import { ine } from "./ine"
+import { nosh } from "./nosh"
 import { alturaX } from "./alturaX"
 
 export { slugs } from "./slugs"
 
 export const workHistories: Data<WorkHistory[]> = {
-  [Lang.Ja]: [alturaX.JA],
-  [Lang.En]: [alturaX.EN],
+  [Lang.Ja]: [alturaX.JA, nosh.JA, ine.JA, linkOfMind.JA],
+  [Lang.En]: [],
 }
 
 export const getWorkHistory = (

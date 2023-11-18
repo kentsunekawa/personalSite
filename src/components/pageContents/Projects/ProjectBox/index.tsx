@@ -3,6 +3,7 @@
 // import from this project
 import { useMemo, useState } from "react"
 import { useStyle } from "@/hooks"
+import { CONTENTS } from "@/constants"
 import { TechnologyIcon } from "@/components/parts/TechnologyIcon"
 import { Lang, Project } from "@/graphql/generated/types"
 import { ContentsBox } from "@/components/parts/contents/ContentsBox"
@@ -14,6 +15,23 @@ import { createStyles } from "./styles"
 export type Props = {
   lang: Lang
   project: Project
+}
+
+const contents = {
+  [Lang.Ja]: {
+    responsibility: "責務",
+    position: "担当ポジション",
+    company: "組織",
+    team: "チーム構成",
+    technologies: "主な使用技術",
+  },
+  [Lang.En]: {
+    responsibility: "Responsibility",
+    position: "Position",
+    company: "Company",
+    team: "Team",
+    technologies: "Technologies",
+  },
 }
 
 export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
@@ -39,46 +57,45 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
       [
         belonging
           ? {
-              label: "Company",
+              label: contents[lang].company,
               data: <Texts.Text>{belonging.name}</Texts.Text>,
             }
           : null,
         team
           ? {
-              label: "Team",
+              label: contents[lang].team,
               data: <Texts.Text>{team}</Texts.Text>,
             }
           : null,
         position
           ? {
-              label: "Position",
+              label: contents[lang].position,
               data: <Texts.Text>{position}</Texts.Text>,
             }
           : null,
         responsibility
           ? {
-              label: "Responsibility",
+              label: contents[lang].responsibility,
               data: <Texts.Text>{responsibility}</Texts.Text>,
             }
           : null,
         technologies.length > 0
           ? {
-              label: "Technologies",
+              label: contents[lang].technologies,
               data: (
                 <div css={styles.skillIconList.container}>
-                  <ul css={styles.skillIconList.list}>
-                    {technologies.map(({ slug }) => (
-                      <li key={slug} css={styles.skillIconList.item}>
-                        <TechnologyIcon slug={slug} />
-                      </li>
-                    ))}
-                  </ul>
+                  <Texts.Text>
+                    {technologies.map(
+                      ({ name }, i) =>
+                        `${name}${i < technologies.length - 1 ? " / " : ""}`
+                    )}
+                  </Texts.Text>
                 </div>
               ),
             }
           : null,
       ].filter((item): item is NonNullable<typeof item> => item !== null),
-    [belonging, position, responsibility, styles, team, technologies]
+    [belonging, lang, position, responsibility, styles, team, technologies]
   )
 
   return (
