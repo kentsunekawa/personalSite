@@ -13,6 +13,7 @@ export const createStyles = () => {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
         gap: 32px;
       `,
       main: css`

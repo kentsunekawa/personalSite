@@ -7,5 +7,6 @@ fragment WorkHistory on WorkHistory {
   }
   employmentType
   position
+  summary
   description
 }

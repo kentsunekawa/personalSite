@@ -10,5 +10,7 @@ export const ja: OmitIdSlug<WorkHistory> = {
   },
   employmentType: EmploymentType.Fulltime,
   position: "Web デザイナー / マークアップエンジニア",
+  summary:
+    " 航空券や高速バス乗車券、オプショナルツアーを自社で開発・運営する Web サイトにて代理販売。Web デザイナーとして、デザインからコーディングまで担当。",
   // description,
 }

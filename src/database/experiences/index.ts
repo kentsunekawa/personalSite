@@ -2,10 +2,15 @@ import { Data } from "@/types"
 import { Lang, Post } from "@/graphql/generated/types"
 
 export { slugs } from "./slugs"
-import { slugName } from "./slugName"
-import { hogehoge } from "./hogehoge"
+import { stepupToEngineer } from "./stepupToEngineer"
+import { toBecomeFreelancer } from "./toBecomeFreelancer"
+import { toBeGlobalPerson } from "./toBeGlobalPerson"
 
-const posts = [slugName, hogehoge]
+const posts: { [k in Lang]?: Post }[] = [
+  stepupToEngineer,
+  toBecomeFreelancer,
+  toBeGlobalPerson,
+]
 
 const getPosts = (lang: Lang) =>
   posts

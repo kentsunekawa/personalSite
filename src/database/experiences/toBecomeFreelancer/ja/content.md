@@ -2,7 +2,7 @@
 
 ### foofoofoo
 
-lang = en
+lang = ja
 
 - apple
 - orange

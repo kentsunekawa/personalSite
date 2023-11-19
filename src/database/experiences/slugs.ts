@@ -7,8 +7,9 @@ export type PostRowData = Omit<OmitIdSlug<Post>, "lang"> & {
 }
 
 export const slugs = {
-  slugName: "slugName",
-  hogehoge: "hogehoge",
+  toBecomeFreelancer: "toBecomeFreelancer",
+  stepupToEngineer: "stepupToEngineer",
+  toBeGlobalPerson: "toBeGlobalPerson",
 } as const
 
 export const createPost = (

@@ -9,7 +9,7 @@ export const createStyles = () => {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
-      gap: 24px 0;
+      gap: 40px 0;
     `,
     item: css`
       width: 100%;

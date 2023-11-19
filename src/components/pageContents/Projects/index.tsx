@@ -2,10 +2,11 @@
 // import from this project
 import { PageState } from "@/types"
 import { useStyle } from "@/hooks"
-import { Project } from "@/graphql/generated/types"
+import { Lang, Project } from "@/graphql/generated/types"
 import { PageBase } from "@/components/globals/PageBase"
 import { PageContent } from "@/components/parts/PageContent"
 import { BoxList } from "@/components/parts/contents/BoxList"
+import { Texts } from "@/components/parts/Texts"
 import { ProjectBox } from "./ProjectBox"
 import { createStyles } from "./styles"
 
@@ -13,7 +14,16 @@ type Props = PageState & {
   projects: Project[]
 }
 
-export const Projects: React.FC<Props> = ({ lang, projects, ...pageState }) => {
+const contents = {
+  [Lang.Ja]: {
+    summary: "現在までに参画してきた主なプロジェクトです。",
+  },
+  [Lang.En]: {
+    summary: "Projects I've been involved in until now.",
+  },
+}
+
+export const Projects: React.FC<Props> = ({ lang, projects }) => {
   const { styles } = useStyle(createStyles)
 
   return (
@@ -32,7 +42,11 @@ export const Projects: React.FC<Props> = ({ lang, projects, ...pageState }) => {
           ],
         }}
         title="Projects"
-        summary={<div>説明が入ります</div>}
+        summary={
+          <div>
+            <Texts.Text>{contents[lang].summary}</Texts.Text>
+          </div>
+        }
       >
         <div css={styles.container}>
           <BoxList
@@ -41,7 +55,6 @@ export const Projects: React.FC<Props> = ({ lang, projects, ...pageState }) => {
               node: <ProjectBox lang={lang} project={project} />,
             }))}
           />
-          <ul css={styles.list}></ul>
         </div>
       </PageContent>
     </PageBase>

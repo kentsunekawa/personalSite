@@ -18,5 +18,8 @@ export const createStyles = () => {
     item: css`
       width: 100%;
     `,
+    emptyArea: css`
+      padding: 56px 0;
+    `,
   }
 }

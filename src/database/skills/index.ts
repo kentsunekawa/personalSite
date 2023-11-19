@@ -1,5 +1,6 @@
 import { TypeofValue } from "@/types"
 import { Skill, Proficiency } from "@/graphql/generated/types"
+import { SiLua } from "react-icons/si"
 
 type SlugName = TypeofValue<typeof slugs>
 
@@ -8,6 +9,7 @@ export const slugs = {
   babel: "babel",
   css3: "css3",
   cypress: "cypress",
+  ecbeing: "ecbeing",
   eslint: "eslint",
   expo: "expo",
   figma: "figma",
@@ -33,134 +35,14 @@ export const slugs = {
   typescript: "typescript",
   vite: "vite",
   webpack: "webpack",
+  wordpress: "wordpress",
 } as const
 
-export const skills: Skill[] = [
-  {
-    id: "react",
-    slug: slugs.react,
-    name: "React",
-    proficiency: Proficiency.Experienced,
-  },
-  {
-    id: "nextjs",
-    slug: slugs.nextjs,
-    name: "Next.js",
-    proficiency: Proficiency.Experienced,
-  },
-  {
-    id: "typescript",
-    slug: slugs.typescript,
-    name: "TypeScript",
-    proficiency: Proficiency.Experienced,
-  },
-  {
-    id: "javascript",
-    slug: slugs.javascript,
-    name: "JavaScript",
-    proficiency: Proficiency.Experienced,
-  },
-  {
-    id: "reactNative",
-    slug: slugs.reactNative,
-    name: "React Native",
-    proficiency: Proficiency.Experienced,
-  },
-  {
-    id: "expo",
-    slug: slugs.expo,
-    name: "Expo",
-    proficiency: Proficiency.Experienced,
-  },
-  {
-    id: "graphql",
-    slug: slugs.graphql,
-    name: "GraphQL",
-    proficiency: Proficiency.Experienced,
-  },
-  {
-    id: "jest",
-    slug: slugs.jest,
-    name: "Jest",
-    proficiency: Proficiency.Experienced,
-  },
-  {
-    id: "testingLibrary",
-    slug: slugs.testingLibrary,
-    name: "Testing Library",
-    proficiency: Proficiency.Experienced,
-  },
-  {
-    id: "Cypress",
-    slug: slugs.cypress,
-    name: "Cypress",
-    proficiency: Proficiency.Experienced,
-  },
-
-  {
-    id: "html5",
-    slug: slugs.html5,
-    name: "HTML5",
-    proficiency: Proficiency.HaveUsed,
-  },
-  {
-    id: "css3",
-    slug: slugs.css3,
-    name: "CSS3",
-    proficiency: Proficiency.HaveUsed,
-  },
-  {
-    id: "sass",
-    slug: slugs.sass,
-    name: "Sass",
-    proficiency: Proficiency.HaveUsed,
-  },
-  {
-    id: "jquery",
-    slug: slugs.jquery,
-    name: "jQuery",
-    proficiency: Proficiency.HaveUsed,
-  },
+const allSkills = [
   {
     id: "apollo",
     slug: slugs.apollo,
     name: "Apollo",
-    proficiency: Proficiency.HaveUsed,
-  },
-  {
-    id: "redux",
-    slug: slugs.redux,
-    name: "Redux",
-    proficiency: Proficiency.HaveUsed,
-  },
-  {
-    id: "materialUi",
-    slug: slugs.materialUi,
-    name: "Material UI",
-    proficiency: Proficiency.HaveUsed,
-  },
-  {
-    id: "styledComponents",
-    slug: slugs.styledComponents,
-    name: "Styled Components",
-    proficiency: Proficiency.HaveUsed,
-  },
-  {
-    id: "storybook",
-    slug: slugs.storybook,
-    name: "Redux",
-    proficiency: Proficiency.HaveUsed,
-  },
-  {
-    id: "eslint",
-    slug: slugs.eslint,
-    name: "Eslint",
-    proficiency: Proficiency.HaveUsed,
-  },
-  {
-    id: "prettier",
-    slug: slugs.prettier,
-    name: "Prettier",
     proficiency: Proficiency.HaveUsed,
   },
   {
@@ -170,21 +52,39 @@ export const skills: Skill[] = [
     proficiency: Proficiency.HaveUsed,
   },
   {
-    id: "webpack",
-    slug: slugs.webpack,
-    name: "Webpack",
+    id: "css3",
+    slug: slugs.css3,
+    name: "CSS3",
     proficiency: Proficiency.HaveUsed,
   },
   {
-    id: "vite",
-    slug: slugs.vite,
-    name: "Vite",
+    id: "Cypress",
+    slug: slugs.cypress,
+    name: "Cypress",
+    proficiency: Proficiency.Experienced,
+  },
+  {
+    id: "ecbeing",
+    slug: slugs.ecbeing,
+    name: "ecbeing",
     proficiency: Proficiency.HaveUsed,
   },
   {
-    id: "gulp",
-    slug: slugs.gulp,
-    name: "Gulp",
+    id: "eslint",
+    slug: slugs.eslint,
+    name: "Eslint",
+    proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "expo",
+    slug: slugs.expo,
+    name: "Expo",
+    proficiency: Proficiency.Experienced,
+  },
+  {
+    id: "figma",
+    slug: slugs.figma,
+    name: "Figma",
     proficiency: Proficiency.HaveUsed,
   },
   {
@@ -193,12 +93,60 @@ export const skills: Skill[] = [
     name: "Git",
     proficiency: Proficiency.HaveUsed,
   },
-
+  {
+    id: "graphql",
+    slug: slugs.graphql,
+    name: "GraphQL",
+    proficiency: Proficiency.Experienced,
+  },
+  {
+    id: "gulp",
+    slug: slugs.gulp,
+    name: "Gulp",
+    proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "html5",
+    slug: slugs.html5,
+    name: "HTML5",
+    proficiency: Proficiency.HaveUsed,
+  },
   {
     id: "illustrator",
     slug: slugs.illustrator,
     name: "Illustrator",
     proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "javascript",
+    slug: slugs.javascript,
+    name: "JavaScript",
+    proficiency: Proficiency.Experienced,
+  },
+  {
+    id: "jest",
+    slug: slugs.jest,
+    name: "Jest",
+    proficiency: Proficiency.Experienced,
+  },
+  {
+    id: "jquery",
+    slug: slugs.jquery,
+    name: "jQuery",
+    proficiency: Proficiency.HaveUsed,
+  },
+
+  {
+    id: "materialUi",
+    slug: slugs.materialUi,
+    name: "Material UI",
+    proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "nextjs",
+    slug: slugs.nextjs,
+    name: "Next.js",
+    proficiency: Proficiency.Experienced,
   },
   {
     id: "photoshop",
@@ -207,9 +155,76 @@ export const skills: Skill[] = [
     proficiency: Proficiency.HaveUsed,
   },
   {
-    id: "figma",
-    slug: slugs.figma,
-    name: "Figma",
+    id: "prettier",
+    slug: slugs.prettier,
+    name: "Prettier",
+    proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "react",
+    slug: slugs.react,
+    name: "React",
+    proficiency: Proficiency.Experienced,
+  },
+  {
+    id: "reactNative",
+    slug: slugs.reactNative,
+    name: "React Native",
+    proficiency: Proficiency.Experienced,
+  },
+  {
+    id: "redux",
+    slug: slugs.redux,
+    name: "Redux",
+    proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "sass",
+    slug: slugs.sass,
+    name: "Sass",
+    proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "storybook",
+    slug: slugs.storybook,
+    name: "Redux",
+    proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "styledComponents",
+    slug: slugs.styledComponents,
+    name: "Styled Components",
+    proficiency: Proficiency.HaveUsed,
+  },
+
+  {
+    id: "testingLibrary",
+    slug: slugs.testingLibrary,
+    name: "Testing Library",
+    proficiency: Proficiency.Experienced,
+  },
+  {
+    id: "typescript",
+    slug: slugs.typescript,
+    name: "TypeScript",
+    proficiency: Proficiency.Experienced,
+  },
+  {
+    id: "vite",
+    slug: slugs.vite,
+    name: "Vite",
+    proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "webpack",
+    slug: slugs.webpack,
+    name: "Webpack",
+    proficiency: Proficiency.HaveUsed,
+  },
+  {
+    id: "wordpress",
+    slug: slugs.wordpress,
+    name: "WordPress",
     proficiency: Proficiency.HaveUsed,
   },
 ]
@@ -217,6 +232,38 @@ export const skills: Skill[] = [
 export const getSkills = (targetSlugs?: SlugName[]) =>
   targetSlugs
     ? targetSlugs
-        .map((targetSlug) => skills.find(({ slug }) => slug === targetSlug))
+        .map((targetSlug) => allSkills.find(({ slug }) => slug === targetSlug))
         .filter((item): item is NonNullable<typeof item> => item != null)
     : skills
+
+export const skills: Skill[] = getSkills([
+  slugs.react,
+  slugs.nextjs,
+  slugs.typescript,
+  slugs.javascript,
+  slugs.reactNative,
+  slugs.expo,
+  slugs.graphql,
+  slugs.jest,
+  slugs.testingLibrary,
+  slugs.cypress,
+  slugs.html5,
+  slugs.css3,
+  slugs.sass,
+  slugs.jquery,
+  slugs.apollo,
+  slugs.redux,
+  slugs.materialUi,
+  slugs.styledComponents,
+  slugs.storybook,
+  slugs.eslint,
+  slugs.prettier,
+  slugs.babel,
+  slugs.webpack,
+  slugs.vite,
+  slugs.gulp,
+  slugs.git,
+  slugs.illustrator,
+  slugs.photoshop,
+  slugs.figma,
+])

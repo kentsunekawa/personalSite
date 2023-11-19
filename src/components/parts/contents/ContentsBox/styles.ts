@@ -35,6 +35,9 @@ export const createStyles = () => {
         width: 100%;
       `,
     },
+    summaryArea: css`
+      width: 100%;
+    `,
     definitionTableStyles: {},
     main: css`
       width: 100%;

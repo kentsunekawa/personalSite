@@ -4,9 +4,8 @@ import { useState } from "react"
 
 // import from this project
 import { Lang } from "@/graphql/generated/types"
-import { useStyle } from "@/hooks"
+import { useStyle, useTextStyles } from "@/hooks"
 import { formatDateString } from "@/utils"
-import { CONTENTS } from "@/constants"
 import { HeadingSize } from "@/styles/commonStyles/textStyles"
 import {
   DefinitionTable,
@@ -24,6 +23,7 @@ export type Props = {
       node: React.ReactNode
     }
     subTitle?: string
+    summary?: React.ReactNode
     period?: {
       start: string
       end?: string | null
@@ -49,10 +49,12 @@ const textContents = {
 
 export const ContentsBox: React.FC<Props> = ({ lang, contents }) => {
   const { styles } = useStyle(createStyles)
+  const { styles: textStyle } = useTextStyles()
 
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
-  const { title, subTitle, period, metaInfo, main, moreArea } = contents
+  const { title, subTitle, summary, period, metaInfo, main, moreArea } =
+    contents
 
   return (
     <article css={styles.container}>
@@ -75,6 +77,9 @@ export const ContentsBox: React.FC<Props> = ({ lang, contents }) => {
           </div>
         )}
       </div>
+      {summary && (
+        <div css={[styles.summaryArea, textStyle.text.m]}>{summary}</div>
+      )}
       {metaInfo && (
         <div>
           <DefinitionTable data={metaInfo} />

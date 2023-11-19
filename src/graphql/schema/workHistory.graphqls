@@ -9,5 +9,6 @@ type WorkHistory {
   period: Period!
   employmentType: EmploymentType
   position: String
+  summary: String
   description: String
 }

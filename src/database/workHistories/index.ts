@@ -6,11 +6,12 @@ import { linkOfMind } from "./linkOfMind"
 import { ine } from "./ine"
 import { nosh } from "./nosh"
 import { alturaX } from "./alturaX"
+import { freelance } from "./freelance"
 
 export { slugs } from "./slugs"
 
 export const workHistories: Data<WorkHistory[]> = {
-  [Lang.Ja]: [alturaX.JA, nosh.JA, ine.JA, linkOfMind.JA],
+  [Lang.Ja]: [freelance.JA, alturaX.JA, nosh.JA, ine.JA, linkOfMind.JA],
   [Lang.En]: [],
 }
 

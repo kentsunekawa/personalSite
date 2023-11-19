@@ -14,5 +14,6 @@ fragment Project on Project {
   technologies {
     ...Skill
   }
+  summary
   description
 }

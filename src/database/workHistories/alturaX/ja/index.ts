@@ -11,5 +11,7 @@ export const ja: OmitIdSlug<WorkHistory> = {
   employmentType: EmploymentType.Fulltime,
   position:
     "フロントエンドエンジニア / モバイルアプリエンジニア / フロントエンドチームリーダー",
+  summary:
+    "健康診断にまつわる BtoC 向けアプリと、BtoB 向け業務システムを開発する企業。社内一人目のエンジニアとして入社。",
   // description,
 }

@@ -29,6 +29,7 @@ export const IMAGE_PATHS = {
     typescript: "/img/techImages/typescript.png",
     vite: "/img/techImages/vite.png",
     webpack: "/img/techImages/webpack.png",
+    wordpress: "/img/techImages/wordpress.png",
     noImage: "/img/techImages/noImage.png",
   },
 } as const

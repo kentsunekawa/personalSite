@@ -10,5 +10,7 @@ export const ja: OmitIdSlug<WorkHistory> = {
   },
   employmentType: EmploymentType.Fulltime,
   position: "マークアップエンジニア / フロントエンドエンジニア",
+  summary:
+    "冷凍食品のサブスクリプション事業を行う企業。一人目のフロントエンドエンジニアとして入社。",
   // description,
 }

@@ -9,6 +9,7 @@ import { Lang, Project } from "@/graphql/generated/types"
 import { ContentsBox } from "@/components/parts/contents/ContentsBox"
 import { Texts } from "@/components/parts/Texts"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
+import { ReplaceLineFeedCodeToBr } from "@/components/parts/ReplaceLineFeedCodeToBr"
 
 import { createStyles } from "./styles"
 
@@ -19,8 +20,8 @@ export type Props = {
 
 const contents = {
   [Lang.Ja]: {
-    responsibility: "責務",
-    position: "担当ポジション",
+    responsibility: "業務",
+    position: "ポジション",
     company: "組織",
     team: "チーム構成",
     technologies: "主な使用技術",
@@ -49,6 +50,7 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
     team,
     technologies,
     belonging,
+    summary,
     description,
   } = project
 
@@ -58,25 +60,25 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
         belonging
           ? {
               label: contents[lang].company,
-              data: <Texts.Text>{belonging.name}</Texts.Text>,
+              data: <Texts.Text size="s">{belonging.name}</Texts.Text>,
             }
           : null,
         team
           ? {
               label: contents[lang].team,
-              data: <Texts.Text>{team}</Texts.Text>,
+              data: <Texts.Text size="s">{team}</Texts.Text>,
             }
           : null,
         position
           ? {
               label: contents[lang].position,
-              data: <Texts.Text>{position}</Texts.Text>,
+              data: <Texts.Text size="s">{position}</Texts.Text>,
             }
           : null,
         responsibility
           ? {
               label: contents[lang].responsibility,
-              data: <Texts.Text>{responsibility}</Texts.Text>,
+              data: <Texts.Text size="s">{responsibility}</Texts.Text>,
             }
           : null,
         technologies.length > 0
@@ -84,7 +86,7 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
               label: contents[lang].technologies,
               data: (
                 <div css={styles.skillIconList.container}>
-                  <Texts.Text>
+                  <Texts.Text size="s">
                     {technologies.map(
                       ({ name }, i) =>
                         `${name}${i < technologies.length - 1 ? " / " : ""}`
@@ -108,6 +110,11 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
         },
         period,
         metaInfo,
+        summary: summary && (
+          <Texts.Text>
+            <ReplaceLineFeedCodeToBr>{summary}</ReplaceLineFeedCodeToBr>
+          </Texts.Text>
+        ),
         moreArea: description ? (
           <MarkdownDisplay>{description}</MarkdownDisplay>
         ) : null,

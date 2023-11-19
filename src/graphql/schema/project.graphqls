@@ -12,5 +12,6 @@ type Project {
   responsibility: String
   team: String
   technologies: [Skill!]!
+  summary: String
   description: String
 }
