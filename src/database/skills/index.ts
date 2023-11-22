@@ -55,13 +55,13 @@ const allSkills = [
     id: "css3",
     slug: slugs.css3,
     name: "CSS3",
-    proficiency: Proficiency.HaveUsed,
+    proficiency: Proficiency.Experienced,
   },
   {
     id: "Cypress",
     slug: slugs.cypress,
     name: "Cypress",
-    proficiency: Proficiency.Experienced,
+    proficiency: Proficiency.HaveUsed,
   },
   {
     id: "ecbeing",
@@ -85,7 +85,7 @@ const allSkills = [
     id: "figma",
     slug: slugs.figma,
     name: "Figma",
-    proficiency: Proficiency.HaveUsed,
+    proficiency: Proficiency.Experienced,
   },
   {
     id: "git",
@@ -97,7 +97,7 @@ const allSkills = [
     id: "graphql",
     slug: slugs.graphql,
     name: "GraphQL",
-    proficiency: Proficiency.Experienced,
+    proficiency: Proficiency.HaveUsed,
   },
   {
     id: "gulp",
@@ -109,7 +109,7 @@ const allSkills = [
     id: "html5",
     slug: slugs.html5,
     name: "HTML5",
-    proficiency: Proficiency.HaveUsed,
+    proficiency: Proficiency.Experienced,
   },
   {
     id: "illustrator",
@@ -127,7 +127,7 @@ const allSkills = [
     id: "jest",
     slug: slugs.jest,
     name: "Jest",
-    proficiency: Proficiency.Experienced,
+    proficiency: Proficiency.HaveUsed,
   },
   {
     id: "jquery",
@@ -201,7 +201,7 @@ const allSkills = [
     id: "testingLibrary",
     slug: slugs.testingLibrary,
     name: "Testing Library",
-    proficiency: Proficiency.Experienced,
+    proficiency: Proficiency.HaveUsed,
   },
   {
     id: "typescript",
@@ -238,17 +238,18 @@ export const getSkills = (targetSlugs?: SlugName[]) =>
 
 export const skills: Skill[] = getSkills([
   slugs.react,
-  slugs.nextjs,
   slugs.typescript,
   slugs.javascript,
+  slugs.nextjs,
   slugs.reactNative,
   slugs.expo,
+  slugs.html5,
+  slugs.css3,
+  slugs.figma,
   slugs.graphql,
   slugs.jest,
   slugs.testingLibrary,
   slugs.cypress,
-  slugs.html5,
-  slugs.css3,
   slugs.sass,
   slugs.jquery,
   slugs.apollo,
@@ -265,5 +266,4 @@ export const skills: Skill[] = getSkills([
   slugs.git,
   slugs.illustrator,
   slugs.photoshop,
-  slugs.figma,
 ])

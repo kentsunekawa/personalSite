@@ -1,6 +1,6 @@
 import { OmitIdSlug } from "@/types"
 import { WorkHistory, EmploymentType } from "@/graphql/generated/types"
-import description from "./description.md"
+// import description from "./description.md"
 
 export const en: OmitIdSlug<WorkHistory> = {
   name: "ALTURA X.Inc",
@@ -9,5 +9,5 @@ export const en: OmitIdSlug<WorkHistory> = {
   },
   employmentType: EmploymentType.Fulltime,
   position: "Front-End Developer",
-  description,
+  // description,
 }

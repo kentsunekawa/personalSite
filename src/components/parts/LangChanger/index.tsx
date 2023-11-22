@@ -38,13 +38,13 @@ export const LangChanger: React.FC<Props> = ({
         ? [
             pageState.lang !== "EN" && langInfo.EN
               ? {
-                  label: "English",
+                  label: "EN",
                   href: createHref("EN", pageState),
                 }
               : null,
             pageState.lang !== "JA" && langInfo.JA
               ? {
-                  label: "Japanese",
+                  label: "JA",
                   href: createHref("JA", pageState),
                 }
               : null,
