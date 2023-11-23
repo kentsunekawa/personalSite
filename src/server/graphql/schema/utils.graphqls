@@ -1,9 +1,0 @@
-type Period {
-  start: String!
-  end: String
-}
-
-enum Lang {
-  JA
-  EN
-}

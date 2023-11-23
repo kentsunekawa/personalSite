@@ -1,6 +1,0 @@
-type EducationalBackground {
-  id: ID!
-  name: String!
-  department: String!
-  period: Period!
-}
