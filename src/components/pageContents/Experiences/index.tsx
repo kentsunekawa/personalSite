@@ -19,7 +19,7 @@ type Props = PageState & {
 const contents = {
   [Lang.Ja]: {
     summary:
-      "エンジニアとしてのキャリアの中で、経験したことを記事として残していきます。",
+      "エンジニアとしてのキャリアの中で、経験したこと考えたことを記事として残していきます。",
     emptyMessage: "まだ記事はありません。",
   },
   [Lang.En]: {
