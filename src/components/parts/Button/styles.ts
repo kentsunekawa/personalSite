@@ -9,7 +9,7 @@ import {
   createStyles as createTextStyle,
   Size,
 } from "@/styles/commonStyles/textStyles"
-import { hoveredLink, fonts } from "@/styles/mixin"
+import { hoveredLink } from "@/styles/mixin"
 
 export type StyleProps = {
   type?: "filled" | "border" | "text" | "block"

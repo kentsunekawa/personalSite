@@ -55,7 +55,7 @@ export const limitTextRow = (limit = 1) => css`
   -webkit-box-orient: vertical;
 `
 
-const weights = {
+export const fontWeights = {
   l: css`
     font-weight: 100;
   `,
@@ -69,6 +69,3 @@ const weights = {
     font-weight: 700;
   `,
 }
-
-export const fontWeights = (weight?: "l" | "m" | "b" | "xb") =>
-  weight ? weights[weight] : weights

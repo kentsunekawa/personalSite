@@ -3,8 +3,8 @@ import { ApolloServer } from "@apollo/server"
 import { NextResponse } from "next/server"
 import { addResolversToSchema } from "@graphql-tools/schema"
 
-import { schema } from "@/graphql/schema"
-import { resolvers } from "@/graphql/resolvers"
+import { schema } from "@/server/graphql/schema"
+import { resolvers } from "@/server/graphql/resolvers"
 
 const schemaWithResolvers = addResolversToSchema({ schema, resolvers })
 

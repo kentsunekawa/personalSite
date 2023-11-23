@@ -26,7 +26,8 @@ export const useThemeName = () => {
 
   const theme = useMemo(() => {
     if (themeName === "system") {
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
+      return typeof window !== "undefined" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light"
     }

@@ -23,7 +23,7 @@ export const createStyles = () => {
         text-align: left;
       `,
     },
-    weight: fontWeights(),
+    weight: fontWeights,
     heading: {
       h1: css`
         font-size: 28px;
