@@ -1,26 +1,31 @@
-import { client } from "@/graphql/client"
+// import { client } from "@/graphql/client"
 import {
-  GetPostsQuery,
-  GetPostsDocument,
-  GetPostsQueryVariables,
+  // GetPostsQuery,
+  // GetPostsDocument,
+  // GetPostsQueryVariables,
   Lang,
   SearchPostsInput,
   PostStatus,
 } from "@/graphql/generated/types"
+import { createPosts } from "@/server/graphql/resolvers/posts"
 
 export const getPosts = (
   labels?: SearchPostsInput["labels"],
   lang: Lang = Lang.Ja
 ) => {
-  return client.query<GetPostsQuery, GetPostsQueryVariables>({
-    query: GetPostsDocument,
-    variables: {
-      lang,
-      searchPostsInput: {
-        status:
-          process.env.NODE_ENV === "development" ? [] : [PostStatus.Published],
-        labels,
-      },
+  const variables = {
+    lang,
+    searchPostsInput: {
+      status:
+        process.env.NODE_ENV === "development" ? [] : [PostStatus.Published],
+      labels,
     },
-  })
+  }
+
+  // return client.query<GetPostsQuery, GetPostsQueryVariables>({
+  //   query: GetPostsDocument,
+  //   variables,
+  // })
+
+  return Promise.resolve({ data: { posts: createPosts(variables) } })
 }

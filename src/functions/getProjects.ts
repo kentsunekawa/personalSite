@@ -1,16 +1,24 @@
-import { client } from "@/graphql/client"
+// import { client } from "@/graphql/client"
 import {
-  GetProjectsQuery,
-  GetProjectsDocument,
-  GetProjectsQueryVariables,
+  // GetProjectsQuery,
+  // GetProjectsDocument,
+  // GetProjectsQueryVariables,
   Lang,
 } from "@/graphql/generated/types"
 
+import { createProjects } from "@/server/graphql/resolvers/projects"
+
 export const getProjects = (lang: Lang = Lang.Ja) => {
-  return client.query<GetProjectsQuery, GetProjectsQueryVariables>({
-    query: GetProjectsDocument,
-    variables: {
-      lang,
-    },
+  const variables = {
+    lang,
+  }
+
+  // return client.query<GetProjectsQuery, GetProjectsQueryVariables>({
+  //   query: GetProjectsDocument,
+  //   variables,
+  // })
+
+  return Promise.resolve({
+    data: { projects: createProjects(variables) },
   })
 }

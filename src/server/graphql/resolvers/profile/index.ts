@@ -8,9 +8,12 @@ import {
   Lang,
 } from "@/graphql/generated/types"
 
+export const createProfile = ({ lang }: GetProfileQueryVariables) =>
+  profileData[lang ?? Lang.Ja]
+
 export const profile: Resolver<
   ResolverTypeWrapper<Profile>,
   {},
   {},
   GetProfileQueryVariables
-> = (_, b) => profileData[b.lang ?? Lang.Ja]
+> = (_, getProfileQueryVariables) => createProfile(getProfileQueryVariables)

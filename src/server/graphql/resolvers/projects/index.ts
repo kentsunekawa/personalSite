@@ -7,9 +7,12 @@ import {
   Lang,
 } from "@/graphql/generated/types"
 
+export const createProjects = ({ lang }: GetProjectsQueryVariables) =>
+  projectsData[lang ?? Lang.Ja]
+
 export const projects: Resolver<
   ResolverTypeWrapper<Project>[],
   {},
   {},
   GetProjectsQueryVariables
-> = (_, b) => projectsData[b.lang ?? Lang.Ja]
+> = (_, getProjectsQueryVariables) => createProjects(getProjectsQueryVariables)

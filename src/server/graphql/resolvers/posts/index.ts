@@ -7,14 +7,12 @@ import {
   Lang,
 } from "@/graphql/generated/types"
 
-export const posts: Resolver<
-  ResolverTypeWrapper<Post>[],
-  {},
-  {},
-  GetPostsQueryVariables
-> = (_, { lang, searchPostsInput }) => {
+export const createPosts = (getPostsQueryVariables: GetPostsQueryVariables) => {
+  const { lang, searchPostsInput } = getPostsQueryVariables
+
   const inputedStatus = searchPostsInput?.status
   const inputedLabels = searchPostsInput?.labels
+
   return experiences[lang ?? Lang.Ja]
     .filter(
       ({ status }) =>
@@ -29,3 +27,10 @@ export const posts: Resolver<
         labels.some((label) => inputedLabels.includes(label))
     )
 }
+
+export const posts: Resolver<
+  ResolverTypeWrapper<Post>[],
+  {},
+  {},
+  GetPostsQueryVariables
+> = (_, getPostsQueryVariables) => createPosts(getPostsQueryVariables)
