@@ -1,0 +1,13 @@
+fragment Post on Post {
+  id
+  title
+  date
+  labels
+  slug
+  status
+  content
+  lang {
+    EN
+    JA
+  }
+}

@@ -1,0 +1,12 @@
+fragment WorkHistory on WorkHistory {
+  id
+  slug
+  name
+  period {
+    ...Period
+  }
+  employmentType
+  position
+  summary
+  description
+}

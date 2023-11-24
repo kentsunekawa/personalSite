@@ -4,7 +4,7 @@
 // import from this project
 import { useStyle } from "@/hooks"
 import { Footer } from "@/components/globals/Footer"
-import { Header } from "@/components/globals/Header"
+import { Header, Props as HeaderProps } from "@/components/globals/Header"
 import { createStyles } from "./styles"
 
 export type Props = {
@@ -16,7 +16,9 @@ export const PageBase: React.FC<Props> = ({ children }) => {
   return (
     <div css={styles.container}>
       <Header />
-      <main>{children}</main>
+      <main css={styles.main}>
+        <div css={styles.mainInner}>{children}</div>
+      </main>
       <Footer />
     </div>
   )

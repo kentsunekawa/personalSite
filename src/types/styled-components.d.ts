@@ -6,18 +6,3 @@ declare module "react" {
     css?: CSSProp
   }
 }
-
-type ColorScale = {
-  right: string
-  main: string
-  dark: string
-}
-
-declare module "styled-components" {
-  export interface DefaultTheme {
-    colors: {
-      primary: ColorScale
-      secondary: string
-    }
-  }
-}

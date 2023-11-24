@@ -1,0 +1,35 @@
+query GetProfile($lang: Lang) {
+  profile(lang: $lang) {
+    id
+    name
+    subName
+    image
+    birthDate
+    place
+    languages {
+      lang
+      level
+    }
+    businessTitle
+    speciality
+    accounts {
+      ...Account
+    }
+    email
+    introduction
+    message
+    skills {
+      ...Skill
+    }
+    educationalBackgrounds {
+      ...EducationalBackground
+    }
+    workHistories {
+      ...WorkHistory
+    }
+    projects {
+      ...Project
+    }
+    message
+  }
+}

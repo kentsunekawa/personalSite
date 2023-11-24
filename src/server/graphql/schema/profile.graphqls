@@ -1,0 +1,34 @@
+type Query {
+  profile(lang: Lang): Profile!
+}
+
+type Profile {
+  id: ID!
+  name: String!
+  subName: String
+  image: String
+  birthDate: String!
+  place: String!
+  languages: [LangSKill!]!
+  businessTitle: String!
+  speciality: String!
+  accounts: [Account!]!
+  email: String!
+  introduction: String
+  message: String
+  skills: [Skill!]!
+  educationalBackgrounds: [EducationalBackground!]!
+  workHistories: [WorkHistory!]!
+  projects: [Project!]!
+}
+
+type LangSKill {
+  lang: Lang!
+  level: LangLevel!
+}
+
+enum LangLevel {
+  DAILY
+  BUSINESS
+  NATIVE
+}

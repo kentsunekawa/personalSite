@@ -1,0 +1,5 @@
+fragment Account on Account {
+  id
+  name
+  url
+}

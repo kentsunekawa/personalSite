@@ -1,0 +1,8 @@
+fragment EducationalBackground on EducationalBackground {
+  id
+  name
+  department
+  period {
+    ...Period
+  }
+}

@@ -1,12 +1,13 @@
+"use client"
 // import from libraries
 import { css } from "styled-components"
 
 // import from this project
-import { StyleBaseData } from "@/hooks"
+import { fontWeights } from "@/styles/mixin"
 
 export type HeadingSize = "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-export type Size = "small" | "medium" | "large"
-export type Weight = 100 | 400 | 500
+export type Size = "s" | "m" | "l"
+export type Weight = "l" | "m" | "b" | "xb"
 export type Align = "center" | "right" | "left"
 
 export const createStyles = () => {
@@ -22,17 +23,7 @@ export const createStyles = () => {
         text-align: left;
       `,
     },
-    weight: {
-      100: css`
-        font-weight: 100;
-      `,
-      400: css`
-        font-weight: 400;
-      `,
-      500: css`
-        font-weight: 500;
-      `,
-    },
+    weight: fontWeights,
     heading: {
       h1: css`
         font-size: 28px;
@@ -66,34 +57,34 @@ export const createStyles = () => {
       `,
     },
     text: {
-      small: css`
+      s: css`
         font-size: 12px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
-      medium: css`
+      m: css`
         font-size: 14px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
-      large: css`
+      l: css`
         font-size: 16px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
     },
-    subTitle: {
-      small: css`
+    subHeading: {
+      s: css`
         font-size: 18px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
-      medium: css`
+      m: css`
         font-size: 20px;
         line-height: 1.6em;
         letter-spacing: 0;
       `,
-      large: css`
+      l: css`
         font-size: 22px;
         line-height: 1.6em;
         letter-spacing: 0;
@@ -104,27 +95,27 @@ export const createStyles = () => {
       line-height: 1.6em;
       letter-spacing: -0.03em;
     `,
-    overline: css`
-      font-size: 10px;
-      line-height: 1.6em;
-      letter-spacing: -0.025em;
-    `,
-    buttonLabel: {
-      small: css`
-        font-size: 14px;
-        line-height: 1.6em;
-        letter-spacing: -0.028em;
-      `,
-      medium: css`
-        font-size: 16px;
-        line-height: 1.6em;
-        letter-spacing: 0;
-      `,
-      large: css`
-        font-size: 18px;
-        line-height: 1.6em;
-        letter-spacing: 0;
-      `,
-    },
+    // overline: css`
+    //   font-size: 10px;
+    //   line-height: 1.6em;
+    //   letter-spacing: -0.025em;
+    // `,
+    // buttonLabel: {
+    //   s: css`
+    //     font-size: 14px;
+    //     line-height: 1.6em;
+    //     letter-spacing: -0.028em;
+    //   `,
+    //   m: css`
+    //     font-size: 16px;
+    //     line-height: 1.6em;
+    //     letter-spacing: 0;
+    //   `,
+    //   l: css`
+    //     font-size: 18px;
+    //     line-height: 1.6em;
+    //     letter-spacing: 0;
+    //   `,
+    // },
   }
 }

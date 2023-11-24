@@ -1,8 +1,29 @@
 import { css } from "styled-components"
 import { destyle } from "@/styles/destyle"
-import { githubMarkdown } from "./githubMarkdown"
+import { themes } from "./theme"
+
+const {
+  light: { colors: lColors },
+  dark: { colors: dColors },
+} = themes
 
 export const globalStyle = css`
+  :root {
+    /* colors */
+    --fg: ${lColors.fg};
+    --bg: ${lColors.bg};
+    --primary-light: ${lColors.primary.right};
+    --primary-main: ${lColors.primary.main};
+    --primary-dark: ${lColors.primary.dark};
+  }
+  [data-theme="dark"] {
+    /* colors */
+    --fg: #fff;
+    --bg: ${dColors.bg};
+    --primary-light: ${dColors.primary.right};
+    --primary-main: ${dColors.primary.main};
+    --primary-dark: ${dColors.primary.dark};
+  }
   ${destyle}
   p,
   h1,
@@ -22,5 +43,10 @@ export const globalStyle = css`
     display: block;
     width: 100%;
   }
-  ${githubMarkdown}
+  html {
+    background: var(--bg);
+  }
+  * {
+    color: var(--fg);
+  }
 `

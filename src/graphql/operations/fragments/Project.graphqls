@@ -1,0 +1,19 @@
+fragment Project on Project {
+  id
+  slug
+  title
+  belonging {
+    ...WorkHistory
+  }
+  period {
+    ...Period
+  }
+  position
+  responsibility
+  team
+  technologies {
+    ...Skill
+  }
+  summary
+  description
+}

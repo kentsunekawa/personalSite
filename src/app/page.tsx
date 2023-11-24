@@ -1,38 +1,36 @@
+// import from libraries
 import { NextPage } from "next"
 
-const Page: NextPage = () => {
+// import from this project
+import { PageState } from "@/types"
+import { Lang, PostLabel } from "@/graphql/generated/types"
+import { PageContainer } from "@/components/globals/PageContainer"
+import { getCommonData } from "@/functions/getCommonData"
+import { getPosts } from "@/functions/getPosts"
+
+import { Home } from "@/components/pageContents/Home"
+
+const pageState: PageState = {
+  lang: Lang.Ja,
+  pageName: "home",
+  translatedLangs: {
+    [Lang.Ja]: true,
+    [Lang.En]: true,
+  },
+}
+
+const Page: NextPage = async () => {
+  const { data: postsData } = await getPosts([PostLabel.HighPriority])
+  const commonData = await getCommonData(Lang.Ja)
+
   return (
-    <main>
-      <h1>Beyond Screens Development</h1>
-      <h2>Improve UX to make everyday better.</h2>
-      <section>
-        <p>Ken Tsunekawa</p>
-        <p>常川 健</p>
-        <p>Front-End Developer</p>
-        <ul>
-          <li>
-            <a href="" target="_blank">
-              Linkedin
-            </a>
-          </li>
-          <li>
-            <a href="" target="_blank">
-              Wantedly
-            </a>
-          </li>
-          <li>
-            <a href="" target="_blank">
-              Facebook
-            </a>
-          </li>
-          <li>
-            <a href="" target="_blank">
-              GitHub
-            </a>
-          </li>
-        </ul>
-      </section>
-    </main>
+    <PageContainer {...pageState} commonData={commonData}>
+      <Home
+        {...pageState}
+        profile={commonData.profile}
+        posts={postsData.posts.map((post) => post)}
+      />
+    </PageContainer>
   )
 }
 

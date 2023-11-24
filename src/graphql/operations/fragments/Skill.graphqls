@@ -1,0 +1,6 @@
+fragment Skill on Skill {
+  id
+  slug
+  name
+  proficiency
+}

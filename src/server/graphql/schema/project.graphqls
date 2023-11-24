@@ -1,0 +1,17 @@
+type Query {
+  projects(lang: Lang): [Project!]!
+}
+
+type Project {
+  id: ID!
+  slug: String!
+  title: String!
+  belonging: WorkHistory
+  period: Period!
+  position: String
+  responsibility: String
+  team: String
+  technologies: [Skill!]!
+  summary: String
+  description: String
+}

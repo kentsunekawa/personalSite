@@ -1,12 +1,10 @@
 "use client"
-import { ThemeProvider as Provider } from "styled-components"
-
-import { theme } from "@/styles/theme"
+import { ThemeProvider as NextThemeProvider } from "next-themes"
 
 type Props = {
   children: React.ReactNode
 }
 
 export const ThemeProvider: React.FC<Props> = ({ children }) => (
-  <Provider theme={theme}>{children}</Provider>
+  <NextThemeProvider>{children}</NextThemeProvider>
 )

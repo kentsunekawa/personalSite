@@ -1,0 +1,11 @@
+enum Proficiency {
+  EXPERIENCED
+  HAVE_USED
+}
+
+type Skill {
+  id: ID!
+  slug: String!
+  name: String!
+  proficiency: Proficiency!
+}

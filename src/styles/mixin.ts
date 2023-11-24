@@ -1,6 +1,8 @@
 // import from libraries
 import { css, RuleSet } from "styled-components"
 
+import { Css } from "@/types"
+
 export const BREAK_POINTS = {
   sp: 375,
   spMax: 767,
@@ -10,9 +12,9 @@ export const BREAK_POINTS = {
   pcMidium: 1440,
 } as const
 
-type Mq = "spMax_lt" | "tbMin_gt" | "tbMax_lt" | "pcMin_gt"
+export type Mq = "spMax_lt" | "tbMin_gt" | "tbMax_lt" | "pcMin_gt"
 
-const queries = {
+export const mediaQueries = {
   // ~ 767
   spMax_lt: `(max-width: ${BREAK_POINTS.spMax}px)`,
   // 768 ~
@@ -23,13 +25,13 @@ const queries = {
   pcMin_gt: `(min-width: ${BREAK_POINTS.pcMin}px)`,
 }
 
-export const mq = (query: Mq, style: RuleSet<object>) => css`
-  @media ${queries[query]} {
+export const mq = (query: Mq, style: Css) => css`
+  @media ${mediaQueries[query]} {
     ${style}
   }
 `
 
-export const hoverAction = () => css`
+export const hoveredLink = () => css`
   transition: opacity 0.06s linear;
   &:hover {
     opacity: 0.7;
@@ -45,8 +47,25 @@ export const adjustWidth = (num: number, gap: number) => {
   `
 }
 
-export const fonts = () => ({
-  en: css`
-    font-family: "Roboto", sans-serif !important;
+// テキストの行の制限
+export const limitTextRow = (limit = 1) => css`
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: ${limit};
+  -webkit-box-orient: vertical;
+`
+
+export const fontWeights = {
+  l: css`
+    font-weight: 100;
   `,
-})
+  m: css`
+    font-weight: 400;
+  `,
+  b: css`
+    font-weight: 500;
+  `,
+  xb: css`
+    font-weight: 700;
+  `,
+}
