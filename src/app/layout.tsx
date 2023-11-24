@@ -24,6 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <meta name="robots" content="noindex" />
       <GlobalStyle />
       <body className={inter.className}>
         <PageStateProvider>

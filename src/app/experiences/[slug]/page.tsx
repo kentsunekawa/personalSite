@@ -1,6 +1,6 @@
 // import from libraries
 import { NextPage } from "next"
-import { redirect } from "next/navigation"
+import { notFound } from "next/navigation"
 
 // import from this project
 import { PageState } from "@/types"
@@ -19,7 +19,7 @@ const Page: NextPage<Props> = async ({ params }) => {
   const commonData = await getCommonData(Lang.En)
   const { data: postData } = await getPost(params.slug)
 
-  if (!postData.post) return redirect("/404")
+  if (!postData.post) return notFound()
 
   const pageState: PageState = {
     lang: Lang.Ja,

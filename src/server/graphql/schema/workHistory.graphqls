@@ -1,0 +1,14 @@
+enum EmploymentType {
+  FULLTIME
+}
+
+type WorkHistory {
+  id: ID!
+  slug: String!
+  name: String!
+  period: Period!
+  employmentType: EmploymentType
+  position: String
+  summary: String
+  description: String
+}
