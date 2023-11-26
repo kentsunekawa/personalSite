@@ -1,0 +1,8 @@
+query GetResume($companyName: String) {
+  resume(companyName: $companyName) {
+    lang
+    projects {
+      ...Project
+    }
+  }
+}

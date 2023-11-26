@@ -1,0 +1,8 @@
+type Query {
+  resume(companyName: String): Resume!
+}
+
+type Resume {
+  lang: Lang!
+  projects: [Project!]!
+}

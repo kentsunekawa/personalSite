@@ -32,6 +32,8 @@ export const LangChanger: React.FC<Props> = ({
 
   const { pageState } = usePageState()
 
+  console.log(pageState)
+
   const options = useMemo(
     () =>
       pageState

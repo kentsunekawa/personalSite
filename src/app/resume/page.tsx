@@ -12,55 +12,33 @@ import { Resume } from "@/components/pageContents/Resume"
 
 import { companyNames } from "@/server/database/resumes"
 
-export type Props = {
-  params: { companyName: string }
-}
-
-export const createPageState = (lang: Lang, props: Props): PageState => ({
+const createPageState = (lang: Lang): PageState => ({
   lang,
   pageName: "resume",
   translatedLangs: {
     [Lang.Ja]: true,
     [Lang.En]: true,
   },
-  params: {
-    companyName: props.params.companyName,
-  },
 })
 
-export const createPageComponent = (lang: Lang): NextPage<Props> => {
-  return async (props) => {
-    const { params } = props
-    const pageState = createPageState(lang, props)
+export const createPageComponent = (lang: Lang): NextPage => {
+  return async () => {
+    const pageState = createPageState(lang)
+    const companyName =
+      lang === Lang.Ja ? companyNames.master : companyNames.masterEn
     const commonData = await getCommonData(lang)
     const {
       data: { resume },
-    } = await getResume(lang, params.companyName)
+    } = await getResume(companyName)
 
     if (resume.lang !== lang) return notFound()
 
     return (
       <PageContainer {...pageState} commonData={commonData}>
-        <Resume
-          {...pageState}
-          companyName={params.companyName}
-          resume={resume}
-        />
+        <Resume {...pageState} companyName={companyName} resume={resume} />
       </PageContainer>
     )
   }
 }
 
 export default createPageComponent(Lang.Ja)
-
-const generateStaticParams = async () => {
-  const data = {
-    companyNames: Object.entries(companyNames).map(([, value]) => value),
-  }
-
-  return data.companyNames.map((companyName) => ({
-    companyName,
-  }))
-}
-
-export { generateStaticParams }

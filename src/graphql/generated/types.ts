@@ -141,6 +141,7 @@ export type Query = {
   readonly posts: ReadonlyArray<Post>;
   readonly profile: Profile;
   readonly projects: ReadonlyArray<Project>;
+  readonly resume: Resume;
 };
 
 
@@ -163,6 +164,17 @@ export type QueryProfileArgs = {
 
 export type QueryProjectsArgs = {
   lang?: InputMaybe<Lang>;
+};
+
+
+export type QueryResumeArgs = {
+  companyName?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type Resume = {
+  readonly __typename?: 'Resume';
+  readonly lang: Lang;
+  readonly projects: ReadonlyArray<Project>;
 };
 
 export type SearchPostsInput = {
@@ -242,6 +254,13 @@ export type GetProjectsQueryVariables = Exact<{
 
 
 export type GetProjectsQuery = { readonly __typename?: 'Query', readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> }> };
+
+export type GetResumeQueryVariables = Exact<{
+  companyName?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type GetResumeQuery = { readonly __typename?: 'Query', readonly resume: { readonly __typename?: 'Resume', readonly lang: Lang, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> }> } };
 
 export const AccountFragmentDoc = gql`
     fragment Account on Account {
@@ -502,6 +521,44 @@ export function useGetProjectsLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type GetProjectsQueryHookResult = ReturnType<typeof useGetProjectsQuery>;
 export type GetProjectsLazyQueryHookResult = ReturnType<typeof useGetProjectsLazyQuery>;
 export type GetProjectsQueryResult = Apollo.QueryResult<GetProjectsQuery, GetProjectsQueryVariables>;
+export const GetResumeDocument = gql`
+    query GetResume($companyName: String) {
+  resume(companyName: $companyName) {
+    lang
+    projects {
+      ...Project
+    }
+  }
+}
+    ${ProjectFragmentDoc}`;
+
+/**
+ * __useGetResumeQuery__
+ *
+ * To run a query within a React component, call `useGetResumeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetResumeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetResumeQuery({
+ *   variables: {
+ *      companyName: // value for 'companyName'
+ *   },
+ * });
+ */
+export function useGetResumeQuery(baseOptions?: Apollo.QueryHookOptions<GetResumeQuery, GetResumeQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetResumeQuery, GetResumeQueryVariables>(GetResumeDocument, options);
+      }
+export function useGetResumeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetResumeQuery, GetResumeQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetResumeQuery, GetResumeQueryVariables>(GetResumeDocument, options);
+        }
+export type GetResumeQueryHookResult = ReturnType<typeof useGetResumeQuery>;
+export type GetResumeLazyQueryHookResult = ReturnType<typeof useGetResumeLazyQuery>;
+export type GetResumeQueryResult = Apollo.QueryResult<GetResumeQuery, GetResumeQueryVariables>;
 export type WithIndex<TObject> = TObject & Record<string, any>;
 export type ResolversObject<TObject> = WithIndex<TObject>;
 
@@ -591,6 +648,7 @@ export type ResolversTypes = ResolversObject<{
   Profile: ResolverTypeWrapper<Profile>;
   Project: ResolverTypeWrapper<Project>;
   Query: ResolverTypeWrapper<{}>;
+  Resume: ResolverTypeWrapper<Resume>;
   SearchPostsInput: SearchPostsInput;
   Skill: ResolverTypeWrapper<Skill>;
   SocialMedia: SocialMedia;
@@ -611,6 +669,7 @@ export type ResolversParentTypes = ResolversObject<{
   Profile: Profile;
   Project: Project;
   Query: {};
+  Resume: Resume;
   SearchPostsInput: SearchPostsInput;
   Skill: Skill;
   String: Scalars['String']['output'];
@@ -703,6 +762,13 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   posts?: Resolver<ReadonlyArray<ResolversTypes['Post']>, ParentType, ContextType, Partial<QueryPostsArgs>>;
   profile?: Resolver<ResolversTypes['Profile'], ParentType, ContextType, Partial<QueryProfileArgs>>;
   projects?: Resolver<ReadonlyArray<ResolversTypes['Project']>, ParentType, ContextType, Partial<QueryProjectsArgs>>;
+  resume?: Resolver<ResolversTypes['Resume'], ParentType, ContextType, Partial<QueryResumeArgs>>;
+}>;
+
+export type ResumeResolvers<ContextType = any, ParentType extends ResolversParentTypes['Resume'] = ResolversParentTypes['Resume']> = ResolversObject<{
+  lang?: Resolver<ResolversTypes['Lang'], ParentType, ContextType>;
+  projects?: Resolver<ReadonlyArray<ResolversTypes['Project']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
 export type SkillResolvers<ContextType = any, ParentType extends ResolversParentTypes['Skill'] = ResolversParentTypes['Skill']> = ResolversObject<{
@@ -735,6 +801,7 @@ export type Resolvers<ContextType = any> = ResolversObject<{
   Profile?: ProfileResolvers<ContextType>;
   Project?: ProjectResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
+  Resume?: ResumeResolvers<ContextType>;
   Skill?: SkillResolvers<ContextType>;
   WorkHistory?: WorkHistoryResolvers<ContextType>;
 }>;
