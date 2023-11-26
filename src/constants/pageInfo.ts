@@ -6,6 +6,7 @@ export type PageName =
   | "experiences"
   | "experience"
   | "projects"
+  | "resume"
   | "notFound"
 
 export type PageInfo = {
@@ -84,6 +85,13 @@ export const PAGES_INFO: PagesInfo = {
       return `${createUrl(PAGES_INFO.experience.path, params)}/${checkLang(
         lang
       )}`
+    },
+  },
+  resume: {
+    path: "/resume/:companyName",
+    displayName: "Resume",
+    createPath(lang = Lang.Ja, params) {
+      return `${createUrl(PAGES_INFO.resume.path, params)}/${checkLang(lang)}`
     },
   },
   notFound: {
