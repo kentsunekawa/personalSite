@@ -1,8 +1,11 @@
 type Query {
-  resume(companyName: String): Resume!
+  resume(companyName: String, lang: Lang): Resume
 }
 
 type Resume {
   lang: Lang!
+  summary: String!
   projects: [Project!]!
+  skills: [Skill!]!
+  introduction: String!
 }

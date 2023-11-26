@@ -1,29 +1,23 @@
-import { GraphQLError } from "graphql"
-import { projects as projectsData } from "@/server/database/projects"
 import {
   Resolver,
   ResolverTypeWrapper,
   GetResumeQueryVariables,
-  Lang,
   Resume,
 } from "@/graphql/generated/types"
-import { resumes, companyNames, CompanyNames } from "@/server/database/resumes"
+import { masterResume, resumes, CompanyNames } from "@/server/database/resumes"
 
 export const createResume = ({
   companyName,
-}: GetResumeQueryVariables): Resume => {
-  const data =
-    resumes[(companyName as CompanyNames) ?? companyNames.master] ?? null
-
-  if (data === null) {
-    throw new GraphQLError("resume is null")
+  lang,
+}: GetResumeQueryVariables): Resume | null => {
+  if (companyName) {
+    return resumes[companyName as CompanyNames] ?? null
   }
-
-  return data
+  return lang ? masterResume[lang] : null
 }
 
 export const resume: Resolver<
-  ResolverTypeWrapper<Resume>,
+  ResolverTypeWrapper<Resume | null>,
   {},
   {},
   GetResumeQueryVariables

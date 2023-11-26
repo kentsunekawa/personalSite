@@ -5,16 +5,16 @@ import { notFound } from "next/navigation"
 // import from this project
 import { PageState } from "@/types"
 import { Lang } from "@/graphql/generated/types"
-import { PageContainer } from "@/components/globals/PageContainer"
-import { getCommonData } from "@/functions/getCommonData"
-import { getResume } from "@/functions/getResume"
-import { Resume } from "@/components/pageContents/Resume"
+// import { PageContainer } from "@/components/globals/PageContainer"
+// import { getCommonData } from "@/functions/getCommonData"
 
 import { companyNames } from "@/server/database/resumes"
 
 export type Props = {
   params: { companyName: string }
 }
+
+const companyNamesArray = Object.entries(companyNames).map(([, value]) => value)
 
 export const createPageState = (lang: Lang, props: Props): PageState => ({
   lang,
@@ -30,24 +30,20 @@ export const createPageState = (lang: Lang, props: Props): PageState => ({
 
 export const createPageComponent = (lang: Lang): NextPage<Props> => {
   return async (props) => {
-    const { params } = props
-    const pageState = createPageState(lang, props)
-    const commonData = await getCommonData(lang)
-    const {
-      data: { resume },
-    } = await getResume(lang, params.companyName)
+    return notFound()
+    // const { params } = props
 
-    if (resume.lang !== lang) return notFound()
+    // if (!(companyNamesArray as string[]).includes(params.companyName))
+    //   return notFound()
 
-    return (
-      <PageContainer {...pageState} commonData={commonData}>
-        <Resume
-          {...pageState}
-          companyName={params.companyName}
-          resume={resume}
-        />
-      </PageContainer>
-    )
+    // const pageState = createPageState(lang, props)
+    // const commonData = await getCommonData(lang)
+
+    // return (
+    //   <PageContainer {...pageState} commonData={commonData}>
+    //     {/* <Resume {...pageState} resume={resume} /> */}
+    //   </PageContainer>
+    // )
   }
 }
 
@@ -55,7 +51,7 @@ export default createPageComponent(Lang.Ja)
 
 const generateStaticParams = async () => {
   const data = {
-    companyNames: Object.entries(companyNames).map(([, value]) => value),
+    companyNames: companyNamesArray,
   }
 
   return data.companyNames.map((companyName) => ({

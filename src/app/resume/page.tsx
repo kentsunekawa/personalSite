@@ -1,6 +1,5 @@
 // import from libraries
 import { NextPage } from "next"
-import { notFound } from "next/navigation"
 
 // import from this project
 import { PageState } from "@/types"
@@ -24,18 +23,12 @@ const createPageState = (lang: Lang): PageState => ({
 export const createPageComponent = (lang: Lang): NextPage => {
   return async () => {
     const pageState = createPageState(lang)
-    const companyName =
-      lang === Lang.Ja ? companyNames.master : companyNames.masterEn
-    const commonData = await getCommonData(lang)
-    const {
-      data: { resume },
-    } = await getResume(companyName)
 
-    if (resume.lang !== lang) return notFound()
+    const commonData = await getCommonData(lang)
 
     return (
       <PageContainer {...pageState} commonData={commonData}>
-        <Resume {...pageState} companyName={companyName} resume={resume} />
+        <Resume {...pageState} />
       </PageContainer>
     )
   }

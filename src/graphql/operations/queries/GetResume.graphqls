@@ -1,5 +1,5 @@
-query GetResume($companyName: String) {
-  resume(companyName: $companyName) {
+query GetResume($companyName: String, $lang: Lang) {
+  resume(companyName: $companyName, lang: $lang) {
     lang
     projects {
       ...Project

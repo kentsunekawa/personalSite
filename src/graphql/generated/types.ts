@@ -141,7 +141,7 @@ export type Query = {
   readonly posts: ReadonlyArray<Post>;
   readonly profile: Profile;
   readonly projects: ReadonlyArray<Project>;
-  readonly resume: Resume;
+  readonly resume?: Maybe<Resume>;
 };
 
 
@@ -169,12 +169,16 @@ export type QueryProjectsArgs = {
 
 export type QueryResumeArgs = {
   companyName?: InputMaybe<Scalars['String']['input']>;
+  lang?: InputMaybe<Lang>;
 };
 
 export type Resume = {
   readonly __typename?: 'Resume';
+  readonly introduction: Scalars['String']['output'];
   readonly lang: Lang;
   readonly projects: ReadonlyArray<Project>;
+  readonly skills: ReadonlyArray<Skill>;
+  readonly summary: Scalars['String']['output'];
 };
 
 export type SearchPostsInput = {
@@ -257,10 +261,11 @@ export type GetProjectsQuery = { readonly __typename?: 'Query', readonly project
 
 export type GetResumeQueryVariables = Exact<{
   companyName?: InputMaybe<Scalars['String']['input']>;
+  lang?: InputMaybe<Lang>;
 }>;
 
 
-export type GetResumeQuery = { readonly __typename?: 'Query', readonly resume: { readonly __typename?: 'Resume', readonly lang: Lang, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> }> } };
+export type GetResumeQuery = { readonly __typename?: 'Query', readonly resume?: { readonly __typename?: 'Resume', readonly lang: Lang, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> }> } | null };
 
 export const AccountFragmentDoc = gql`
     fragment Account on Account {
@@ -522,8 +527,8 @@ export type GetProjectsQueryHookResult = ReturnType<typeof useGetProjectsQuery>;
 export type GetProjectsLazyQueryHookResult = ReturnType<typeof useGetProjectsLazyQuery>;
 export type GetProjectsQueryResult = Apollo.QueryResult<GetProjectsQuery, GetProjectsQueryVariables>;
 export const GetResumeDocument = gql`
-    query GetResume($companyName: String) {
-  resume(companyName: $companyName) {
+    query GetResume($companyName: String, $lang: Lang) {
+  resume(companyName: $companyName, lang: $lang) {
     lang
     projects {
       ...Project
@@ -545,6 +550,7 @@ export const GetResumeDocument = gql`
  * const { data, loading, error } = useGetResumeQuery({
  *   variables: {
  *      companyName: // value for 'companyName'
+ *      lang: // value for 'lang'
  *   },
  * });
  */
@@ -762,12 +768,15 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   posts?: Resolver<ReadonlyArray<ResolversTypes['Post']>, ParentType, ContextType, Partial<QueryPostsArgs>>;
   profile?: Resolver<ResolversTypes['Profile'], ParentType, ContextType, Partial<QueryProfileArgs>>;
   projects?: Resolver<ReadonlyArray<ResolversTypes['Project']>, ParentType, ContextType, Partial<QueryProjectsArgs>>;
-  resume?: Resolver<ResolversTypes['Resume'], ParentType, ContextType, Partial<QueryResumeArgs>>;
+  resume?: Resolver<Maybe<ResolversTypes['Resume']>, ParentType, ContextType, Partial<QueryResumeArgs>>;
 }>;
 
 export type ResumeResolvers<ContextType = any, ParentType extends ResolversParentTypes['Resume'] = ResolversParentTypes['Resume']> = ResolversObject<{
+  introduction?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   lang?: Resolver<ResolversTypes['Lang'], ParentType, ContextType>;
   projects?: Resolver<ReadonlyArray<ResolversTypes['Project']>, ParentType, ContextType>;
+  skills?: Resolver<ReadonlyArray<ResolversTypes['Skill']>, ParentType, ContextType>;
+  summary?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 

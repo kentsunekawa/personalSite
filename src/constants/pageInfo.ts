@@ -88,10 +88,10 @@ export const PAGES_INFO: PagesInfo = {
     },
   },
   resume: {
-    path: "/resume/:companyName",
+    path: "/resume",
     displayName: "Resume",
-    createPath(lang = Lang.Ja, params) {
-      return `${createUrl(PAGES_INFO.resume.path, params)}/${checkLang(lang)}`
+    createPath(lang = Lang.Ja) {
+      return `${createUrl(PAGES_INFO.resume.path)}/${checkLang(lang)}`
     },
   },
   notFound: {
