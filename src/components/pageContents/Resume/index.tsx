@@ -59,10 +59,6 @@ export const Resume: React.FC<Props> = ({ lang }) => {
     }
   }, [doGetResume, searchParams, initCheck])
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
-
   if (!profile) return null
 
   const Contents = ResumeContents[lang]
@@ -86,9 +82,6 @@ export const Resume: React.FC<Props> = ({ lang }) => {
         <InputContents
           inputs={inputs}
           onChange={(name, value) => {
-            console.log(name)
-            console.log(value)
-
             setInputs((prev) => ({
               ...prev,
               [name]: value,

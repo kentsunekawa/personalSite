@@ -16,3 +16,14 @@ export const formatDateString = (dateString: string, lang: Lang) => {
 export const geTechnologyImagePath = (slug: string) =>
   //@ts-ignore
   IMAGE_PATHS.technologies[slug] ?? IMAGE_PATHS.technologies.noImage
+
+export const convertCookieString = (
+  cookieString: string
+): {
+  [k: string]: string
+} =>
+  cookieString
+    .split(";")
+    .map((item) => item.split("="))
+    // @ts-ignore
+    .reduce((acc, [k, v]) => (acc[k.trim().replace('"', "")] = v) && acc, {})

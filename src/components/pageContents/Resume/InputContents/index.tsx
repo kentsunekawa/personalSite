@@ -26,8 +26,6 @@ export const InputContents: React.FC<Props> = ({
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log(e)
-
       onChange(
         e.target.name === "password" ? "password" : "companyName",
         e.target.value

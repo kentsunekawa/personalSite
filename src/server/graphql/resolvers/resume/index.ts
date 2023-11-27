@@ -1,3 +1,8 @@
+// import from libraries
+import { GraphQLError } from "graphql"
+
+// import from this project
+import { convertCookieString } from "@/utils"
 import {
   Resolver,
   ResolverTypeWrapper,
@@ -6,6 +11,8 @@ import {
   Maybe,
 } from "@/graphql/generated/types"
 import { masterResume, resumes, CompanyNames } from "@/server/database/resumes"
+import { users } from "@/server/database/users"
+import type { TContext } from "@/app/graphql/route"
 
 export const createResume = ({
   companyName,
@@ -20,10 +27,28 @@ export const createResume = ({
 export const resume: Resolver<
   Maybe<ResolverTypeWrapper<Resume>>,
   {},
-  {},
+  TContext,
   GetResumeQueryVariables
-> = (_, getResumeQueryVariables, context) => {
-  console.log(context)
+> = (_, getResumeQueryVariables, context, b) => {
+  const cookies = convertCookieString(context.cookie)
+
+  const companyName = cookies.companyName
+  const password = cookies.password
+
+  const authorized = (() => {
+    if (companyName && password) {
+      const user = users.find(({ name }) => name === companyName)
+      return user && user.password === password
+    }
+    return false
+  })()
+
+  if (!authorized)
+    throw new GraphQLError("unauthorized", {
+      extensions: {
+        code: "unauthorized",
+      },
+    })
 
   return createResume(getResumeQueryVariables)
 }
