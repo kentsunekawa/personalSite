@@ -225,6 +225,8 @@ export type PostFragment = { readonly __typename?: 'Post', readonly id: string, 
 
 export type ProjectFragment = { readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> };
 
+export type ResumeFragment = { readonly __typename?: 'Resume', readonly lang: Lang, readonly summary: string, readonly introduction: string, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> }>, readonly skills: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> };
+
 export type SkillFragment = { readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency };
 
 export type WorkHistoryFragment = { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } };
@@ -265,7 +267,7 @@ export type GetResumeQueryVariables = Exact<{
 }>;
 
 
-export type GetResumeQuery = { readonly __typename?: 'Query', readonly resume?: { readonly __typename?: 'Resume', readonly lang: Lang, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> }> } | null };
+export type GetResumeQuery = { readonly __typename?: 'Query', readonly resume?: { readonly __typename?: 'Resume', readonly lang: Lang, readonly summary: string, readonly introduction: string, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> }>, readonly skills: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency }> } | null };
 
 export const AccountFragmentDoc = gql`
     fragment Account on Account {
@@ -349,6 +351,20 @@ export const ProjectFragmentDoc = gql`
 }
     ${WorkHistoryFragmentDoc}
 ${PeriodFragmentDoc}
+${SkillFragmentDoc}`;
+export const ResumeFragmentDoc = gql`
+    fragment Resume on Resume {
+  lang
+  summary
+  projects {
+    ...Project
+  }
+  skills {
+    ...Skill
+  }
+  introduction
+}
+    ${ProjectFragmentDoc}
 ${SkillFragmentDoc}`;
 export const GetPostDocument = gql`
     query GetPost($slug: String!, $lang: Lang) {
@@ -529,13 +545,10 @@ export type GetProjectsQueryResult = Apollo.QueryResult<GetProjectsQuery, GetPro
 export const GetResumeDocument = gql`
     query GetResume($companyName: String, $lang: Lang) {
   resume(companyName: $companyName, lang: $lang) {
-    lang
-    projects {
-      ...Project
-    }
+    ...Resume
   }
 }
-    ${ProjectFragmentDoc}`;
+    ${ResumeFragmentDoc}`;
 
 /**
  * __useGetResumeQuery__

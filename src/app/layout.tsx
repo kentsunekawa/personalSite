@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 
 import { APP_INFO } from "@/constants/appInfo"
 import { GlobalStyle } from "@/components/globals/GlobalStyles"
+import { ApolloProvider } from "@/components/providers/ApolloProvider"
 import { PageStateProvider } from "@/components/providers/PageStateProvider"
 import { CommonDataProvider } from "@/components/providers/CommonDataProvider"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
@@ -27,11 +28,13 @@ export default function RootLayout({
       <meta name="robots" content="noindex" />
       <GlobalStyle />
       <body className={inter.className}>
-        <PageStateProvider>
-          <CommonDataProvider>
-            <ThemeProvider>{children}</ThemeProvider>
-          </CommonDataProvider>
-        </PageStateProvider>
+        <ApolloProvider>
+          <PageStateProvider>
+            <CommonDataProvider>
+              <ThemeProvider>{children}</ThemeProvider>
+            </CommonDataProvider>
+          </PageStateProvider>
+        </ApolloProvider>
       </body>
     </html>
   )

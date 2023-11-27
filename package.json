@@ -19,6 +19,7 @@
     "@types/node": "^20.6.5",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
+    "cors": "^2.8.5",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.16",
     "graphql": "^16.8.1",
@@ -41,6 +42,7 @@
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
+    "@types/cors": "^2.8.17",
     "@types/styled-components": "^5.1.26",
     "babel-plugin-styled-components": "^2.1.4"
   }

@@ -1,0 +1,11 @@
+fragment Resume on Resume {
+  lang
+  summary
+  projects {
+    ...Project
+  }
+  skills {
+    ...Skill
+  }
+  introduction
+}

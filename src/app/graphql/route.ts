@@ -2,6 +2,7 @@ import assert from "node:assert"
 import { ApolloServer } from "@apollo/server"
 import { NextResponse } from "next/server"
 import { addResolversToSchema } from "@graphql-tools/schema"
+import cors from "cors"
 
 import { schema } from "@/server/graphql/schema"
 import { resolvers } from "@/server/graphql/resolvers"

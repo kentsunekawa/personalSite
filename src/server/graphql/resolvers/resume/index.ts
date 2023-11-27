@@ -3,6 +3,7 @@ import {
   ResolverTypeWrapper,
   GetResumeQueryVariables,
   Resume,
+  Maybe,
 } from "@/graphql/generated/types"
 import { masterResume, resumes, CompanyNames } from "@/server/database/resumes"
 
@@ -17,8 +18,12 @@ export const createResume = ({
 }
 
 export const resume: Resolver<
-  ResolverTypeWrapper<Resume | null>,
+  Maybe<ResolverTypeWrapper<Resume>>,
   {},
   {},
   GetResumeQueryVariables
-> = (_, getResumeQueryVariables) => createResume(getResumeQueryVariables)
+> = (_, getResumeQueryVariables, context) => {
+  console.log(context)
+
+  return createResume(getResumeQueryVariables)
+}
