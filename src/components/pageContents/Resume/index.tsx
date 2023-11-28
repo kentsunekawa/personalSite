@@ -42,6 +42,16 @@ export const Resume: React.FC<Props> = ({ lang }) => {
     })
   }, [getResume, inputs.companyName, inputs.password, lang])
 
+  const isUnauthorized = useMemo(() => {
+    const extensions = error?.graphQLErrors[0]?.extensions
+    return extensions &&
+      "code" in extensions &&
+      typeof extensions.code === "string" &&
+      extensions.code === "unauthorized"
+      ? true
+      : false
+  }, [error])
+
   useEffect(() => {
     if (!initCheck) {
       setInitCheck(true)
@@ -79,17 +89,25 @@ export const Resume: React.FC<Props> = ({ lang }) => {
           ],
         }}
       >
-        <InputContents
-          inputs={inputs}
-          onChange={(name, value) => {
-            setInputs((prev) => ({
-              ...prev,
-              [name]: value,
-            }))
-          }}
-          onSubmit={doGetResume}
-        />
-        {data?.resume && <Contents profile={profile} resume={data.resume} />}
+        {data?.resume ? (
+          <Contents profile={profile} resume={data.resume} />
+        ) : (
+          <>
+            {isUnauthorized && (
+              <div>ユーザーネームかパスワードが間違えています。</div>
+            )}
+            <InputContents
+              inputs={inputs}
+              onChange={(name, value) => {
+                setInputs((prev) => ({
+                  ...prev,
+                  [name]: value,
+                }))
+              }}
+              onSubmit={doGetResume}
+            />
+          </>
+        )}
       </PageContent>
     </PageBase>
   )
