@@ -3,9 +3,10 @@
 import { useState } from "react"
 
 // import from this project
-import { Lang } from "@/graphql/generated/types"
+import { InsertStyles } from "@/types"
 import { useStyle, useTextStyles } from "@/hooks"
 import { formatDateString } from "@/utils"
+import { Lang } from "@/graphql/generated/types"
 import { HeadingSize } from "@/styles/commonStyles/textStyles"
 import {
   DefinitionTable,
@@ -32,6 +33,7 @@ export type Props = {
     main?: React.ReactNode
     moreArea?: React.ReactNode
   }
+  insertStyles?: InsertStyles<"container">
 }
 
 const textContents = {
@@ -47,7 +49,11 @@ const textContents = {
   },
 }
 
-export const ContentsBox: React.FC<Props> = ({ lang, contents }) => {
+export const ContentsBox: React.FC<Props> = ({
+  lang,
+  contents,
+  insertStyles,
+}) => {
   const { styles } = useStyle(createStyles)
   const { styles: textStyle } = useTextStyles()
 
@@ -57,7 +63,7 @@ export const ContentsBox: React.FC<Props> = ({ lang, contents }) => {
     contents
 
   return (
-    <article css={styles.container}>
+    <article css={[styles.container, insertStyles?.container]}>
       <div css={styles.header}>
         {period && (
           <div css={styles.titleArea.container}>

@@ -1,7 +1,7 @@
 import { Data } from "@/types"
 import { Resume, Lang } from "@/graphql/generated/types"
 import { CompanyNames, companyNames } from "./companyNames"
-import { createProjects } from "../../graphql/resolvers/projects"
+import { createProjects, slugs } from "../../graphql/resolvers/projects"
 import { skills } from "../skills"
 
 export type { CompanyNames }
@@ -13,16 +13,35 @@ export const masterResume: Data<Resume> = {
     summary:
       "職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります職務経歴が入ります",
     skills,
-    projects: createProjects({ lang: Lang.Ja }),
-    introduction:
-      "自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります自己 PR が入ります",
+    projects: createProjects({ lang: Lang.Ja }, [
+      slugs.phr,
+      slugs.hcu,
+      slugs.alolink,
+    ]),
+    introduction: [
+      {
+        title: "タイトルタイトルタイトル",
+        content:
+          "私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です",
+      },
+      {
+        title: "タイトルタイトルタイトル",
+        content:
+          "私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です",
+      },
+      {
+        title: "タイトルタイトルタイトル",
+        content:
+          "私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です私は〇〇な人間です",
+      },
+    ],
   },
   [Lang.En]: {
     lang: Lang.En,
     summary: "",
     skills: [],
     projects: createProjects({ lang: Lang.En }),
-    introduction: "",
+    introduction: [],
   },
 }
 
@@ -32,13 +51,13 @@ export const resumes: { [k in CompanyNames]: Resume } = {
     summary: "",
     skills: [],
     projects: createProjects({ lang: Lang.Ja }),
-    introduction: "",
+    introduction: [],
   },
   [companyNames.foreignCompany]: {
     lang: Lang.En,
     summary: "",
     skills: [],
     projects: createProjects({ lang: Lang.En }),
-    introduction: "",
+    introduction: [],
   },
 }

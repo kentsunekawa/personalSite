@@ -27,10 +27,6 @@ export const createStyles = () => {
         container: css`
           width: 100%;
         `,
-        text: css`
-          width: 100%;
-          text-align: center;
-        `,
       },
       meta: {
         container: css`
@@ -56,5 +52,16 @@ export const createStyles = () => {
     section: css`
       width: 100%;
     `,
+    list: {
+      container: css`
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px 0;
+        width: 100%;
+      `,
+      row: css`
+        width: 100%;
+      `,
+    },
   }
 }

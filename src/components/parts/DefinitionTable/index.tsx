@@ -3,7 +3,7 @@
 import React from "react"
 
 // import from this project
-import { Css, InsertStyles } from "@/types"
+import { InsertStyles } from "@/types"
 import { useStyle } from "@/hooks"
 import { Texts } from "@/components/parts/Texts"
 import { createStyles } from "./styles"
