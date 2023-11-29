@@ -20,6 +20,17 @@ export const createStyles = () => {
       top: 0;
       left: 0;
       z-index: 100;
+
+      ${mq(
+        "print",
+        css`
+          display: none;
+        `
+      )}
+    `,
+    space: css`
+      width: 100%;
+      padding-top: ${headerHeight};
     `,
     bg: css`
       position: absolute;
@@ -37,10 +48,6 @@ export const createStyles = () => {
       align-items: center;
       height: 100%;
       gap: 0 18px;
-    `,
-    space: css`
-      width: 100%;
-      padding-top: ${headerHeight};
     `,
     spacer: css`
       display: block;

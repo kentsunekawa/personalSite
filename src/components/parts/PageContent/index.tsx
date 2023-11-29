@@ -30,11 +30,13 @@ export const PageContent: React.FC<Props> = ({
   return (
     <div css={styles.container}>
       <MQ mq="tbMin_gt">
-        {breadCrumsInfo && (
-          <div css={styles.breadCrumArea}>
-            <BreadCrumbs {...breadCrumsInfo} />
-          </div>
-        )}
+        <MQ print={false}>
+          {breadCrumsInfo && (
+            <div css={styles.breadCrumArea}>
+              <BreadCrumbs {...breadCrumsInfo} />
+            </div>
+          )}
+        </MQ>
       </MQ>
       {(title || summary) && (
         <div css={styles.headerArea.container}>

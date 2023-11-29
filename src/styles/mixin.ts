@@ -12,7 +12,13 @@ export const BREAK_POINTS = {
   pcMidium: 1440,
 } as const
 
-export type Mq = "spMax_lt" | "tbMin_gt" | "tbMax_lt" | "pcMin_gt"
+export type Mq =
+  | "spMax_lt"
+  | "tbMin_gt"
+  | "tbMax_lt"
+  | "pcMin_gt"
+  | "print"
+  | "screen"
 
 export const mediaQueries = {
   // ~ 767
@@ -23,6 +29,10 @@ export const mediaQueries = {
   tbMax_lt: `(max-width: ${BREAK_POINTS.tbMax}px)`,
   // 960 ~
   pcMin_gt: `(min-width: ${BREAK_POINTS.pcMin}px)`,
+  // print
+  print: "print",
+  // screen
+  screen: "screen",
 }
 
 export const mq = (query: Mq, style: Css) => css`
