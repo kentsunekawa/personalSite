@@ -25,8 +25,6 @@ export const createStyles = (args?: { theme: ThemeName }) => {
         ul {
           list-style-type: disc;
         }
-        a {
-        }
       }
     `,
   }

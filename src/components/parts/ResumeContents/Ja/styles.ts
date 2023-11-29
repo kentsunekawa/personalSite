@@ -13,7 +13,6 @@ export const createStyles = () => {
       gap: 16px 0;
       width: 100%;
       padding: 48px;
-      border: 1px solid #ddd;
       border-radius: 4px;
     `,
     header: {
@@ -61,6 +60,13 @@ export const createStyles = () => {
       `,
       row: css`
         width: 100%;
+      `,
+    },
+    markdownStyle: {
+      container: css`
+        h3 {
+          color: var(${VAR_NAMES.grayScale[30]});
+        }
       `,
     },
   }

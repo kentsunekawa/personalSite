@@ -3,6 +3,7 @@
 import { css } from "styled-components"
 
 // import from this project
+import { VAR_NAMES } from "@/styles/theme"
 
 export const createStyles = () => {
   return {
@@ -20,6 +21,7 @@ export const createStyles = () => {
     `,
     header: {
       container: css`
+        gap: 16px 0;
         border-bottom: 1px solid #ddd;
       `,
     },
@@ -28,45 +30,45 @@ export const createStyles = () => {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        gap: 16px 0;
         padding: 24px;
-        border-bottom: 1px solid #ddd;
+      `,
+      row: css`
+        width: 100%;
+      `,
+      title: css`
+        color: var(${VAR_NAMES.grayScale[20]});
+      `,
+    },
+    definitionTableStyles: {
+      container: css`
+        gap: 4px;
+      `,
+      dt: css`
+        width: 100px;
+      `,
+      dd: css`
+        width: calc(100% - 104px);
+      `,
+    },
+    main: {
+      container: css`
+        gap: 8px 0;
       `,
       row: css`
         width: 100%;
       `,
     },
-    definitionTableStyles: {},
-    main: css`
-      width: 100%;
-    `,
-    moreArea: {
-      container: css`
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px 0;
-      `,
-      main: css`
-        width: 100%;
-      `,
-      buttonArea: css`
-        width: 100%;
-      `,
-    },
+
     skillIconList: {
       container: css`
         width: 100%;
       `,
-      list: css`
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 4px;
-      `,
-      item: css`
-        width: 40px;
+    },
+    markdownStyle: {
+      container: css`
+        h3 {
+          color: var(${VAR_NAMES.grayScale[30]});
+        }
       `,
     },
   }

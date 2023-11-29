@@ -5,6 +5,7 @@ import { format } from "date-fns"
 // import from this project
 import { useStyle } from "@/hooks"
 import { Texts } from "@/components/parts/Texts"
+import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
 import { Section } from "./Section"
 import { SubSection } from "./SubSection"
 import { ProjectBox } from "./ProjectBox"
@@ -21,8 +22,8 @@ export const Ja: React.FC<Props> = ({ profile, resume }) => {
     <div css={styles.container}>
       <div css={styles.header.container}>
         <div css={styles.header.title.container}>
-          <Texts.Heading tag="h1" align="center">
-            職務経歴
+          <Texts.Heading tag="h1" size="h3" align="center">
+            職務経歴書
           </Texts.Heading>
         </div>
         <div css={styles.header.meta.container}>
@@ -56,21 +57,15 @@ export const Ja: React.FC<Props> = ({ profile, resume }) => {
             <Skill skills={skills} />
           </Section>
         </div>
-        <div css={styles.section}>
-          <Section title="自己 PR">
-            <div css={styles.list.container}>
-              {introduction.map(({ title, content }) => (
-                <div key={title} css={styles.list.row}>
-                  {
-                    <SubSection title={title}>
-                      <Texts.Text>{content}</Texts.Text>
-                    </SubSection>
-                  }
-                </div>
-              ))}
-            </div>
-          </Section>
-        </div>
+        {introduction && (
+          <div css={styles.section}>
+            <Section title="自己 PR">
+              <MarkdownDisplay insertStyles={styles.markdownStyle}>
+                {introduction}
+              </MarkdownDisplay>
+            </Section>
+          </div>
+        )}
       </div>
     </div>
   )

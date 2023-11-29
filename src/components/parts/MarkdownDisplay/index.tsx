@@ -5,14 +5,19 @@ import ReactMarkdown from "react-markdown"
 import gfm from "remark-gfm"
 
 // import from this project
+import { InsertStyles } from "@/types"
 import { useStyle, useThemeName } from "@/hooks"
 import { createStyles } from "./styles"
 
 type Props = {
   children: string
+  insertStyles?: InsertStyles<"container">
 }
 
-export const MarkdownDisplay: React.FC<Props> = ({ children }) => {
+export const MarkdownDisplay: React.FC<Props> = ({
+  children,
+  insertStyles,
+}) => {
   const { theme } = useThemeName()
   const { styles } = useStyle(createStyles, { theme })
 
@@ -24,7 +29,7 @@ export const MarkdownDisplay: React.FC<Props> = ({ children }) => {
   }, [])
 
   return (
-    <div css={styles.container}>
+    <div css={[styles.container, insertStyles?.container]}>
       <ReactMarkdown rehypePlugins={[gfm]} className="markdown-body">
         {children}
       </ReactMarkdown>

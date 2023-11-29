@@ -5,6 +5,8 @@ import { useMemo } from "react"
 // import from this project
 import { useStyle } from "@/hooks"
 import { Skill as SkillType, Proficiency } from "@/graphql/generated/types"
+import { Texts } from "@/components/parts/Texts"
+import { SubSection } from "../SubSection"
 import { createStyles } from "./styles"
 
 export type Props = {
@@ -30,33 +32,34 @@ export const Skill: React.FC<Props> = ({ skills }) => {
 
   return (
     <div css={styles.container}>
-      <div>
-        <div>
-          <p>メインスキル</p>
-        </div>
-        <div>
-          <ul>
-            {experiencedSkills.map(({ name, slug }) => (
-              <li key={slug}>
-                <p>{name}</p>
+      <div css={styles.row}>
+        <SubSection title="メインスキル">
+          <ul css={styles.list.container}>
+            {experiencedSkills.map(({ name, slug, summary }) => (
+              <li key={slug} css={[styles.list.item, styles.mainSkill.item]}>
+                <div css={[styles.list.title, styles.mainSkill.title]}>
+                  <Texts.Text>{name}</Texts.Text>
+                </div>
+                <div css={styles.mainSkill.summary}>
+                  <Texts.Text>{summary}</Texts.Text>
+                </div>
               </li>
             ))}
           </ul>
-        </div>
+        </SubSection>
       </div>
-      <div>
-        <div>
-          <p>その他スキル</p>
-        </div>
-        <div>
-          <ul>
+      <div css={styles.row}>
+        <SubSection title="その他、開発で用いたことのあるスキル">
+          <ul css={styles.list.container}>
             {haveUsedSkills.map(({ name, slug }) => (
-              <li key={slug}>
-                <p>{name}</p>
+              <li key={slug} css={styles.list.item}>
+                <div css={styles.list.title}>
+                  <Texts.Text>{name}</Texts.Text>
+                </div>
               </li>
             ))}
           </ul>
-        </div>
+        </SubSection>
       </div>
     </div>
   )

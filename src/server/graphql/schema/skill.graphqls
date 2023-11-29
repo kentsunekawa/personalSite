@@ -8,4 +8,5 @@ type Skill {
   slug: String!
   name: String!
   proficiency: Proficiency!
+  summary: String
 }

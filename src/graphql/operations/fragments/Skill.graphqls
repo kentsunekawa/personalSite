@@ -3,4 +3,5 @@ fragment Skill on Skill {
   slug
   name
   proficiency
+  summary
 }

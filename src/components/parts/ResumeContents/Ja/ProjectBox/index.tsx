@@ -139,22 +139,27 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
         )}
         {metaInfo && (
           <div css={styles.section.row}>
-            <DefinitionTable data={metaInfo} />
+            <DefinitionTable
+              data={metaInfo}
+              insertStyles={styles.definitionTableStyles}
+            />
           </div>
         )}
       </div>
-      {description && (
-        <div css={styles.section.container}>
+      {/* {description && (
+        <div css={[styles.section.container, styles.main.container]}>
           <div css={styles.section.row}>
-            <Texts.SubHeading tag="h4" size="s" weight="b">
+            <Texts.Text weight="xb" insertCss={styles.section.title}>
               詳細
-            </Texts.SubHeading>
+            </Texts.Text>
           </div>
           <div css={styles.section.row}>
-            <MarkdownDisplay>{description}</MarkdownDisplay>
+            <MarkdownDisplay insertStyles={styles.markdownStyle}>
+              {description}
+            </MarkdownDisplay>
           </div>
         </div>
-      )}
+      )} */}
     </article>
   )
 }

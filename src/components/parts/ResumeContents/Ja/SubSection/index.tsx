@@ -16,9 +16,9 @@ export const SubSection: React.FC<Props> = ({ title, children }) => {
   return (
     <div css={styles.container}>
       <div css={styles.title.container}>
-        <Texts.Heading tag="h3" size="h6">
+        <Texts.Text weight="xb" insertCss={styles.title.text}>
           {title}
-        </Texts.Heading>
+        </Texts.Text>
       </div>
       <div>{children}</div>
     </div>

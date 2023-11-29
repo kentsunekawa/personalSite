@@ -13,24 +13,24 @@ export type Props = {
     label: string
     data: React.ReactNode
   }[]
-  insertStyles?: InsertStyles<"container" | "dt" | "dtText" | "dd">
+  insertStyles?: InsertStyles<"container" | "row" | "dt" | "dtText" | "dd">
 }
 
 export const DefinitionTable: React.FC<Props> = ({ data, insertStyles }) => {
   const { styles } = useStyle(createStyles)
 
   return (
-    <dl css={[styles.container, insertStyles?.container]}>
+    <div css={[styles.container, insertStyles?.container]}>
       {data.map(({ label, data: main }) => (
-        <React.Fragment key={label}>
-          <dt css={[styles.dt, insertStyles?.dt]}>
+        <div key={label} css={[styles.row, insertStyles?.row]}>
+          <div css={[styles.dt, insertStyles?.dt]}>
             <Texts.Caption insertCss={insertStyles?.dtText}>
               {label}:
             </Texts.Caption>
-          </dt>
-          <dd css={[styles.dd, insertStyles?.dd]}>{main}</dd>
-        </React.Fragment>
+          </div>
+          <div css={[styles.dd, insertStyles?.dd]}>{main}</div>
+        </div>
       ))}
-    </dl>
+    </div>
   )
 }

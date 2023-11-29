@@ -7,10 +7,5 @@ type Resume {
   summary: String!
   projects: [Project!]!
   skills: [Skill!]!
-  introduction: [Introduction!]!
-}
-
-type Introduction {
-  title: String!
-  content: String!
+  introduction: String
 }

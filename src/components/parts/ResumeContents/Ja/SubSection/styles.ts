@@ -17,6 +17,9 @@ export const createStyles = () => {
       container: css`
         width: 100%;
       `,
+      text: css`
+        color: var(${VAR_NAMES.grayScale[20]});
+      `,
     },
     main: css`
       width: 100%;

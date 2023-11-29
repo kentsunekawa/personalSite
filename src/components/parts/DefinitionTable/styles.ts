@@ -11,6 +11,11 @@ export const createStyles = () => {
       display: flex;
       flex-wrap: wrap;
     `,
+    row: css`
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    `,
     dt: css`
       width: 100%;
     `,

@@ -1,6 +1,5 @@
 import { TypeofValue } from "@/types"
 import { Skill, Proficiency } from "@/graphql/generated/types"
-import { SiLua } from "react-icons/si"
 
 type SlugName = TypeofValue<typeof slugs>
 
@@ -38,7 +37,7 @@ export const slugs = {
   wordpress: "wordpress",
 } as const
 
-const allSkills = [
+const allSkills: Skill[] = [
   {
     id: "apollo",
     slug: slugs.apollo,
@@ -56,6 +55,8 @@ const allSkills = [
     slug: slugs.css3,
     name: "CSS3",
     proficiency: Proficiency.Experienced,
+    summary:
+      "5 年以上の実務プロジェクトでの開発経験あり。。フレームワークなどは使わず使用することが多い。",
   },
   {
     id: "Cypress",
@@ -80,12 +81,16 @@ const allSkills = [
     slug: slugs.expo,
     name: "Expo",
     proficiency: Proficiency.Experienced,
+    summary:
+      "Managed workflow での利用で、iOS / Android / Web を含むクロスプラットフォームでの開発経験あり。",
   },
   {
     id: "figma",
     slug: slugs.figma,
     name: "Figma",
     proficiency: Proficiency.Experienced,
+    summary:
+      "一通りの使用方法を習得。開発時のデザイナーとのコミュニケーションに使用。",
   },
   {
     id: "git",
@@ -110,6 +115,7 @@ const allSkills = [
     slug: slugs.html5,
     name: "HTML5",
     proficiency: Proficiency.Experienced,
+    summary: "5 年以上の実務プロジェクトでの開発経験あり。",
   },
   {
     id: "illustrator",
@@ -122,6 +128,8 @@ const allSkills = [
     slug: slugs.javascript,
     name: "JavaScript",
     proficiency: Proficiency.Experienced,
+    summary:
+      "5 年以上の実務プロジェクトでの開発経験あり。React や jQuery を使わないバニラ JS での開発が可能。",
   },
   {
     id: "jest",
@@ -147,6 +155,8 @@ const allSkills = [
     slug: slugs.nextjs,
     name: "Next.js",
     proficiency: Proficiency.Experienced,
+    summary:
+      "実務プロジェクトでの使用経験はほぼ無し。プライベートプロジェクトでの使用経験あり。",
   },
   {
     id: "photoshop",
@@ -165,12 +175,15 @@ const allSkills = [
     slug: slugs.react,
     name: "React",
     proficiency: Proficiency.Experienced,
+    summary: "3 つ以上の実務プロジェクトにおいて SPA の開発経験あり。",
   },
   {
     id: "reactNative",
     slug: slugs.reactNative,
     name: "React Native",
     proficiency: Proficiency.Experienced,
+    summary:
+      "Expo（Managed workflow）との利用で、iOS / Android / Web を含むクロスプラットフォームでの開発経験あり。",
   },
   {
     id: "redux",
@@ -208,6 +221,7 @@ const allSkills = [
     slug: slugs.typescript,
     name: "TypeScript",
     proficiency: Proficiency.Experienced,
+    summary: "3 年以上の実務プロジェクトでの開発経験あり。",
   },
   {
     id: "vite",
