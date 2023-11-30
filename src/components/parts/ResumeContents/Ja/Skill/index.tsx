@@ -38,10 +38,10 @@ export const Skill: React.FC<Props> = ({ skills }) => {
             {experiencedSkills.map(({ name, slug, summary }) => (
               <li key={slug} css={[styles.list.item, styles.mainSkill.item]}>
                 <div css={[styles.list.title, styles.mainSkill.title]}>
-                  <Texts.Text>{name}</Texts.Text>
+                  <Texts.Text size="s">{name}</Texts.Text>
                 </div>
                 <div css={styles.mainSkill.summary}>
-                  <Texts.Text>{summary}</Texts.Text>
+                  <Texts.Text size="s">{summary}</Texts.Text>
                 </div>
               </li>
             ))}
@@ -54,7 +54,7 @@ export const Skill: React.FC<Props> = ({ skills }) => {
             {haveUsedSkills.map(({ name, slug }) => (
               <li key={slug} css={styles.list.item}>
                 <div css={styles.list.title}>
-                  <Texts.Text>{name}</Texts.Text>
+                  <Texts.Text size="s">{name}</Texts.Text>
                 </div>
               </li>
             ))}

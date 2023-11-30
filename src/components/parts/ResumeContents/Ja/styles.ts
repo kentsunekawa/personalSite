@@ -9,11 +9,6 @@ import { mq } from "@/styles/mixin"
 export const createStyles = () => {
   return {
     container: css`
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px 0;
-      width: 100%;
-      border-radius: 4px;
       ${mq(
         "screen",
         css`
@@ -22,23 +17,32 @@ export const createStyles = () => {
         `
       )}
     `,
+    main: css`
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 0;
+      width: 100%;
+    `,
     header: {
       container: css`
         display: flex;
         flex-wrap: wrap;
-        gap: 24px 0;
+        gap: 16px 0;
         width: 100%;
       `,
       title: {
         container: css`
           width: 100%;
         `,
+        text: css`
+          letter-spacing: 0.2em;
+        `,
       },
       meta: {
         container: css`
           display: flex;
           flex-wrap: wrap;
-          gap: 4px 0;
+          gap: 2px 0;
           width: 100%;
         `,
         row: css`
@@ -49,12 +53,6 @@ export const createStyles = () => {
         `,
       },
     },
-    main: css`
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px 0;
-      width: 100%;
-    `,
     section: css`
       width: 100%;
     `,
@@ -62,7 +60,7 @@ export const createStyles = () => {
       container: css`
         display: flex;
         flex-wrap: wrap;
-        gap: 24px 0;
+        gap: 12px 0;
         width: 100%;
       `,
       row: css`
@@ -71,8 +69,10 @@ export const createStyles = () => {
     },
     markdownStyle: {
       container: css`
-        h3 {
+        h3,
+        h4 {
           color: var(${VAR_NAMES.grayScale[30]});
+          margin-bottom: 8px !important;
         }
       `,
     },

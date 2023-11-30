@@ -126,13 +126,13 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
     <article css={styles.container}>
       <div css={[styles.section.container, styles.header.container]}>
         <div css={styles.section.row}>
-          <Texts.Heading tag="h3" size="h3">
+          <Texts.SubHeading tag="h3" size="s">
             {title}
-          </Texts.Heading>
+          </Texts.SubHeading>
         </div>
         {summary && (
           <div css={[styles.section.row, textStyle.text.m]}>
-            <Texts.Text>
+            <Texts.Text size="s">
               <ReplaceLineFeedCodeToBr>{summary}</ReplaceLineFeedCodeToBr>
             </Texts.Text>
           </div>

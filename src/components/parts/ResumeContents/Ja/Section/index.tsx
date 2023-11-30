@@ -16,7 +16,7 @@ export const Section: React.FC<Props> = ({ title, children }) => {
   return (
     <div css={styles.container}>
       <div css={styles.title.container}>
-        <Texts.Heading tag="h2" size="h5">
+        <Texts.Heading tag="h2" size="h6">
           {title}
         </Texts.Heading>
       </div>

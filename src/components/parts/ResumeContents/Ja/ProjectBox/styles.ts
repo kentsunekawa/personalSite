@@ -21,8 +21,7 @@ export const createStyles = () => {
     `,
     header: {
       container: css`
-        gap: 16px 0;
-        border-bottom: 1px solid #ddd;
+        gap: 8px 0;
       `,
     },
     section: {
@@ -30,7 +29,7 @@ export const createStyles = () => {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        padding: 24px;
+        padding: 20px;
       `,
       row: css`
         width: 100%;
@@ -41,7 +40,7 @@ export const createStyles = () => {
     },
     definitionTableStyles: {
       container: css`
-        gap: 4px;
+        gap: 2px;
       `,
       dt: css`
         width: 100px;
@@ -66,8 +65,10 @@ export const createStyles = () => {
     },
     markdownStyle: {
       container: css`
-        h3 {
+        h3,
+        h4 {
           color: var(${VAR_NAMES.grayScale[30]});
+          margin-bottom: 8px !important;
         }
       `,
     },

@@ -23,7 +23,6 @@ export const ja: OmitIdSlug<Project> = {
     slugs.graphql,
     slugs.apollo,
   ]),
-  summary: `健康診断を受けた本人がその結果を確認したり、医療機関へ再検査の予約ができるアプリケーションの開発プロジェクト。
-  React Native を採用し、iOS、Android、Web を含むクロスプラットフォームで開発を行った。`,
+  summary: `健康診断を受けた本人がその結果を確認したり、医療機関へ再検査の予約ができるアプリケーションの開発プロジェクト。React Native を採用し、iOS、Android、Web を含むクロスプラットフォームで開発を行った。`,
   description,
 }

@@ -6,7 +6,7 @@ import { PageState } from "@/types"
 import { Lang } from "@/graphql/generated/types"
 import { PageContainer } from "@/components/globals/PageContainer"
 import { getCommonData } from "@/functions/getCommonData"
-import { NotFound } from "@/components/pageContents/notFound"
+import { NotFound } from "@/components/pageContents/NotFound"
 
 const pageState: PageState = {
   lang: Lang.Ja,
