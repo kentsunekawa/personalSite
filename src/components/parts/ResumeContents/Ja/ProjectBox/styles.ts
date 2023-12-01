@@ -22,6 +22,7 @@ export const createStyles = () => {
     header: {
       container: css`
         gap: 8px 0;
+        border-bottom: 1px solid #ddd;
       `,
     },
     section: {
@@ -48,6 +49,9 @@ export const createStyles = () => {
       dd: css`
         width: calc(100% - 104px);
       `,
+      dtText: css`
+        font-size: 12px;
+      `,
     },
     main: {
       container: css`
@@ -57,7 +61,6 @@ export const createStyles = () => {
         width: 100%;
       `,
     },
-
     skillIconList: {
       container: css`
         width: 100%;
@@ -65,10 +68,15 @@ export const createStyles = () => {
     },
     markdownStyle: {
       container: css`
-        h3,
-        h4 {
+        p,
+        li {
+          font-size: 12px;
+        }
+        h4,
+        h5 {
           color: var(${VAR_NAMES.grayScale[30]});
           margin-bottom: 8px !important;
+          margin-top: 16px !important;
         }
       `,
     },

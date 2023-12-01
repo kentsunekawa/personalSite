@@ -9,11 +9,14 @@ import { mq } from "@/styles/mixin"
 export const createStyles = () => {
   return {
     container: css`
+      display: flex;
+      flex-wrap: wrap;
       ${mq(
         "screen",
         css`
           max-width: 800px;
           margin: 0 auto;
+          gap: 20px 0;
         `
       )}
     `,

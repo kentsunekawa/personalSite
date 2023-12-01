@@ -8,7 +8,7 @@ import { Lang, Project } from "@/graphql/generated/types"
 import { Texts } from "@/components/parts/Texts"
 import { DefinitionTable } from "@/components/parts/DefinitionTable"
 import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
-import { ReplaceLineFeedCodeToBr } from "@/components/parts/ReplaceLineFeedCodeToBr"
+// import { ReplaceLineFeedCodeToBr } from "@/components/parts/ReplaceLineFeedCodeToBr"
 
 import { createStyles } from "./styles"
 
@@ -18,24 +18,13 @@ export type Props = {
 }
 
 const contents = {
-  [Lang.Ja]: {
-    period: "期間",
-    responsibility: "業務",
-    position: "ポジション",
-    company: "組織",
-    team: "チーム構成",
-    technologies: "主な使用技術",
-    now: "現在",
-  },
-  [Lang.En]: {
-    period: "Period",
-    responsibility: "Responsibility",
-    position: "Position",
-    company: "Company",
-    team: "Team",
-    technologies: "Technologies",
-    now: "now",
-  },
+  period: "期間",
+  responsibility: "担当業務",
+  position: "ポジション",
+  company: "組織",
+  team: "チーム構成",
+  technologies: "主な使用技術",
+  now: "現在",
 }
 
 export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
@@ -60,45 +49,63 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
     () =>
       [
         {
-          label: contents[lang].period,
+          label: contents.period,
           data: (
-            <Texts.Text size="s">{`${formatDateString(period.start, lang)} - ${
+            <Texts.Text
+              insertCss={styles.definitionTableStyles.dtText}
+            >{`${formatDateString(period.start, lang)} - ${
               period.end
                 ? `${formatDateString(period.end, lang)}`
-                : contents[lang].now
+                : contents.now
             }`}</Texts.Text>
           ),
         },
         belonging
           ? {
-              label: contents[lang].company,
-              data: <Texts.Text size="s">{belonging.name}</Texts.Text>,
+              label: contents.company,
+              data: (
+                <Texts.Text insertCss={styles.definitionTableStyles.dtText}>
+                  {belonging.name}
+                </Texts.Text>
+              ),
             }
           : null,
         team
           ? {
-              label: contents[lang].team,
-              data: <Texts.Text size="s">{team}</Texts.Text>,
+              label: contents.team,
+              data: (
+                <Texts.Text insertCss={styles.definitionTableStyles.dtText}>
+                  {team}
+                </Texts.Text>
+              ),
             }
           : null,
         position
           ? {
-              label: contents[lang].position,
-              data: <Texts.Text size="s">{position}</Texts.Text>,
+              label: contents.position,
+              data: (
+                <Texts.Text insertCss={styles.definitionTableStyles.dtText}>
+                  {position}
+                </Texts.Text>
+              ),
             }
           : null,
         responsibility
           ? {
-              label: contents[lang].responsibility,
-              data: <Texts.Text size="s">{responsibility}</Texts.Text>,
+              label: contents.responsibility,
+              data: (
+                <Texts.Text insertCss={styles.definitionTableStyles.dtText}>
+                  {responsibility}
+                </Texts.Text>
+              ),
             }
           : null,
         technologies.length > 0
           ? {
-              label: contents[lang].technologies,
+              label: contents.technologies,
               data: (
                 <div css={styles.skillIconList.container}>
-                  <Texts.Text size="s">
+                  <Texts.Text insertCss={styles.definitionTableStyles.dtText}>
                     {technologies.map(
                       ({ name }, i) =>
                         `${name}${i < technologies.length - 1 ? " / " : ""}`
@@ -110,13 +117,13 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
           : null,
       ].filter((item): item is NonNullable<typeof item> => item !== null),
     [
-      belonging,
       lang,
+      belonging,
       period.end,
       period.start,
       position,
       responsibility,
-      styles.skillIconList.container,
+      styles,
       team,
       technologies,
     ]
@@ -130,13 +137,13 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
             {title}
           </Texts.SubHeading>
         </div>
-        {summary && (
+        {/* {summary && (
           <div css={[styles.section.row, textStyle.text.m]}>
             <Texts.Text size="s">
               <ReplaceLineFeedCodeToBr>{summary}</ReplaceLineFeedCodeToBr>
             </Texts.Text>
           </div>
-        )}
+        )} */}
         {metaInfo && (
           <div css={styles.section.row}>
             <DefinitionTable
@@ -146,7 +153,7 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
           </div>
         )}
       </div>
-      {/* {description && (
+      {description && (
         <div css={[styles.section.container, styles.main.container]}>
           <div css={styles.section.row}>
             <Texts.Text weight="xb" insertCss={styles.section.title}>
@@ -159,7 +166,7 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
             </MarkdownDisplay>
           </div>
         </div>
-      )} */}
+      )}
     </article>
   )
 }

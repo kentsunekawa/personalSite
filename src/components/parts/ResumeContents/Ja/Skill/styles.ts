@@ -27,7 +27,7 @@ export const createStyles = () => {
         overflow: hidden;
       `,
       item: css`
-        width: 20%;
+        width: 16.6666%;
         display: flex;
         flex-wrap: wrap;
         border-bottom: 1px solid #ddd;

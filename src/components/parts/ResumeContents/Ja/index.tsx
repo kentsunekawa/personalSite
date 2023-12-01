@@ -18,6 +18,9 @@ export const Ja: React.FC<Props> = ({ profile, resume }) => {
   const { styles } = useStyle(createStyles)
   const { lang, summary, projects, skills, introduction } = resume
 
+  const project1 = projects[0]
+  const restProjects = projects.filter((_, i) => i !== 0)
+
   return (
     <div css={styles.container}>
       <PrintPages
@@ -53,7 +56,18 @@ export const Ja: React.FC<Props> = ({ profile, resume }) => {
             <div css={styles.section}>
               <Section title="プロジェクト">
                 <div css={styles.list.container}>
-                  {projects.map((project) => (
+                  <div key={project1.slug} css={styles.list.row}>
+                    <ProjectBox project={project1} lang={lang} />
+                  </div>
+                </div>
+              </Section>
+            </div>
+          </div>,
+          <div css={styles.main} key="2">
+            <div css={styles.section}>
+              <Section>
+                <div css={styles.list.container}>
+                  {restProjects.map((project) => (
                     <div key={project.slug} css={styles.list.row}>
                       <ProjectBox project={project} lang={lang} />
                     </div>
@@ -62,7 +76,7 @@ export const Ja: React.FC<Props> = ({ profile, resume }) => {
               </Section>
             </div>
           </div>,
-          <div css={styles.main} key="2">
+          <div css={styles.main} key="3">
             <div css={styles.section}>
               <Section title="テクニカルスキル">
                 <Skill skills={skills} />
