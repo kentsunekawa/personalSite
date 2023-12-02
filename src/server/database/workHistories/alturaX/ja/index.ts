@@ -9,8 +9,7 @@ export const ja: OmitIdSlug<WorkHistory> = {
     end: "2023-09-30",
   },
   employmentType: EmploymentType.Fulltime,
-  position:
-    "フロントエンドエンジニア / モバイルアプリエンジニア / フロントエンドチームリーダー",
+  position: "フロントエンドチームリーダー / モバイルアプリエンジニア",
   summary:
     "医療をドメインとする BtoC 向けアプリや BtoB 向け業務システムを開発・販売する企業。社内一人目のエンジニアとして入社。",
   // description,

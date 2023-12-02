@@ -16,7 +16,7 @@ export const createStyles = () => {
       width: 100%;
     `,
 
-    list: {
+    mainList: {
       container: css`
         display: flex;
         flex-wrap: wrap;
@@ -27,29 +27,29 @@ export const createStyles = () => {
         overflow: hidden;
       `,
       item: css`
-        width: 16.6666%;
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         border-bottom: 1px solid #ddd;
         border-right: 1px solid #ddd;
       `,
       title: css`
-        padding: 4px 8px;
-        width: 100%;
-      `,
-    },
-    mainSkill: {
-      item: css`
-        width: 100%;
-      `,
-      title: css`
         width: 116px;
+        padding: 4px 8px;
         background: #eee;
       `,
       summary: css`
         width: calc(100% - 116px);
         padding: 4px 8px;
       `,
+    },
+    otherList: {
+      container: css`
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      `,
+      item: css``,
     },
   }
 }

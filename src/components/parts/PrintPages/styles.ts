@@ -8,5 +8,8 @@ export const createStyles = () => {
       width: 100%;
       page-break-after: always;
     `,
+    last: css`
+      page-break-after: auto;
+    `,
   }
 }

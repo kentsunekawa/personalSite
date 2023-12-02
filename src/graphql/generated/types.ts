@@ -179,6 +179,7 @@ export type Resume = {
   readonly projects: ReadonlyArray<Project>;
   readonly skills: ReadonlyArray<Skill>;
   readonly summary: Scalars['String']['output'];
+  readonly workHistories: ReadonlyArray<WorkHistory>;
 };
 
 export type SearchPostsInput = {
@@ -226,7 +227,7 @@ export type PostFragment = { readonly __typename?: 'Post', readonly id: string, 
 
 export type ProjectFragment = { readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null }> };
 
-export type ResumeFragment = { readonly __typename?: 'Resume', readonly lang: Lang, readonly summary: string, readonly introduction?: string | null, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null }> }>, readonly skills: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null }> };
+export type ResumeFragment = { readonly __typename?: 'Resume', readonly lang: Lang, readonly summary: string, readonly introduction?: string | null, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null }> }>, readonly skills: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null }>, readonly workHistories: ReadonlyArray<{ readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } }> };
 
 export type SkillFragment = { readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null };
 
@@ -268,7 +269,7 @@ export type GetResumeQueryVariables = Exact<{
 }>;
 
 
-export type GetResumeQuery = { readonly __typename?: 'Query', readonly resume?: { readonly __typename?: 'Resume', readonly lang: Lang, readonly summary: string, readonly introduction?: string | null, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null }> }>, readonly skills: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null }> } | null };
+export type GetResumeQuery = { readonly __typename?: 'Query', readonly resume?: { readonly __typename?: 'Resume', readonly lang: Lang, readonly summary: string, readonly introduction?: string | null, readonly projects: ReadonlyArray<{ readonly __typename?: 'Project', readonly id: string, readonly slug: string, readonly title: string, readonly position?: string | null, readonly responsibility?: string | null, readonly team?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly belonging?: { readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } } | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null }, readonly technologies: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null }> }>, readonly skills: ReadonlyArray<{ readonly __typename?: 'Skill', readonly id: string, readonly slug: string, readonly name: string, readonly proficiency: Proficiency, readonly summary?: string | null }>, readonly workHistories: ReadonlyArray<{ readonly __typename?: 'WorkHistory', readonly id: string, readonly slug: string, readonly name: string, readonly employmentType?: EmploymentType | null, readonly position?: string | null, readonly summary?: string | null, readonly description?: string | null, readonly period: { readonly __typename?: 'Period', readonly start: string, readonly end?: string | null } }> } | null };
 
 export const AccountFragmentDoc = gql`
     fragment Account on Account {
@@ -365,9 +366,13 @@ export const ResumeFragmentDoc = gql`
     ...Skill
   }
   introduction
+  workHistories {
+    ...WorkHistory
+  }
 }
     ${ProjectFragmentDoc}
-${SkillFragmentDoc}`;
+${SkillFragmentDoc}
+${WorkHistoryFragmentDoc}`;
 export const GetPostDocument = gql`
     query GetPost($slug: String!, $lang: Lang) {
   post(slug: $slug, lang: $lang) {
@@ -792,6 +797,7 @@ export type ResumeResolvers<ContextType = any, ParentType extends ResolversParen
   projects?: Resolver<ReadonlyArray<ResolversTypes['Project']>, ParentType, ContextType>;
   skills?: Resolver<ReadonlyArray<ResolversTypes['Skill']>, ParentType, ContextType>;
   summary?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  workHistories?: Resolver<ReadonlyArray<ResolversTypes['WorkHistory']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 

@@ -1,6 +1,6 @@
 "use client"
 // import from libraries
-import { useMemo } from "react"
+import React, { useMemo } from "react"
 
 // import from this project
 import { useStyle } from "@/hooks"
@@ -33,30 +33,33 @@ export const Skill: React.FC<Props> = ({ skills }) => {
   return (
     <div css={styles.container}>
       <div css={styles.row}>
-        <SubSection title="メインスキル">
-          <ul css={styles.list.container}>
-            {experiencedSkills.map(({ name, slug, summary }) => (
-              <li key={slug} css={[styles.list.item, styles.mainSkill.item]}>
-                <div css={[styles.list.title, styles.mainSkill.title]}>
-                  <Texts.Text size="s">{name}</Texts.Text>
-                </div>
-                <div css={styles.mainSkill.summary}>
-                  <Texts.Text size="s">{summary}</Texts.Text>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </SubSection>
+        <ul css={styles.mainList.container}>
+          {experiencedSkills.map(({ name, slug, summary }) => (
+            <li key={slug} css={styles.mainList.item}>
+              <div css={styles.mainList.title}>
+                <Texts.Text size="s">{name}</Texts.Text>
+              </div>
+              <div css={styles.mainList.summary}>
+                <Texts.Text size="s">{summary}</Texts.Text>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
       <div css={styles.row}>
-        <SubSection title="その他、開発で用いたことのあるスキル">
-          <ul css={styles.list.container}>
-            {haveUsedSkills.map(({ name, slug }) => (
-              <li key={slug} css={styles.list.item}>
-                <div css={styles.list.title}>
+        <SubSection title="その他、開発で用いたことのある技術・ツール">
+          <ul css={styles.otherList.container}>
+            {haveUsedSkills.map(({ name, slug }, i) => (
+              <React.Fragment key={slug}>
+                <li>
                   <Texts.Text size="s">{name}</Texts.Text>
-                </div>
-              </li>
+                </li>
+                {i < haveUsedSkills.length - 1 && (
+                  <li>
+                    <Texts.Text size="s"> / </Texts.Text>
+                  </li>
+                )}
+              </React.Fragment>
             ))}
           </ul>
         </SubSection>

@@ -91,7 +91,7 @@ export const createStyles = () => {
       `,
     },
     caption: css`
-      font-size: 12px;
+      font-size: 10px;
       line-height: 1.6em;
       letter-spacing: -0.03em;
     `,

@@ -12,7 +12,10 @@ export type Props = {
 export const PrintPages: React.FC<Props> = ({ pages }) => {
   const { styles } = useStyle(createStyles)
   return pages.map((page, i) => (
-    <div css={styles.container} key={`${i.toString()}`}>
+    <div
+      css={[styles.container, i === pages.length - 1 && styles.last]}
+      key={`${i.toString()}`}
+    >
       {page}
     </div>
   ))

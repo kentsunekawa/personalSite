@@ -8,4 +8,7 @@ fragment Resume on Resume {
     ...Skill
   }
   introduction
+  workHistories {
+    ...WorkHistory
+  }
 }

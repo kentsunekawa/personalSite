@@ -5,7 +5,7 @@ import { useState } from "react"
 // import from this project
 import { InsertStyles } from "@/types"
 import { useStyle, useTextStyles } from "@/hooks"
-import { formatDateString } from "@/utils"
+import { formatDateString, createPeriodText } from "@/utils"
 import { Lang } from "@/graphql/generated/types"
 import { HeadingSize } from "@/styles/commonStyles/textStyles"
 import {
@@ -67,11 +67,7 @@ export const ContentsBox: React.FC<Props> = ({
       <div css={styles.header}>
         {period && (
           <div css={styles.titleArea.container}>
-            <Texts.Caption>{`${formatDateString(period.start, lang)} - ${
-              period.end
-                ? `${formatDateString(period.end, lang)}`
-                : textContents[lang].texts.now
-            }`}</Texts.Caption>
+            <Texts.Caption>{createPeriodText(period, lang)}</Texts.Caption>
           </div>
         )}
         <div css={styles.titleArea.container}>

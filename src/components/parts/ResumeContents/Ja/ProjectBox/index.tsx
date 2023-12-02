@@ -154,17 +154,10 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
         )}
       </div>
       {description && (
-        <div css={[styles.section.container, styles.main.container]}>
-          <div css={styles.section.row}>
-            <Texts.Text weight="xb" insertCss={styles.section.title}>
-              詳細
-            </Texts.Text>
-          </div>
-          <div css={styles.section.row}>
-            <MarkdownDisplay insertStyles={styles.markdownStyle}>
-              {description}
-            </MarkdownDisplay>
-          </div>
+        <div css={styles.section.container}>
+          <MarkdownDisplay insertStyles={styles.markdownStyle}>
+            {description}
+          </MarkdownDisplay>
         </div>
       )}
     </article>

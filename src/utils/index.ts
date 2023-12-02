@@ -3,13 +3,17 @@ import { PAGES_INFO, IMAGE_PATHS, PageName } from "@/constants"
 
 export const getPageInfo = (pageName: PageName) => PAGES_INFO[pageName]
 
-export const formatDateString = (dateString: string, lang: Lang) => {
+export const formatDateString = (
+  dateString: string,
+  lang: Lang,
+  withDate?: boolean
+) => {
   switch (lang) {
     case "EN":
       return dateString.replaceAll("-", ".")
     default:
       const [year, month, date] = dateString.split("-")
-      return `${year}年${month}月${date}日`
+      return `${year}年${month}月${withDate ? `${date}日` : ""}`
   }
 }
 
@@ -27,3 +31,28 @@ export const convertCookieString = (
     .map((item) => item.split("="))
     // @ts-ignore
     .reduce((acc, [k, v]) => (acc[k.trim().replace('"', "")] = v) && acc, {})
+
+export const createPeriodText = (
+  period: { start: string; end?: string | null | undefined },
+  lang: Lang,
+  withDate?: boolean
+) => {
+  const textContents = {
+    [Lang.Ja]: {
+      texts: {
+        now: "現在",
+      },
+    },
+    [Lang.En]: {
+      texts: {
+        now: "Now",
+      },
+    },
+  }
+
+  return `${formatDateString(period.start, lang, withDate)} - ${
+    period.end
+      ? `${formatDateString(period.end, lang, withDate)}`
+      : textContents[lang].texts.now
+  }`
+}

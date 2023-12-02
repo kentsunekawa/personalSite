@@ -43,6 +43,7 @@ const allSkills: Skill[] = [
     slug: slugs.apollo,
     name: "Apollo",
     proficiency: Proficiency.HaveUsed,
+    summary: "3 つ以上の SPA 開発プロジェクトにおいて使用経験あり。",
   },
   {
     id: "babel",
@@ -55,8 +56,7 @@ const allSkills: Skill[] = [
     slug: slugs.css3,
     name: "CSS3",
     proficiency: Proficiency.Experienced,
-    summary:
-      "5 年以上の実務プロジェクトでの開発経験あり。。フレームワークなどは使わず使用することが多い。",
+    summary: "5 年以上の実務プロジェクトでの開発経験あり。",
   },
   {
     id: "Cypress",
@@ -95,14 +95,15 @@ const allSkills: Skill[] = [
   {
     id: "git",
     slug: slugs.git,
-    name: "Git",
-    proficiency: Proficiency.HaveUsed,
+    name: "Git・GitHub",
+    proficiency: Proficiency.Experienced,
+    summary: "チームでの開発において使用経験あり。",
   },
   {
     id: "graphql",
     slug: slugs.graphql,
     name: "GraphQL",
-    proficiency: Proficiency.HaveUsed,
+    proficiency: Proficiency.Experienced,
   },
   {
     id: "gulp",
@@ -129,7 +130,7 @@ const allSkills: Skill[] = [
     name: "JavaScript",
     proficiency: Proficiency.Experienced,
     summary:
-      "5 年以上の実務プロジェクトでの開発経験あり。React や jQuery を使わないバニラ JS での開発が可能。",
+      "5 年以上の実務プロジェクトでの開発経験あり。React や jQuery を使わない Vanilla JS での記述も可能。",
   },
   {
     id: "jest",
@@ -257,14 +258,14 @@ export const skills: Skill[] = getSkills([
   slugs.nextjs,
   slugs.reactNative,
   slugs.expo,
+  slugs.graphql,
   slugs.html5,
   slugs.css3,
   slugs.figma,
-  slugs.graphql,
+  slugs.sass,
   slugs.jest,
   slugs.testingLibrary,
   slugs.cypress,
-  slugs.sass,
   slugs.jquery,
   slugs.apollo,
   slugs.redux,

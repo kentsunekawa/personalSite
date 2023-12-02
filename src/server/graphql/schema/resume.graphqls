@@ -8,4 +8,5 @@ type Resume {
   projects: [Project!]!
   skills: [Skill!]!
   introduction: String
+  workHistories: [WorkHistory!]!
 }
