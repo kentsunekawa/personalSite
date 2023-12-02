@@ -16,7 +16,7 @@ const createPageState = (lang: Lang): PageState => ({
   pageName: "resume",
   translatedLangs: {
     [Lang.Ja]: true,
-    [Lang.En]: true,
+    [Lang.En]: false,
   },
 })
 

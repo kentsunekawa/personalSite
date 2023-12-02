@@ -35,12 +35,12 @@ export const createStyles = () => {
       `,
       title: css`
         width: 116px;
-        padding: 4px 8px;
+        padding: 2px 8px;
         background: #eee;
       `,
       summary: css`
         width: calc(100% - 116px);
-        padding: 4px 8px;
+        padding: 2px 8px;
       `,
     },
     otherList: {
@@ -49,7 +49,6 @@ export const createStyles = () => {
         flex-wrap: wrap;
         gap: 4px;
       `,
-      item: css``,
     },
   }
 }

@@ -30,9 +30,9 @@ export const Posts: React.FC<Props> = ({ posts, lang }) => {
                 })}
                 css={styles.box}
               >
-                <Texts.SubHeading size="s" insertCss={styles.title}>
+                <Texts.Heading size="h6" insertCss={styles.title}>
                   {title}
-                </Texts.SubHeading>
+                </Texts.Heading>
                 <Texts.Caption insertCss={styles.date}>
                   {formatDateString(date, lang)}
                 </Texts.Caption>

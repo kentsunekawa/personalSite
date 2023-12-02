@@ -27,7 +27,7 @@ export const WorkHistories: React.FC<Props> = ({ lang, workHistories }) => {
                 <Texts.Caption>{createPeriodText(period, lang)}</Texts.Caption>
               </div>
               <div css={styles.name}>
-                <Texts.Text size="l">{name}</Texts.Text>
+                <Texts.Text>{name}</Texts.Text>
                 {(employmentType || position) && (
                   <Texts.Caption>
                     {employmentType &&

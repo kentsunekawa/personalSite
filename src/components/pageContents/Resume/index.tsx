@@ -11,7 +11,7 @@ import {
 import { useProfile } from "@/hooks/useProfile"
 import { PageBase } from "@/components/globals/PageBase"
 import { PageContent } from "@/components/parts/PageContent"
-import { ResumeContents } from "@/components/parts/ResumeContents"
+import { ResumeContents } from "@/components/pageContents/Resume/ResumeContents"
 import { InputContents } from "./InputContents"
 
 type Props = PageState

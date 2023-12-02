@@ -89,74 +89,74 @@ export const Heading: React.FC<HeadingProps> = ({
   }
 }
 
-type SubHeadingProps = CommonProps & {
-  tag?: HeadingSize
-  size?: Size
-}
+// type SubHeadingProps = CommonProps & {
+//   tag?: HeadingSize
+//   size?: Size
+// }
 
-export const SubHeading: React.FC<SubHeadingProps> = ({
-  tag,
-  size = "m",
-  weight = "m",
-  align = "left",
-  insertCss,
-  title,
-  children,
-}) => {
-  const { styles } = useStyle(createStyles)
+// export const SubHeading: React.FC<SubHeadingProps> = ({
+//   tag,
+//   size = "m",
+//   weight = "m",
+//   align = "left",
+//   insertCss,
+//   title,
+//   children,
+// }) => {
+//   const { styles } = useStyle(createStyles)
 
-  const combinedCss = [
-    styles.align[align],
-    styles.weight[weight],
-    styles.subHeading[size],
-    insertCss,
-  ]
+//   const combinedCss = [
+//     styles.align[align],
+//     styles.weight[weight],
+//     styles.subHeading[size],
+//     insertCss,
+//   ]
 
-  switch (tag) {
-    case "h1":
-      return (
-        <h1 title={title} css={combinedCss}>
-          {children}
-        </h1>
-      )
-    case "h2":
-      return (
-        <h2 title={title} css={combinedCss}>
-          {children}
-        </h2>
-      )
-    case "h3":
-      return (
-        <h3 title={title} css={combinedCss}>
-          {children}
-        </h3>
-      )
-    case "h4":
-      return (
-        <h4 title={title} css={combinedCss}>
-          {children}
-        </h4>
-      )
-    case "h5":
-      return (
-        <h5 title={title} css={combinedCss}>
-          {children}
-        </h5>
-      )
-    case "h6":
-      return (
-        <h6 title={title} css={combinedCss}>
-          {children}
-        </h6>
-      )
-    default:
-      return (
-        <p title={title} css={combinedCss}>
-          {children}
-        </p>
-      )
-  }
-}
+//   switch (tag) {
+//     case "h1":
+//       return (
+//         <h1 title={title} css={combinedCss}>
+//           {children}
+//         </h1>
+//       )
+//     case "h2":
+//       return (
+//         <h2 title={title} css={combinedCss}>
+//           {children}
+//         </h2>
+//       )
+//     case "h3":
+//       return (
+//         <h3 title={title} css={combinedCss}>
+//           {children}
+//         </h3>
+//       )
+//     case "h4":
+//       return (
+//         <h4 title={title} css={combinedCss}>
+//           {children}
+//         </h4>
+//       )
+//     case "h5":
+//       return (
+//         <h5 title={title} css={combinedCss}>
+//           {children}
+//         </h5>
+//       )
+//     case "h6":
+//       return (
+//         <h6 title={title} css={combinedCss}>
+//           {children}
+//         </h6>
+//       )
+//     default:
+//       return (
+//         <p title={title} css={combinedCss}>
+//           {children}
+//         </p>
+//       )
+//   }
+// }
 
 type TextProps = CommonProps & {
   size?: Size
@@ -213,7 +213,7 @@ export const Caption: React.FC<CommonProps> = ({
 
 export const Texts = {
   Heading,
-  SubHeading,
+  // SubHeading,
   Text,
   Caption,
 }

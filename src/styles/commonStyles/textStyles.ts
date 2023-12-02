@@ -73,23 +73,23 @@ export const createStyles = () => {
         letter-spacing: 0;
       `,
     },
-    subHeading: {
-      s: css`
-        font-size: 18px;
-        line-height: 1.6em;
-        letter-spacing: 0;
-      `,
-      m: css`
-        font-size: 20px;
-        line-height: 1.6em;
-        letter-spacing: 0;
-      `,
-      l: css`
-        font-size: 22px;
-        line-height: 1.6em;
-        letter-spacing: 0;
-      `,
-    },
+    // subHeading: {
+    //   s: css`
+    //     font-size: 18px;
+    //     line-height: 1.6em;
+    //     letter-spacing: 0;
+    //   `,
+    //   m: css`
+    //     font-size: 20px;
+    //     line-height: 1.6em;
+    //     letter-spacing: 0;
+    //   `,
+    //   l: css`
+    //     font-size: 22px;
+    //     line-height: 1.6em;
+    //     letter-spacing: 0;
+    //   `,
+    // },
     caption: css`
       font-size: 10px;
       line-height: 1.6em;

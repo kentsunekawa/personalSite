@@ -23,13 +23,12 @@ const contents = {
   position: "ポジション",
   company: "組織",
   team: "チーム構成",
-  technologies: "主な使用技術",
+  technologies: "開発環境",
   now: "現在",
 }
 
 export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
   const { styles } = useStyle(createStyles)
-  const { styles: textStyle } = useTextStyles()
 
   const {
     // id,
@@ -133,9 +132,9 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
     <article css={styles.container}>
       <div css={[styles.section.container, styles.header.container]}>
         <div css={styles.section.row}>
-          <Texts.SubHeading tag="h3" size="s">
+          <Texts.Heading tag="h3" size="h6">
             {title}
-          </Texts.SubHeading>
+          </Texts.Heading>
         </div>
         {/* {summary && (
           <div css={[styles.section.row, textStyle.text.m]}>

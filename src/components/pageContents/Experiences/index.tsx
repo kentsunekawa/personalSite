@@ -70,9 +70,9 @@ export const Experiences: React.FC<Props> = ({ lang, posts }) => {
             </div>
           ) : (
             <div css={styles.emptyArea}>
-              <Texts.SubHeading align="center">
+              <Texts.Heading align="center" size="h5">
                 {contents[lang].emptyMessage}
-              </Texts.SubHeading>
+              </Texts.Heading>
             </div>
           )}
         </div>

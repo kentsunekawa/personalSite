@@ -52,7 +52,9 @@ export const Summary: React.FC<Props> = ({ data, lang }) => {
         <div css={[styles.nameArea]}>
           <div css={styles.row}>
             <Texts.Text size="s">{subName}</Texts.Text>
-            <Texts.SubHeading weight="b">{name}</Texts.SubHeading>
+            <Texts.Heading weight="b" size="h5">
+              {name}
+            </Texts.Heading>
           </div>
           <div css={styles.row}>
             <Texts.Text size="s">{businessTitle}</Texts.Text>

@@ -13,7 +13,7 @@ import { WorkHistories } from "./WorkHistories"
 import { Skill } from "./Skill"
 import { createStyles } from "./styles"
 
-import { Props } from "../"
+import { Props } from ".."
 
 export const Ja: React.FC<Props> = ({ profile, resume }) => {
   const { styles } = useStyle(createStyles)
