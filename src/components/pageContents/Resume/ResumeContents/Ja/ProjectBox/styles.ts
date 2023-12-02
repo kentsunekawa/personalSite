@@ -11,7 +11,7 @@ export const createStyles = () => {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
-      border: 1px solid #ddd;
+      border: 1px solid var(${VAR_NAMES.grayScale[80]});
       border-radius: 4px;
     `,
     inner: css`
@@ -22,7 +22,7 @@ export const createStyles = () => {
     header: {
       container: css`
         gap: 8px 0;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(${VAR_NAMES.grayScale[80]});
       `,
     },
     section: {

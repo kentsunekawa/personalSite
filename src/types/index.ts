@@ -31,3 +31,8 @@ export type InsertStyles<T extends string> = {
 export type CommonData = {
   profile: Profile
 }
+
+export type FetchStatus = {
+  isLoading: boolean
+  isError: boolean
+}

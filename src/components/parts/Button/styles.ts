@@ -39,11 +39,11 @@ export const createStyles = (styleProps?: StyleProps) => {
       ${type === "filled" &&
       css`
         background: var(${colorVarName});
-        color: #fff;
+        color: var(${VAR_NAMES.bg});
       `}
       ${hasPadding &&
       css`
-        padding: 8px;
+        padding: 8px 12px;
         border-radius: 4px;
       `}
       ${hoveredLink()}

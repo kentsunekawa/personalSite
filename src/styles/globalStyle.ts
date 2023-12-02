@@ -31,7 +31,7 @@ export const globalStyle = css`
   }
   [data-theme="dark"] {
     /* colors */
-    --fg: #fff;
+    --fg: ${dColors.fg};
     --bg: ${dColors.bg};
     --primary-light: ${dColors.primary.right};
     --primary-main: ${dColors.primary.main};

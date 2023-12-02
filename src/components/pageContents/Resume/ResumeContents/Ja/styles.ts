@@ -20,6 +20,11 @@ export const createStyles = () => {
         `
       )}
     `,
+    buttonArea: css`
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    `,
     main: css`
       display: flex;
       flex-wrap: wrap;

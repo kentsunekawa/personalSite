@@ -56,3 +56,11 @@ export const createPeriodText = (
       : textContents[lang].texts.now
   }`
 }
+
+// ファイルをダウンロードさせる関数
+export const downloadFile = (blob: Blob, fileName: string) => {
+  const link = document.createElement("a")
+  link.href = (window.URL || window.webkitURL).createObjectURL(blob)
+  link.download = fileName
+  link.click()
+}
