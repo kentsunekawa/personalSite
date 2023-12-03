@@ -11,7 +11,7 @@ export const createStyles = () => {
     list: css`
       display: flex;
       flex-wrap: wrap;
-      gap: 0 16px;
+      gap: 0 8px;
     `,
   }
 }

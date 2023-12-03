@@ -59,7 +59,7 @@ export const LangChanger: React.FC<Props> = ({
     options.length > 0 && (
       <div css={styles.container}>
         {options.map(({ label, href }) => (
-          <Button key={label} href={href} type="block">
+          <Button key={label} href={href} type="block" size="s">
             {label}
           </Button>
         ))}

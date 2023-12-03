@@ -1,6 +1,6 @@
 "use client"
 // import from libraries
-import { useState } from "react"
+import React, { useState, forwardRef } from "react"
 import Link from "next/link"
 
 // import from this project
@@ -22,10 +22,12 @@ export type Props = {
   showNav?: boolean
 }
 
-export const Header: React.FC<Props> = ({
-  showTopLogo = true,
-  showNav = true,
-}) => {
+type Ref = HTMLElement
+
+export const Header = React.forwardRef<Ref, Props>(function Component(
+  { showTopLogo = true, showNav = true },
+  ref
+) {
   const { styles } = useStyle(createStyles)
 
   const { pageState } = usePageState()
@@ -37,7 +39,7 @@ export const Header: React.FC<Props> = ({
   return (
     <>
       <div css={styles.space} />
-      <header css={styles.container}>
+      <header css={styles.container} ref={ref}>
         <div css={styles.bg} />
         <div>
           {showTopLogo && (
@@ -79,4 +81,4 @@ export const Header: React.FC<Props> = ({
       </header>
     </>
   )
-}
+})

@@ -8,7 +8,15 @@ import { hoveredLink } from "@/styles/mixin"
 
 export const createStyles = () => {
   return {
-    container: css``,
+    container: css`
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 0;
+    `,
+    row: css`
+      width: 100%;
+    `,
     list: css`
       display: flex;
       flex-wrap: wrap;

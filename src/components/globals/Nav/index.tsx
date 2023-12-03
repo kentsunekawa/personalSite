@@ -19,7 +19,7 @@ export const Nav: React.FC = () => {
       <ul css={styles.list}>
         {linksInfo.map(({ pageName, label, isCurrent, props }) => (
           <li key={pageName}>
-            <Button {...props} type="block">
+            <Button {...props} type="block" size="s">
               {label}
             </Button>
           </li>

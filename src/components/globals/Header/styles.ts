@@ -47,7 +47,7 @@ export const createStyles = () => {
       justify-content: flex-end;
       align-items: center;
       height: 100%;
-      gap: 0 18px;
+      gap: 0 8px;
     `,
     spacer: css`
       display: block;

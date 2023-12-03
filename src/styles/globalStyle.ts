@@ -72,7 +72,4 @@ export const globalStyle = css`
   html {
     background: var(--bg);
   }
-  * {
-    color: var(--fg);
-  }
 `
