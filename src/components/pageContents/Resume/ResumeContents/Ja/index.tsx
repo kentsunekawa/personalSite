@@ -12,6 +12,7 @@ import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
 import { PrintPages } from "@/components/parts/PrintPages"
 import { Button } from "@/components/parts/Button"
 import { MQ } from "@/components/parts/MQ"
+import { ReplaceLineFeedCodeToBr } from "@/components/parts/ReplaceLineFeedCodeToBr"
 import { Section } from "./Section"
 import { ProjectBox } from "./ProjectBox"
 import { WorkHistories } from "./WorkHistories"
@@ -90,7 +91,9 @@ export const Ja: React.FC<Props> = ({ profile, resume }) => {
               </div>
               <div css={styles.section}>
                 <Section title="職務概要">
-                  <Texts.Text size="s">{summary}</Texts.Text>
+                  <Texts.Text size="s">
+                    <ReplaceLineFeedCodeToBr>{summary}</ReplaceLineFeedCodeToBr>
+                  </Texts.Text>
                 </Section>
               </div>
               <div css={styles.section}>

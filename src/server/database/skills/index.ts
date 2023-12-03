@@ -43,7 +43,6 @@ const allSkills: Skill[] = [
     slug: slugs.apollo,
     name: "Apollo",
     proficiency: Proficiency.HaveUsed,
-    summary: "3 つ以上の SPA 開発プロジェクトにおいて使用経験あり。",
   },
   {
     id: "babel",
@@ -104,6 +103,7 @@ const allSkills: Skill[] = [
     slug: slugs.graphql,
     name: "GraphQL",
     proficiency: Proficiency.Experienced,
+    summary: "3 つ以上の SPA 開発プロジェクトにおいて使用経験あり。",
   },
   {
     id: "gulp",
