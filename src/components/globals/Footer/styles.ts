@@ -1,9 +1,9 @@
-"use client"
+'use client'
 // import from libraries
-import { css } from "styled-components"
+import { css } from 'styled-components'
 
 // import from this project
-import { mq } from "@/styles/mixin"
+import { mq } from '@/styles/mixin'
 
 export const createStyles = () => {
   return {
@@ -15,16 +15,17 @@ export const createStyles = () => {
       align-items: flex-end;
       padding: 24px;
       ${mq(
-        "tbMin_gt",
+        'tbMin_gt',
         css`
           justify-content: flex-end;
-        `
+        `,
       )}
     `,
     content: {
       container: css`
         display: flex;
         flex-wrap: wrap;
+        gap: 8px 0;
       `,
       row: css`
         width: 100%;

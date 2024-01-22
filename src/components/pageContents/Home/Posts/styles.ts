@@ -1,18 +1,17 @@
-"use client"
+'use client'
 // import from libraries
-import { css } from "styled-components"
+import { css } from 'styled-components'
 
 // import from this project
-import { VAR_NAMES } from "@/styles/theme"
-import { hoveredLink } from "@/styles/mixin"
+import { VAR_NAMES } from '@/styles/theme'
+import { hoveredLink, limitTextRow } from '@/styles/mixin'
 
 export const createStyles = () => {
   return {
     container: css`
-      width: 100%;
       display: flex;
       flex-wrap: wrap;
-      gap: 4px 0;
+      gap: 24px 0;
     `,
     row: css`
       width: 100%;
@@ -20,21 +19,23 @@ export const createStyles = () => {
     list: css`
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 0;
+      gap: 16px 0;
     `,
     item: css`
       width: 100%;
     `,
     box: css`
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       ${hoveredLink()}
+      gap: 0 8px;
     `,
     title: css`
-      width: 100%;
+      width: calc(100% - 64px);
+      ${limitTextRow(1)}
     `,
     date: css`
-      width: 100%;
+      width: 56px;
     `,
   }
 }

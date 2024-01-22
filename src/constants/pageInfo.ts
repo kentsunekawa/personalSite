@@ -1,13 +1,13 @@
-import { Lang } from "@/graphql/generated/types"
+import { Lang } from '@/graphql/generated/types'
 
 export type PageName =
-  | "home"
-  | "profile"
-  | "experiences"
-  | "experience"
-  | "projects"
-  | "resume"
-  | "notFound"
+  | 'home'
+  | 'profile'
+  | 'experiences'
+  | 'experience'
+  | 'projects'
+  | 'resume'
+  | 'notFound'
 
 export type PageInfo = {
   path: string
@@ -16,7 +16,7 @@ export type PageInfo = {
     lang: Lang,
     params?: {
       [k: string]: string
-    }
+    },
   ) => string
 }
 
@@ -24,7 +24,7 @@ export type PagesInfo = {
   [k in PageName]: PageInfo
 }
 
-const checkLang = (lang?: Lang) => (!lang || lang === Lang.Ja ? "" : "en")
+const checkLang = (lang?: Lang) => (!lang || lang === Lang.Ja ? '' : 'en')
 
 // テンプレート置換
 export const strFormat = (
@@ -32,12 +32,12 @@ export const strFormat = (
   replacement: {
     [k: string]: string | number
   },
-  regex = /\{(.+?)\}/g
+  regex = /\{(.+?)\}/g,
 ): string =>
   template.replace(regex, (m: string, c: string) =>
     replacement[c] !== null && replacement[c] !== undefined
       ? replacement[c].toString()
-      : m
+      : m,
   )
 
 // PAGES_INFO の変数置換
@@ -45,58 +45,58 @@ export const createUrl = (
   path: string,
   replacement?: {
     [k: string]: string
-  }
+  },
 ): string =>
   replacement ? strFormat(path, replacement, /:([^/]+)($|(?=\/))/g) : path
 
 export const PAGES_INFO: PagesInfo = {
   home: {
-    path: "/",
-    displayName: "Home",
+    path: '/',
+    displayName: 'HOME',
     createPath(lang = Lang.Ja) {
       return `${PAGES_INFO.home.path}${checkLang(lang)}`
     },
   },
   profile: {
-    path: "/profile",
-    displayName: "Profile",
+    path: '/profile',
+    displayName: 'PROFILE',
     createPath(lang = Lang.Ja) {
       return `${PAGES_INFO.profile.path}/${checkLang(lang)}`
     },
   },
   projects: {
-    path: "/projects",
-    displayName: "Projects",
+    path: '/projects',
+    displayName: 'PROJECTS',
     createPath(lang = Lang.Ja) {
       return `${PAGES_INFO.projects.path}/${checkLang(lang)}`
     },
   },
   experiences: {
-    path: "/experiences",
-    displayName: "Experiences",
+    path: '/experiences',
+    displayName: 'EXPERIENCES',
     createPath(lang = Lang.Ja) {
       return `${PAGES_INFO.experiences.path}/${checkLang(lang)}`
     },
   },
   experience: {
-    path: "/experiences/:slug",
-    displayName: "Experience",
+    path: '/experiences/:slug',
+    displayName: 'EXPERIENCE',
     createPath(lang = Lang.Ja, params) {
       return `${createUrl(PAGES_INFO.experience.path, params)}/${checkLang(
-        lang
+        lang,
       )}`
     },
   },
   resume: {
-    path: "/resume",
-    displayName: "Resume",
+    path: '/resume',
+    displayName: 'Resume',
     createPath(lang = Lang.Ja) {
       return `${createUrl(PAGES_INFO.resume.path)}/${checkLang(lang)}`
     },
   },
   notFound: {
-    path: "/404",
-    displayName: "Not found",
+    path: '/404',
+    displayName: 'Not found',
     createPath(lang = Lang.Ja, params) {
       return `${createUrl(PAGES_INFO.notFound.path, params)}/${checkLang(lang)}`
     },

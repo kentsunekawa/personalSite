@@ -1,9 +1,9 @@
-"use client"
+'use client'
 // import from libraries
-import { css } from "styled-components"
+import { css } from 'styled-components'
 
 // import from this project
-import { VAR_NAMES } from "@/styles/theme"
+import { VAR_NAMES } from '@/styles/theme'
 
 export const createStyles = () => {
   return {
@@ -18,7 +18,12 @@ export const createStyles = () => {
     `,
     button: {
       container: css`
-        font-size: 20px;
+        display: block;
+        width: 20px;
+        height: 20px;
+        font-size: 18px;
+        line-height: 20px;
+        text-align: center;
         line-height: 1em;
         color: var(${VAR_NAMES.grayScale[60]}) !important;
       `,

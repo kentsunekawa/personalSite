@@ -1,9 +1,9 @@
-"use client"
+'use client'
 // import from libraries
-import { css } from "styled-components"
+import { css } from 'styled-components'
 
 // import from this project
-import { VAR_NAMES } from "@/styles/theme"
+import { VAR_NAMES } from '@/styles/theme'
 
 export const createStyles = () => {
   return {
@@ -11,11 +11,9 @@ export const createStyles = () => {
       position: relative;
       width: 100%;
       height: 100vh;
-      min-height: 720px;
+      overflow: hidden;
     `,
-    main: css`
-      position: relative;
-    `,
+    main: css``,
     message: css`
       position: absolute;
       bottom: 50%;
@@ -52,17 +50,18 @@ export const createStyles = () => {
       width: 100%;
     `,
     postAre: css`
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding-left: 24px;
+      position: fixed;
+      bottom: 72px;
+      left: 72px;
+      width: 544px;
+      z-index: 10;
     `,
     footer: css`
       width: 100%;
-      position: absolute;
+      position: fixed;
       bottom: 0;
       left: 0%;
+      z-index: 0;
     `,
   }
 }

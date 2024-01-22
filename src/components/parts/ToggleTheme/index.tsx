@@ -1,13 +1,13 @@
-"use client"
+'use client'
 // import from libraries
-import { useCallback } from "react"
+import { useCallback } from 'react'
 
 // import from this project
-import { THEME_NAMES } from "@/constants"
-import { useStyle, useThemeName } from "@/hooks"
-import { Icons } from "@/components/parts/Icons"
-import { Button } from "@/components/parts/Button"
-import { createStyles } from "./styles"
+import { THEME_NAMES } from '@/constants'
+import { useStyle, useThemeName } from '@/hooks'
+import { Icons } from '@/components/parts/Icons'
+import { IconButton } from '@/components/parts/IconButton'
+import { createStyles } from './styles'
 
 const themes = [THEME_NAMES.system, THEME_NAMES.light, THEME_NAMES.dark]
 
@@ -25,14 +25,14 @@ export const ToggleTheme: React.FC = () => {
 
   return (
     <div css={styles.container}>
-      <Button
+      <IconButton
         onClick={change}
-        type="block"
-        size="l"
+        type='block'
+        size='l'
         insertCss={{ container: styles.icon }}
       >
         <Icon />
-      </Button>
+      </IconButton>
     </div>
   )
 }

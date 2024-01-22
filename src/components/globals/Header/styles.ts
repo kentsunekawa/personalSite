@@ -1,13 +1,13 @@
-"use client"
+'use client'
 // import from libraries
-import { css } from "styled-components"
+import { css } from 'styled-components'
 
 // import from this project
-import { VAR_NAMES } from "@/styles/theme"
-import { mq } from "@/styles/mixin"
+import { VAR_NAMES } from '@/styles/theme'
+import { mq, createFontStyles } from '@/styles/mixin'
 
 export const createStyles = () => {
-  const headerHeight = "56px"
+  const headerHeight = '64px'
   return {
     container: css`
       display: flex;
@@ -15,17 +15,16 @@ export const createStyles = () => {
       align-items: center;
       width: 100%;
       height: ${headerHeight};
-      padding: 0 24px;
+      padding: 0 16px 0 24px;
       position: fixed;
       top: 0;
       left: 0;
       z-index: 100;
-
       ${mq(
-        "print",
+        'print',
         css`
           display: none;
-        `
+        `,
       )}
     `,
     space: css`
@@ -42,17 +41,26 @@ export const createStyles = () => {
       opacity: 0.85;
       z-index: -1;
     `,
+    siteNameText: createFontStyles({
+      size: 15,
+      letterSpacing: -0.02,
+    }),
     menuArea: css`
       display: flex;
       justify-content: flex-end;
       align-items: center;
       height: 100%;
+      gap: 0 16px;
+    `,
+    subMenu: css`
+      display: flex;
+      align-items: center;
       gap: 0 8px;
     `,
     spacer: css`
       display: block;
-      width: 1px;
-      height: 16px;
+      width: 2px;
+      height: 8px;
       background: var(${VAR_NAMES.fg});
     `,
   }

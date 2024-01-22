@@ -9,23 +9,14 @@ export const createStyles = () => {
   return {
     container: css`
       width: 100%;
-    `,
-    list: css`
-      width: 100%;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
     `,
-    notCurrent: css`
-      opacity: 0.3;
+    titleArea: css`
+      width: 40%;
     `,
-    separator: css`
-      display: block;
-      width: 8px;
-      height: 2px;
-      opacity: 0.3;
-      background: var(${VAR_NAMES.fg});
+    main: css`
+      width: 40%;
     `,
   }
 }

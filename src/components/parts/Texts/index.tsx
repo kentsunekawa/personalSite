@@ -1,18 +1,19 @@
-"use client"
+'use client'
 // import from libraries
 
 // import from this project
-import { Css } from "@/types"
-import { useStyle } from "@/hooks"
+import { Css } from '@/types'
+import { useStyle } from '@/hooks'
 import {
   createStyles,
   HeadingSize,
   Size,
   Weight,
   Align,
-} from "@/styles/commonStyles/textStyles"
+} from '@/styles/commonStyles/textStyles'
 
 type CommonProps = {
+  lineHeight?: number
   weight?: Weight
   align?: Align
   insertCss?: Css
@@ -20,23 +21,25 @@ type CommonProps = {
   children: React.ReactNode
 }
 
-type HeadingProps = CommonProps & {
+export type HeadingProps = CommonProps & {
   tag?: HeadingSize
   size?: HeadingSize
 }
 
 export const Heading: React.FC<HeadingProps> = ({
+  lineHeight,
   tag,
-  size = "h1",
-  weight = "m",
-  align = "left",
+  size = 'h1',
+  weight = 'm',
+  align = 'left',
   insertCss,
   title,
   children,
 }) => {
-  const { styles } = useStyle(createStyles)
+  const { styles } = useStyle(createStyles, { lineHeight })
 
   const combinedCss = [
+    styles.base,
     styles.align[align],
     styles.weight[weight],
     styles.heading[size],
@@ -44,37 +47,37 @@ export const Heading: React.FC<HeadingProps> = ({
   ]
 
   switch (tag) {
-    case "h1":
+    case 'h1':
       return (
         <h1 title={title} css={combinedCss}>
           {children}
         </h1>
       )
-    case "h2":
+    case 'h2':
       return (
         <h2 title={title} css={combinedCss}>
           {children}
         </h2>
       )
-    case "h3":
+    case 'h3':
       return (
         <h3 title={title} css={combinedCss}>
           {children}
         </h3>
       )
-    case "h4":
+    case 'h4':
       return (
         <h4 title={title} css={combinedCss}>
           {children}
         </h4>
       )
-    case "h5":
+    case 'h5':
       return (
         <h5 title={title} css={combinedCss}>
           {children}
         </h5>
       )
-    case "h6":
+    case 'h6':
       return (
         <h6 title={title} css={combinedCss}>
           {children}
@@ -89,93 +92,26 @@ export const Heading: React.FC<HeadingProps> = ({
   }
 }
 
-// type SubHeadingProps = CommonProps & {
-//   tag?: HeadingSize
-//   size?: Size
-// }
-
-// export const SubHeading: React.FC<SubHeadingProps> = ({
-//   tag,
-//   size = "m",
-//   weight = "m",
-//   align = "left",
-//   insertCss,
-//   title,
-//   children,
-// }) => {
-//   const { styles } = useStyle(createStyles)
-
-//   const combinedCss = [
-//     styles.align[align],
-//     styles.weight[weight],
-//     styles.subHeading[size],
-//     insertCss,
-//   ]
-
-//   switch (tag) {
-//     case "h1":
-//       return (
-//         <h1 title={title} css={combinedCss}>
-//           {children}
-//         </h1>
-//       )
-//     case "h2":
-//       return (
-//         <h2 title={title} css={combinedCss}>
-//           {children}
-//         </h2>
-//       )
-//     case "h3":
-//       return (
-//         <h3 title={title} css={combinedCss}>
-//           {children}
-//         </h3>
-//       )
-//     case "h4":
-//       return (
-//         <h4 title={title} css={combinedCss}>
-//           {children}
-//         </h4>
-//       )
-//     case "h5":
-//       return (
-//         <h5 title={title} css={combinedCss}>
-//           {children}
-//         </h5>
-//       )
-//     case "h6":
-//       return (
-//         <h6 title={title} css={combinedCss}>
-//           {children}
-//         </h6>
-//       )
-//     default:
-//       return (
-//         <p title={title} css={combinedCss}>
-//           {children}
-//         </p>
-//       )
-//   }
-// }
-
 type TextProps = CommonProps & {
   size?: Size
 }
 
 export const Text: React.FC<TextProps> = ({
-  size = "m",
-  weight = "m",
-  align = "left",
+  lineHeight,
+  size = 'm',
+  weight = 'm',
+  align = 'left',
   insertCss,
   title,
   children,
 }) => {
-  const { styles } = useStyle(createStyles)
+  const { styles } = useStyle(createStyles, { lineHeight })
 
   return (
     <p
       title={title}
       css={[
+        styles.base,
         styles.align[align],
         styles.weight[weight],
         styles.text[size],
@@ -188,8 +124,8 @@ export const Text: React.FC<TextProps> = ({
 }
 
 export const Caption: React.FC<CommonProps> = ({
-  weight = "m",
-  align = "left",
+  weight = 'm',
+  align = 'left',
   insertCss,
   title,
   children,

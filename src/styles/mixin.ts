@@ -1,7 +1,8 @@
 // import from libraries
-import { css, RuleSet } from "styled-components"
+import { css, RuleSet } from 'styled-components'
 
-import { Css } from "@/types"
+import { Css } from '@/types'
+import type { Weight } from '@/styles/commonStyles/textStyles'
 
 export const BREAK_POINTS = {
   sp: 375,
@@ -13,12 +14,12 @@ export const BREAK_POINTS = {
 } as const
 
 export type Mq =
-  | "spMax_lt"
-  | "tbMin_gt"
-  | "tbMax_lt"
-  | "pcMin_gt"
-  | "print"
-  | "screen"
+  | 'spMax_lt'
+  | 'tbMin_gt'
+  | 'tbMax_lt'
+  | 'pcMin_gt'
+  | 'print'
+  | 'screen'
 
 export const mediaQueries = {
   // ~ 767
@@ -30,9 +31,9 @@ export const mediaQueries = {
   // 960 ~
   pcMin_gt: `(min-width: ${BREAK_POINTS.pcMin}px)`,
   // print
-  print: "print",
+  print: 'print',
   // screen
-  screen: "screen",
+  screen: 'screen',
 }
 
 export const mq = (query: Mq, style: Css) => css`
@@ -66,16 +67,27 @@ export const limitTextRow = (limit = 1) => css`
 `
 
 export const fontWeights = {
-  l: css`
-    font-weight: 100;
-  `,
-  m: css`
+  r: css`
     font-weight: 400;
   `,
-  b: css`
+  m: css`
     font-weight: 500;
   `,
-  xb: css`
+  b: css`
     font-weight: 700;
   `,
 }
+
+export const createFontStyles = (props: {
+  size?: number
+  weight?: Weight
+  lineHeight?: number
+  letterSpacing?: number
+}) => css`
+  font-size: ${props.size ? `${props.size}px` : undefined};
+  ${props.weight && fontWeights[props.weight]};
+  line-height: ${props.lineHeight ? `${props.lineHeight}px` : undefined};
+  letter-spacing: ${props.letterSpacing
+    ? `${props.letterSpacing}em `
+    : undefined};
+`

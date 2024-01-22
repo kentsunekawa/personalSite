@@ -1,21 +1,22 @@
-"use client"
+'use client'
 // import from libraries
-import React, { useState, forwardRef } from "react"
-import Link from "next/link"
+import React, { useState, forwardRef } from 'react'
+import Link from 'next/link'
 
 // import from this project
-import { APP_INFO } from "@/constants"
-import { getPageInfo } from "@/utils"
-import { useStyle, usePageState } from "@/hooks"
-import { ToggleTheme } from "@/components/parts/ToggleTheme"
-import { Nav } from "@/components/globals/Nav"
-import { Texts } from "@/components/parts/Texts"
-import { Button } from "@/components/parts/Button"
-import { Menu } from "@/components/globals/Menu"
-import { Icons } from "@/components/parts/Icons"
-import { MQ } from "@/components/parts/MQ"
-import { LangChanger } from "@/components/parts/LangChanger"
-import { createStyles } from "./styles"
+import { APP_INFO } from '@/constants'
+import { getPageInfo } from '@/utils'
+import { useStyle, usePageState } from '@/hooks'
+import { ToggleTheme } from '@/components/parts/ToggleTheme'
+import { Nav } from '@/components/globals/Nav'
+import { Texts } from '@/components/parts/Texts'
+import { Button } from '@/components/parts/Button'
+import { IconButton } from '@/components/parts/IconButton'
+import { Menu } from '@/components/globals/Menu'
+import { Icons } from '@/components/parts/Icons'
+import { MQ } from '@/components/parts/MQ'
+import { LangChanger } from '@/components/parts/LangChanger'
+import { createStyles } from './styles'
 
 export type Props = {
   showTopLogo?: boolean
@@ -26,7 +27,7 @@ type Ref = HTMLElement
 
 export const Header = React.forwardRef<Ref, Props>(function Component(
   { showTopLogo = true, showNav = true },
-  ref
+  ref,
 ) {
   const { styles } = useStyle(createStyles)
 
@@ -43,15 +44,15 @@ export const Header = React.forwardRef<Ref, Props>(function Component(
         <div css={styles.bg} />
         <div>
           {showTopLogo && (
-            <Link href={getPageInfo("home").createPath(pageState.lang)}>
-              <Texts.Text weight="b" size="l">
+            <Link href={getPageInfo('home').createPath(pageState.lang)}>
+              <Texts.Text insertCss={styles.siteNameText}>
                 {APP_INFO.siteName}
               </Texts.Text>
             </Link>
           )}
         </div>
         <div css={styles.menuArea}>
-          <MQ mq="pcMin_gt">
+          <MQ mq='pcMin_gt'>
             {showNav && (
               <>
                 <Nav />
@@ -59,15 +60,16 @@ export const Header = React.forwardRef<Ref, Props>(function Component(
               </>
             )}
           </MQ>
-
-          <LangChanger langInfo={pageState.translatedLangs} />
-          <ToggleTheme />
-          <MQ mq="tbMax_lt">
+          <div css={styles.subMenu}>
+            <LangChanger langInfo={pageState.translatedLangs} />
+            <ToggleTheme />
+          </div>
+          <MQ mq='tbMax_lt'>
             {showNav && (
               <>
-                <Button onClick={() => setIsOpenMenu(true)}>
+                <IconButton onClick={() => setIsOpenMenu(true)}>
                   <Icons.Menu />
-                </Button>
+                </IconButton>
                 {isOpenMenu && (
                   <Menu
                     isOpen={isOpenMenu}

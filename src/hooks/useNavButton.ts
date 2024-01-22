@@ -1,18 +1,18 @@
-import { useCallback, useMemo } from "react"
+import { useCallback, useMemo } from 'react'
 
 // import from this project
-import { PageName } from "@/constants"
-import { getPageInfo } from "@/utils"
-import { usePageState } from "@/hooks"
+import { PageName } from '@/constants'
+import { getPageInfo } from '@/utils'
+import { usePageState } from '@/hooks'
 
-const navItems: PageName[] = ["home", "profile", "projects", "experiences"]
+const navItems: PageName[] = ['home', 'profile', 'projects', 'experiences']
 
 export const useNavButton = (onClickCurrentPage: () => void) => {
   const { pageState } = usePageState()
 
   const isJudgeCurrent = useCallback(
     (pageName: PageName) => pageState?.pageName === pageName,
-    [pageState?.pageName]
+    [pageState?.pageName],
   )
 
   const linksInfo = useMemo(
@@ -35,7 +35,7 @@ export const useNavButton = (onClickCurrentPage: () => void) => {
           },
         }
       }),
-    [isJudgeCurrent, onClickCurrentPage, pageState]
+    [isJudgeCurrent, onClickCurrentPage, pageState],
   )
 
   return { linksInfo }

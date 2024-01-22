@@ -1,17 +1,18 @@
-"use client"
+'use client'
 // import from this project
-import { PageState } from "@/types"
-import { useStyle } from "@/hooks"
-import { Profile as ProfileType, Lang } from "@/graphql/generated/types"
-import { PageBase } from "@/components/globals/PageBase"
-import { PageContent } from "@/components/parts/PageContent"
-import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
-import { Skills } from "@/components/pageContents/Profile/Skills"
-import { EducationalBackgrounds } from "@/components/pageContents/Profile/EducationalBackgrounds"
-import { WorkHistories } from "@/components/pageContents/Profile/WorkHistories"
-import { Section } from "@/components/parts/contents/Section"
-import { createStyles } from "./styles"
-import { Summary } from "./Summary"
+import { PageState } from '@/types'
+import { useStyle } from '@/hooks'
+import { Profile as ProfileType, Lang } from '@/graphql/generated/types'
+import { PageBase } from '@/components/globals/PageBase'
+import { PageContent } from '@/components/parts/PageContent'
+import { MarkdownDisplay } from '@/components/parts/MarkdownDisplay'
+import { Skills } from '@/components/pageContents/Profile/Skills'
+import { EducationalBackgrounds } from '@/components/pageContents/Profile/EducationalBackgrounds'
+import { WorkHistories } from '@/components/pageContents/Profile/WorkHistories'
+import { Section } from '@/components/parts/contents/Section'
+import { SectionBox } from '@/components/parts/SectionBox'
+import { createStyles } from './styles'
+import { Summary } from './Summary'
 
 type Props = PageState & {
   profile: ProfileType
@@ -20,18 +21,18 @@ type Props = PageState & {
 const contents = {
   [Lang.Ja]: {
     sectionLabels: {
-      introduction: "自己紹介",
-      skills: "スキル",
-      educationalBackgrounds: "学歴",
-      workHistories: "職務経歴",
+      introduction: '自己紹介',
+      skills: 'スキル',
+      educationalBackgrounds: '学歴',
+      workHistories: '職務経歴',
     },
   },
   [Lang.En]: {
     sectionLabels: {
-      introduction: "Introduction",
-      skills: "Skills",
-      educationalBackgrounds: "Educational backgrounds",
-      workHistories: "Work histories",
+      introduction: 'Introduction',
+      skills: 'Skills',
+      educationalBackgrounds: 'Educational backgrounds',
+      workHistories: 'Work histories',
     },
   },
 }
@@ -54,27 +55,35 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
           lang,
           clumbs: [
             {
-              pageName: "home",
+              pageName: 'home',
             },
             {
               isCurrent: true,
-              pageName: "profile",
+              pageName: 'profile',
             },
           ],
         }}
-        title="Profile"
+        // title="Profile"
       >
         <div css={styles.layout.container}>
-          <div css={styles.layout.sub}>
-            <Summary lang={lang} data={profile} />
-          </div>
           <div css={styles.layout.main}>
+            <SectionBox
+              title={{
+                tag: 'h2',
+                text: 'PROFILE',
+              }}
+              main={
+                <>
+                  <Summary lang={lang} data={profile} />
+                  {message && <MarkdownDisplay>{message}</MarkdownDisplay>}
+                </>
+              }
+            />
             <Section.Wrapper>
-              {message && <MarkdownDisplay>{message}</MarkdownDisplay>}
               {skills.length > 0 && (
                 <Section.Box
                   title={{
-                    tag: "h2",
+                    tag: 'h2',
                     node: contents[lang].sectionLabels.skills,
                   }}
                 >
@@ -84,7 +93,7 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
               {educationalBackgrounds.length > 0 && (
                 <Section.Box
                   title={{
-                    tag: "h2",
+                    tag: 'h2',
                     node: contents[lang].sectionLabels.educationalBackgrounds,
                   }}
                 >
@@ -97,7 +106,7 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
               {workHistories.length > 0 && (
                 <Section.Box
                   title={{
-                    tag: "h2",
+                    tag: 'h2',
                     node: contents[lang].sectionLabels.workHistories,
                   }}
                 >
@@ -107,7 +116,7 @@ export const Profile: React.FC<Props> = ({ lang, profile }) => {
               {introduction && (
                 <Section.Box
                   title={{
-                    tag: "h2",
+                    tag: 'h2',
                     node: contents[lang].sectionLabels.introduction,
                   }}
                 >

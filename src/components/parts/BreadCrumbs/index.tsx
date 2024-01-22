@@ -1,15 +1,15 @@
-"use client"
+'use client'
 // import from libraries
-import React from "react"
+import React from 'react'
 
 // import from this project
-import { useStyle } from "@/hooks"
-import { getPageInfo } from "@/utils"
-import { Lang } from "@/graphql/generated/types"
-import { PageName } from "@/constants"
-import { Button } from "@/components/parts/Button"
-import { Texts } from "@/components/parts/Texts"
-import { createStyles } from "./styles"
+import { useStyle } from '@/hooks'
+import { getPageInfo } from '@/utils'
+import { Lang } from '@/graphql/generated/types'
+import { PageName } from '@/constants'
+import { Button } from '@/components/parts/Button'
+import { Texts } from '@/components/parts/Texts'
+import { createStyles } from './styles'
 
 type Clum = {
   pageName: PageName
@@ -30,14 +30,24 @@ type ClumProps = {
 
 const Clum: React.FC<ClumProps> = ({ lang, clum }) => {
   const { isCurrent, pageName, params, label } = clum
+  const { styles } = useStyle(createStyles)
 
   const { displayName, createPath } = getPageInfo(pageName)
   const href = createPath(lang, params)
 
   return !isCurrent ? (
-    <Button href={href}>{label ?? displayName}</Button>
+    <Button
+      href={href}
+      size='l'
+      weight='b'
+      insertCss={{ container: styles.notCurrent }}
+    >
+      {label ?? displayName}
+    </Button>
   ) : (
-    <Texts.Text>{label ?? displayName}</Texts.Text>
+    <Texts.Text size='l' weight='b'>
+      {label ?? displayName}
+    </Texts.Text>
   )
 }
 
@@ -54,7 +64,7 @@ export const BreadCrumbs: React.FC<Props> = ({ lang, clumbs }) => {
               </li>
               {i < clumbs.length - 1 && (
                 <li>
-                  <Texts.Text>{` _ `}</Texts.Text>
+                  <span css={styles.separator} />
                 </li>
               )}
             </React.Fragment>
