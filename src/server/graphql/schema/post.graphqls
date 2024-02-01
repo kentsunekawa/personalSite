@@ -29,6 +29,7 @@ type Post {
   labels: [PostLabel!]!
   slug: String!
   status: PostStatus!
+  summary: String
   content: String!
   lang: PostLang!
 }

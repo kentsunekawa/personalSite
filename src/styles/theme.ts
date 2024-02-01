@@ -1,38 +1,38 @@
-import { DefaultTheme } from "styled-components"
+import { DefaultTheme } from 'styled-components'
 
-import { ThemeName } from "@/hooks/useThemeName"
+import { ThemeName } from '@/hooks/useThemeName'
 
 export const VAR_NAMES = {
-  fg: "--fg",
-  bg: "--bg",
+  fg: '--fg',
+  bg: '--bg',
   primary: {
-    light: "--primary-light",
-    main: "--primary-main",
-    dark: "--primary-dark",
+    light: '--primary-light',
+    main: '--primary-main',
+    dark: '--primary-dark',
   },
   secondary: {
-    light: "--secondary-light",
-    main: "--secondary-main",
-    dark: "--secondary-dark",
+    light: '--secondary-light',
+    main: '--secondary-main',
+    dark: '--secondary-dark',
   },
   grayScale: {
-    0: "--gray-scale-0",
-    10: "--gray-scale-10",
-    20: "--gray-scale-20",
-    30: "--gray-scale-30",
-    40: "--gray-scale-40",
-    50: "--gray-scale-50",
-    60: "--gray-scale-60",
-    70: "--gray-scale-70",
-    80: "--gray-scale-80",
-    90: "--gray-scale-90",
-    95: "--gray-scale-95",
-    99: "--gray-scale-99",
-    100: "--gray-scale-100",
+    0: '--gray-scale-0',
+    10: '--gray-scale-10',
+    20: '--gray-scale-20',
+    30: '--gray-scale-30',
+    40: '--gray-scale-40',
+    50: '--gray-scale-50',
+    60: '--gray-scale-60',
+    70: '--gray-scale-70',
+    80: '--gray-scale-80',
+    90: '--gray-scale-90',
+    95: '--gray-scale-95',
+    99: '--gray-scale-99',
+    100: '--gray-scale-100',
   },
 } as const
 
-export type ColorName = "primary" | "secondary"
+export type ColorName = 'primary' | 'secondary'
 
 type ColorScale = {
   right: string
@@ -64,40 +64,40 @@ export type Theme = {
   }
 }
 
-export type Mode = "light" | "dark" | "system"
+export type Mode = 'light' | 'dark' | 'system'
 
 const commonTheme = {
   primary: {
-    right: "#59cfdc",
-    main: "#2b96a1",
-    dark: "#215e60",
+    right: '#59cfdc',
+    main: '#2b96a1',
+    dark: '#215e60',
   },
   secondary: {
-    right: "#59cfdc",
-    main: "#2b96a1",
-    dark: "#215e60",
+    right: '#59cfdc',
+    main: '#2b96a1',
+    dark: '#215e60',
   },
 }
 
 export const lightTheme: Theme = {
   colors: {
     ...commonTheme,
-    fg: "#222",
-    bg: "#fff",
+    fg: '#444',
+    bg: '#F4F4F4',
     grayScale: {
-      0: "#000000",
-      10: "#191C1D",
-      20: "#2D3132",
-      30: "#444748",
-      40: "#5C5F60",
-      50: "#5C5F60",
-      60: "#8E9192",
-      70: "#A9ACAC",
-      80: "#C4C7C7",
-      90: "#E0E3E3",
-      95: "#EFF1F1",
-      99: "#FBFDFD",
-      100: "#FFFFFF",
+      0: '#000000',
+      10: '#EFEFEF',
+      20: '#EBEBEB',
+      30: '#444748',
+      40: '#5C5F60',
+      50: '#AFAFAF',
+      60: '#8E9192',
+      70: '#A9ACAC',
+      80: '#2D2D2D',
+      90: '#E0E3E3',
+      95: '#EFF1F1',
+      99: '#FBFDFD',
+      100: '#FFFFFF',
     },
   },
 }
@@ -105,22 +105,22 @@ export const lightTheme: Theme = {
 export const darkTheme: Theme = {
   colors: {
     ...commonTheme,
-    fg: "#fff",
-    bg: "#0d1117",
+    fg: '#fff',
+    bg: '#0d1117',
     grayScale: {
-      0: "#FFFFFF",
-      10: "#E0E3E3",
-      20: "#C4C7C7",
-      30: "#A9ACAC",
-      40: "#8E9192",
-      50: "#5C5F60",
-      60: "#5C5F60",
-      70: "#444748",
-      80: "#2D3132",
-      90: "#191C1D",
-      95: "#191C1D",
-      99: "#191C1D",
-      100: "#000000",
+      0: '#FFFFFF',
+      10: '#E0E3E3',
+      20: '#2D2D2D',
+      30: '#A9ACAC',
+      40: '#8E9192',
+      50: '#AFAFAF',
+      60: '#5C5F60',
+      70: '#444748',
+      80: '#EBEBEB',
+      90: '#191C1D',
+      95: '#191C1D',
+      99: '#EFEFEF',
+      100: '#000000',
     },
   },
 }

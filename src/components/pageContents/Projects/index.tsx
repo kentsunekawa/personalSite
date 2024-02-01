@@ -1,14 +1,12 @@
-"use client"
+'use client'
 // import from this project
-import { PageState } from "@/types"
-import { useStyle } from "@/hooks"
-import { Lang, Project } from "@/graphql/generated/types"
-import { PageBase } from "@/components/globals/PageBase"
-import { PageContent } from "@/components/parts/PageContent"
-import { BoxList } from "@/components/parts/contents/BoxList"
-import { Texts } from "@/components/parts/Texts"
-import { ProjectBox } from "./ProjectBox"
-import { createStyles } from "./styles"
+import { PageState } from '@/types'
+import { Lang, Project } from '@/graphql/generated/types'
+import { PageBase } from '@/components/globals/PageBase'
+import { PageContent } from '@/components/parts/PageContent'
+import { BoxList } from '@/components/parts/contents/BoxList'
+import { SectionBox } from '@/components/parts/SectionBox'
+import { ProjectBox } from './ProjectBox'
 
 type Props = PageState & {
   projects: Project[]
@@ -16,7 +14,7 @@ type Props = PageState & {
 
 const contents = {
   [Lang.Ja]: {
-    summary: "現在までに参画してきた主なプロジェクトです。",
+    summary: '現在までに参画してきた主なプロジェクトです。',
   },
   [Lang.En]: {
     summary: "Projects I've been involved in until now.",
@@ -24,8 +22,6 @@ const contents = {
 }
 
 export const Projects: React.FC<Props> = ({ lang, projects }) => {
-  const { styles } = useStyle(createStyles)
-
   return (
     <PageBase>
       <PageContent
@@ -33,29 +29,31 @@ export const Projects: React.FC<Props> = ({ lang, projects }) => {
           lang,
           clumbs: [
             {
-              pageName: "home",
+              pageName: 'home',
             },
             {
               isCurrent: true,
-              pageName: "projects",
+              pageName: 'projects',
             },
           ],
         }}
-        title="Projects"
-        summary={
-          <div>
-            <Texts.Text>{contents[lang].summary}</Texts.Text>
-          </div>
-        }
+        summary={contents[lang].summary}
       >
-        <div css={styles.container}>
-          <BoxList
-            contents={projects.map((project) => ({
-              key: project.id,
-              node: <ProjectBox lang={lang} project={project} />,
-            }))}
-          />
-        </div>
+        <SectionBox
+          title={{
+            tag: 'h2',
+            text: 'PROJECTS',
+          }}
+          main={
+            <BoxList
+              gap={[8, 0]}
+              contents={projects.map((project) => ({
+                key: project.id,
+                node: <ProjectBox lang={lang} project={project} />,
+              }))}
+            />
+          }
+        />
       </PageContent>
     </PageBase>
   )

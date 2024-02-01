@@ -6,7 +6,6 @@ import Link from 'next/link'
 // import from this project
 import { InsertStyles } from '@/types'
 import { useStyle } from '@/hooks'
-import { Weight } from '@/styles/commonStyles/textStyles'
 import { createStyles, StyleProps } from './styles'
 
 export type Props = {
@@ -28,7 +27,12 @@ export const Button: React.FC<Props> = ({
   insertCss,
   children,
 }) => {
-  const { styles } = useStyle(createStyles, { type, size, color, weight })
+  const { styles } = useStyle(createStyles, {
+    type,
+    size,
+    color,
+    weight,
+  })
   return href ? (
     <Link
       href={href}

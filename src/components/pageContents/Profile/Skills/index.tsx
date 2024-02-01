@@ -1,77 +1,66 @@
-"use client"
+'use client'
 // import from libraries
-import { useMemo } from "react"
+import React, { useMemo } from 'react'
 
 // import from this project
-import { Skill as SkillType } from "@/graphql/generated/types"
-import { useStyle } from "@/hooks"
-import { Texts } from "@/components/parts/Texts"
-import { TechnologyIcon } from "@/components/parts/TechnologyIcon"
-import { createStyles } from "./styles"
+import { Skill as SkillType } from '@/graphql/generated/types'
+import { createFlexBoxStyle } from '@/styles/mixin'
+import { Texts } from '@/components/parts/Texts'
+import { SmallSection } from '@/components/parts/SmallSection'
+import { FB } from '@/components/parts/FB'
 
-export type Skill = Pick<SkillType, "id" | "slug" | "name" | "proficiency">
+export type Skill = Pick<SkillType, 'id' | 'slug' | 'name' | 'proficiency'>
 
 export type Props = {
   skills: readonly Skill[]
 }
 
-type BoxProps = {
-  name: string
-  slug: string
+type ListProps = {
+  title: string
+  skills: readonly Skill[]
 }
 
-const Box: React.FC<BoxProps> = ({ name, slug }) => {
-  const { styles } = useStyle(createStyles)
+const List: React.FC<ListProps> = ({ title, skills }) => {
+  if (skills.length === 0) return null
+
   return (
-    <div css={styles.box.container}>
-      <div css={styles.box.imageWrapper}>
-        <TechnologyIcon slug={slug} />
-      </div>
-      <div css={styles.box.nameWrapper}>
-        <Texts.Text size="s" insertCss={styles.box.name} title={name}>
-          {name}
-        </Texts.Text>
-      </div>
-    </div>
+    <SmallSection title={title}>
+      <ul css={createFlexBoxStyle({ gap: [0, 1] })}>
+        {skills.map(({ id, name }, i) => (
+          <React.Fragment key={id}>
+            <li>
+              <Texts.Text size='l' lineHeight={4}>
+                {name}
+              </Texts.Text>
+            </li>
+            {i !== skills.length - 1 && (
+              <li>
+                <Texts.Text size='l' lineHeight={4}>
+                  /
+                </Texts.Text>
+              </li>
+            )}
+          </React.Fragment>
+        ))}
+      </ul>
+    </SmallSection>
   )
 }
 
 export const Skills: React.FC<Props> = ({ skills }) => {
-  const { styles } = useStyle(createStyles)
-
   const experiencedSkills = useMemo(
-    () => skills.filter(({ proficiency }) => proficiency === "EXPERIENCED"),
-    [skills]
+    () => skills.filter(({ proficiency }) => proficiency === 'EXPERIENCED'),
+    [skills],
   )
   const otherSkills = useMemo(
-    () => skills.filter(({ proficiency }) => proficiency === "HAVE_USED"),
-    [skills]
+    () => skills.filter(({ proficiency }) => proficiency === 'HAVE_USED'),
+    [skills],
   )
 
   return (
-    <div css={styles.container}>
-      {experiencedSkills.length > 0 && (
-        <div css={styles.section}>
-          <ul css={styles.list}>
-            {experiencedSkills.map(({ id, name, slug }) => (
-              <li key={id} css={styles.item}>
-                <Box slug={slug} name={name} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {otherSkills.length > 0 && (
-        <div css={styles.section}>
-          <ul css={styles.list}>
-            {otherSkills.map(({ id, name, slug }) => (
-              <li key={id} css={styles.item}>
-                <Box slug={slug} name={name} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+    <FB gap={[5, 0]}>
+      <List title='Languages & Frameworks' skills={experiencedSkills} />
+      <List title='Others' skills={otherSkills} />
+    </FB>
   )
 }

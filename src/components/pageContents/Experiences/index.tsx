@@ -1,16 +1,18 @@
-"use client"
+'use client'
 // import from libraries
 
 // import from this project
-import { PageState } from "@/types"
-import { getPageInfo } from "@/utils"
-import { useStyle } from "@/hooks"
-import { Lang, Post } from "@/graphql/generated/types"
-import { PageBase } from "@/components/globals/PageBase"
-import { PageContent } from "@/components/parts/PageContent"
-import { LinkBox } from "@/components/parts/LinkBox"
-import { Texts } from "@/components/parts/Texts"
-import { createStyles } from "./styles"
+import { PageState } from '@/types'
+import { getPageInfo } from '@/utils'
+import { useStyle } from '@/hooks'
+import { Lang, Post } from '@/graphql/generated/types'
+import { PageBase } from '@/components/globals/PageBase'
+import { PageContent } from '@/components/parts/PageContent'
+import { LinkBox } from '@/components/parts/LinkBox'
+import { BoxList } from '@/components/parts/contents/BoxList'
+import { SectionBox } from '@/components/parts/SectionBox'
+import { Texts } from '@/components/parts/Texts'
+import { createStyles } from './styles'
 
 type Props = PageState & {
   posts: Post[]
@@ -19,12 +21,12 @@ type Props = PageState & {
 const contents = {
   [Lang.Ja]: {
     summary:
-      "エンジニアとしてのキャリアの中で、経験したこと考えたことを記事として残していきます。",
-    emptyMessage: "まだ記事はありません。",
+      'エンジニアとしてのキャリアの中で、経験したこと考えたことを記事として残していきます。',
+    emptyMessage: 'まだ記事はありません。',
   },
   [Lang.En]: {
-    summary: "Here is a description.",
-    emptyMessage: "There is still no article.",
+    summary: 'Here is a description.',
+    emptyMessage: 'There is still no article.',
   },
 } as const
 
@@ -37,45 +39,52 @@ export const Experiences: React.FC<Props> = ({ lang, posts }) => {
           lang,
           clumbs: [
             {
-              pageName: "home",
+              pageName: 'home',
             },
             {
               isCurrent: true,
-              pageName: "experiences",
+              pageName: 'experiences',
             },
           ],
         }}
-        title="Experiences"
         summary={contents[lang].summary}
       >
-        <div>
-          {posts.length > 0 ? (
-            <div>
-              {
-                <ul css={styles.list}>
-                  {posts.map(({ id, slug, title, date }) => (
-                    <li key={id} css={styles.item}>
+        <SectionBox
+          title={{
+            tag: 'h2',
+            text: 'EXPERIENCES',
+          }}
+          main={
+            <>
+              {posts.length > 0 ? (
+                <BoxList
+                  withSeparator={false}
+                  gap={[4, 0]}
+                  contents={posts.map(({ id, slug, title, summary, date }) => ({
+                    key: id,
+                    node: (
                       <LinkBox
-                        key={id}
-                        href={getPageInfo("experience").createPath(lang, {
+                        lang={lang}
+                        href={getPageInfo('experience').createPath(lang, {
                           slug,
                         })}
                         title={title}
-                        subTitle={date}
+                        caption={date}
+                        summary={summary ?? undefined}
                       />
-                    </li>
-                  ))}
-                </ul>
-              }
-            </div>
-          ) : (
-            <div css={styles.emptyArea}>
-              <Texts.Heading align="center" size="h5">
-                {contents[lang].emptyMessage}
-              </Texts.Heading>
-            </div>
-          )}
-        </div>
+                    ),
+                  }))}
+                />
+              ) : (
+                <div css={styles.emptyArea}>
+                  <Texts.Heading align='center' size='h5'>
+                    {contents[lang].emptyMessage}
+                  </Texts.Heading>
+                </div>
+              )}
+            </>
+          }
+        />
       </PageContent>
     </PageBase>
   )

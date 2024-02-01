@@ -18,12 +18,20 @@ export const SectionBox: React.FC<Props> = ({ title, main }) => {
   const { styles } = useStyle(createStyles)
   return (
     <section css={styles.container}>
-      <div css={styles.titleArea}>
-        <Texts.Heading tag={title.tag} size='h1' weight='b'>
-          {title.text}
-        </Texts.Heading>
+      <div css={styles.titleArea.container}>
+        <div css={styles.titleArea.inner}>
+          <Texts.Heading
+            tag={title.tag}
+            weight='b'
+            insertCss={styles.titleArea.text}
+          >
+            {title.text}
+          </Texts.Heading>
+        </div>
       </div>
-      <div css={styles.main}>{main}</div>
+      <div css={styles.main}>
+        <div css={styles.inner}>{main}</div>
+      </div>
     </section>
   )
 }

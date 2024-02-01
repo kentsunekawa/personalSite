@@ -86,8 +86,39 @@ export const createFontStyles = (props: {
 }) => css`
   font-size: ${props.size ? `${props.size}px` : undefined};
   ${props.weight && fontWeights[props.weight]};
-  line-height: ${props.lineHeight ? `${props.lineHeight}px` : undefined};
+  line-height: ${props.lineHeight ? `${props.lineHeight * 8}px` : undefined};
   letter-spacing: ${props.letterSpacing
     ? `${props.letterSpacing}em `
     : undefined};
 `
+
+export type FlexBoxStyleArgs = {
+  justifyContent?: 'center' | 'flex-start' | 'flex-end'
+  alignItems?: 'center'
+  alignContent?: 'center'
+  gap?: number | string | (number | string)[]
+}
+export const createFlexBoxStyle = (args?: FlexBoxStyleArgs) => {
+  const gap = (() => {
+    if (args?.gap) {
+      if (Array.isArray(args.gap)) {
+        return args.gap.reduce(
+          (sum, g) => (typeof g === 'string' ? `${g} ` : `${sum}${g * 8}px `),
+          '',
+        )
+      }
+      return typeof args.gap === 'string' ? args.gap : `${args.gap * 8}px`
+    }
+    return undefined
+  })()
+
+  return css`
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: ${args?.justifyContent};
+    align-items: ${args?.alignItems};
+    align-content: ${args?.alignContent};
+    gap: ${gap};
+  `
+}

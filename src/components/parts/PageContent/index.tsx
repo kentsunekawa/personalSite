@@ -9,18 +9,17 @@ import {
   Props as BreadCrumbsProps,
 } from '@/components/parts/BreadCrumbs'
 import { MQ } from '@/components/parts/MQ'
+import { FB } from '@/components/parts/FB'
 import { createStyles } from './styles'
 
 export type Props = {
-  // title?: React.ReactNode
-  // summary?: React.ReactNode
+  summary?: React.ReactNode
   children?: React.ReactNode
   breadCrumsInfo?: BreadCrumbsProps
 }
 
 export const PageContent: React.FC<Props> = ({
-  // title,
-  // summary,
+  summary,
   children,
   breadCrumsInfo,
 }) => {
@@ -28,31 +27,30 @@ export const PageContent: React.FC<Props> = ({
   const { styles: textStyle } = useTextStyles()
 
   return (
-    <div css={styles.container}>
+    <FB gap={[7, 0]} insertStyles={{ container: styles.container }}>
       <MQ mq='tbMin_gt'>
         <MQ print={false}>
           {breadCrumsInfo && (
-            <div css={styles.breadCrumArea.container}>
-              <div css={styles.breadCrumArea.inner}>
+            <FB justifyContent='center'>
+              <div css={styles.inner}>
                 <BreadCrumbs {...breadCrumsInfo} />
               </div>
-            </div>
+            </FB>
           )}
         </MQ>
       </MQ>
-      {/* {(title || summary) && (
-        <div css={styles.headerArea.container}>
-          {title && (
-            <div css={styles.headerArea.row}>
-              <Texts.Heading tag='h1'>{title}</Texts.Heading>
-            </div>
-          )}
-          {summary && (
-            <div css={[styles.headerArea.row, textStyle.text.m]}>{summary}</div>
-          )}
-        </div>
-      )} */}
+      {summary && (
+        <FB justifyContent='center'>
+          <div css={[styles.inner, textStyle.text.m]}>
+            {typeof summary === 'string' ? (
+              <Texts.Text size='s'>{summary}</Texts.Text>
+            ) : (
+              summary
+            )}
+          </div>
+        </FB>
+      )}
       {children && <div css={styles.main}>{children}</div>}
-    </div>
+    </FB>
   )
 }

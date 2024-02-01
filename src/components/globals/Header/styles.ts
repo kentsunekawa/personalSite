@@ -56,6 +56,7 @@ export const createStyles = () => {
       display: flex;
       align-items: center;
       gap: 0 8px;
+      width: auto;
     `,
     spacer: css`
       display: block;

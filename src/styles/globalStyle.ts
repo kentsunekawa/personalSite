@@ -1,6 +1,6 @@
-import { css } from "styled-components"
-import { destyle } from "@/styles/destyle"
-import { themes } from "./theme"
+import { css } from 'styled-components'
+import { destyle } from '@/styles/destyle'
+import { themes } from './theme'
 
 const {
   light: { colors: lColors },
@@ -29,7 +29,7 @@ export const globalStyle = css`
     --gray-scale-99: ${lColors.grayScale[99]};
     --gray-scale-100: ${lColors.grayScale[100]};
   }
-  [data-theme="dark"] {
+  [data-theme='dark'] {
     /* colors */
     --fg: ${dColors.fg};
     --bg: ${dColors.bg};
@@ -71,5 +71,11 @@ export const globalStyle = css`
   }
   html {
     background: var(--bg);
+  }
+  * {
+    color: var(--fg);
+  }
+  div {
+    width: 100%;
   }
 `

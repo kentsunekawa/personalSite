@@ -26,6 +26,10 @@ export const createStyles = () => {
         text-align: center;
         line-height: 1em;
         color: var(${VAR_NAMES.grayScale[60]}) !important;
+        svg,
+        path {
+          color: var(${VAR_NAMES.grayScale[60]}) !important;
+        }
       `,
     },
     icon: css``,

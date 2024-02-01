@@ -1,15 +1,15 @@
-"use client"
+'use client'
 // import from libraries
-import { useMemo } from "react"
+import { useMemo } from 'react'
 // import from this project
-import { useStyle } from "@/hooks"
-import { Lang, Project } from "@/graphql/generated/types"
-import { ContentsBox } from "@/components/parts/contents/ContentsBox"
-import { Texts } from "@/components/parts/Texts"
-import { MarkdownDisplay } from "@/components/parts/MarkdownDisplay"
-import { ReplaceLineFeedCodeToBr } from "@/components/parts/ReplaceLineFeedCodeToBr"
+import { useStyle } from '@/hooks'
+import { Lang, Project } from '@/graphql/generated/types'
+import { ContentsBox } from '@/components/parts/contents/ContentsBox'
+import { createPeriodText } from '@/utils'
+import { MarkdownDisplay } from '@/components/parts/MarkdownDisplay'
+import { ReplaceLineFeedCodeToBr } from '@/components/parts/ReplaceLineFeedCodeToBr'
 
-import { createStyles } from "./styles"
+import { createStyles } from './styles'
 
 export type Props = {
   lang: Lang
@@ -18,18 +18,18 @@ export type Props = {
 
 const contents = {
   [Lang.Ja]: {
-    responsibility: "業務",
-    position: "ポジション",
-    company: "組織",
-    team: "チーム構成",
-    technologies: "主な使用技術",
+    responsibility: '業務',
+    position: 'ポジション',
+    company: '組織',
+    team: 'チーム構成',
+    technologies: '主な使用技術',
   },
   [Lang.En]: {
-    responsibility: "Responsibility",
-    position: "Position",
-    company: "Company",
-    team: "Team",
-    technologies: "Technologies",
+    responsibility: 'Responsibility',
+    position: 'Position',
+    company: 'Company',
+    team: 'Team',
+    technologies: 'Technologies',
   },
 }
 
@@ -56,60 +56,51 @@ export const ProjectBox: React.FC<Props> = ({ lang, project }) => {
         belonging
           ? {
               label: contents[lang].company,
-              data: <Texts.Text size="s">{belonging.name}</Texts.Text>,
+              data: belonging.name,
             }
           : null,
         team
           ? {
               label: contents[lang].team,
-              data: <Texts.Text size="s">{team}</Texts.Text>,
+              data: team,
             }
           : null,
         position
           ? {
               label: contents[lang].position,
-              data: <Texts.Text size="s">{position}</Texts.Text>,
+              data: position,
             }
           : null,
         responsibility
           ? {
               label: contents[lang].responsibility,
-              data: <Texts.Text size="s">{responsibility}</Texts.Text>,
+              data: responsibility,
             }
           : null,
         technologies.length > 0
           ? {
               label: contents[lang].technologies,
-              data: (
-                <div css={styles.skillIconList.container}>
-                  <Texts.Text size="s">
-                    {technologies.map(
-                      ({ name }, i) =>
-                        `${name}${i < technologies.length - 1 ? " / " : ""}`
-                    )}
-                  </Texts.Text>
-                </div>
+              data: technologies.map(
+                ({ name }, i) =>
+                  `${name}${i < technologies.length - 1 ? ' / ' : ''}`,
               ),
             }
           : null,
       ].filter((item): item is NonNullable<typeof item> => item !== null),
-    [belonging, lang, position, responsibility, styles, team, technologies]
+    [belonging, lang, position, responsibility, team, technologies],
   )
 
   return (
     <ContentsBox
-      lang={lang}
       contents={{
         title: {
-          tag: "h3",
+          tag: 'h3',
           node: title,
         },
-        period,
+        caption: createPeriodText(period, lang),
         metaInfo,
         summary: summary && (
-          <Texts.Text>
-            <ReplaceLineFeedCodeToBr>{summary}</ReplaceLineFeedCodeToBr>
-          </Texts.Text>
+          <ReplaceLineFeedCodeToBr>{summary}</ReplaceLineFeedCodeToBr>
         ),
         moreArea: description ? (
           <MarkdownDisplay>{description}</MarkdownDisplay>

@@ -30,47 +30,37 @@ export const createStyles = (args?: { lineHeight?: number }) => {
     heading: {
       h1: css`
         font-size: 36px;
-        letter-spacing: -0.026em;
       `,
       h2: css`
         font-size: 32px;
-        letter-spacing: -0.02em;
       `,
       h3: css`
         font-size: 28px;
-        letter-spacing: -0.02em;
       `,
       h4: css`
         font-size: 24px;
-        letter-spacing: -0.024em;
       `,
       h5: css`
         font-size: 20px;
-        letter-spacing: 0;
       `,
       h6: css`
         font-size: 18px;
-        letter-spacing: -0.017em;
       `,
     },
     text: {
       s: css`
         font-size: 12px;
-        letter-spacing: 0;
       `,
       m: css`
         font-size: 14px;
-        letter-spacing: 0;
       `,
       l: css`
         font-size: 16px;
-        letter-spacing: 0;
       `,
     },
 
     caption: css`
       font-size: 10px;
-      letter-spacing: -0.03em;
     `,
   }
 }

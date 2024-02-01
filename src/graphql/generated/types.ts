@@ -73,6 +73,7 @@ export type Post = {
   readonly lang: PostLang;
   readonly slug: Scalars['String']['output'];
   readonly status: PostStatus;
+  readonly summary?: Maybe<Scalars['String']['output']>;
   readonly title: Scalars['String']['output'];
 };
 
@@ -737,6 +738,7 @@ export type PostResolvers<ContextType = any, ParentType extends ResolversParentT
   lang?: Resolver<ResolversTypes['PostLang'], ParentType, ContextType>;
   slug?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   status?: Resolver<ResolversTypes['PostStatus'], ParentType, ContextType>;
+  summary?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;

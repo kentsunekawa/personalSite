@@ -15,8 +15,9 @@ import { hoveredLink, fontWeights } from '@/styles/mixin'
 export type StyleProps = {
   type?: 'filled' | 'border' | 'text' | 'block'
   size?: Size
-  color?: ColorName
+  color?: ColorName | 'gray'
   weight?: Weight
+  lineHeight?: number
 }
 
 const textStyle = createTextStyle()
@@ -27,7 +28,16 @@ export const createStyles = (styleProps?: StyleProps) => {
   const weight = styleProps?.weight ?? 'm'
   const hasPadding = type !== 'text'
   const color = styleProps?.color ?? 'fg'
-  const colorVarName = color === 'fg' ? VAR_NAMES.fg : VAR_NAMES[color].main
+  const isNega = color !== 'gray'
+  const colorVarName = (() => {
+    if (color === 'fg') return VAR_NAMES.fg
+    if (color === 'gray') return VAR_NAMES.grayScale[20]
+
+    return VAR_NAMES[color].main
+  })()
+  const lineHeight = styleProps?.lineHeight
+    ? `${styleProps.lineHeight * 8}px`
+    : undefined
 
   const containerStyle = {
     s: css`
@@ -60,6 +70,7 @@ export const createStyles = (styleProps?: StyleProps) => {
     container: css`
       display: inline-block;
       color: var(${colorVarName});
+      line-height: ${lineHeight};
       ${type === 'border' &&
       css`
         border: 1px solid var(${colorVarName});
@@ -67,7 +78,7 @@ export const createStyles = (styleProps?: StyleProps) => {
       ${type === 'filled' &&
       css`
         background: var(${colorVarName});
-        color: var(${VAR_NAMES.bg});
+        color: var(${isNega ? VAR_NAMES.bg : VAR_NAMES.fg});
       `}
       border-radius: 4px;
       ${containerStyle[size]}
